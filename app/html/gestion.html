@@ -1,0 +1,60 @@
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="../css/categorie.css">
+        <script  src="../js/categorie.js"></script>
+        <title>La liste des domaines</title>
+        <style>
+            html, body, body > div, #container, #container-uiarea {
+                height: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="page">
+
+            <div class="all-container">
+
+                <div id="text">
+                    <h1>Test : Gestion</h1>
+                    <p>Choisissez le nombre de question que vous souhaitez avoir durant la durée du test</p>
+                </div>
+    
+                <div class="container">
+        
+                    <div id="div-40-questions">
+                        <p><b>40 Questions</b></p>
+                        <p>Durée 01:30</p>
+                    </div>
+                    
+                    <div id="div-80-questions">
+                        <p><b>80 Questions</b></p>
+                        <p>Durée 03:00</p>
+                    </div>
+
+                </div>
+
+                <div>
+                    <select class="select_time" id="questionsSelection">
+                        <option value="40">40 Questions (1h30)</option>
+                        <option value="80">80 Questions (3h00)</option>
+                        <option value="3">3  Questions (5 min)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button onclick="startQuestionnaire()" name="button-validation" class="validate_button" type="submit">Démarrer</button>
+                    <button onclick="startTimer()" name="button-validation" class="validate_button" type="submit">Afficher timer</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
