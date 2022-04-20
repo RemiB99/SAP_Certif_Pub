@@ -59,3 +59,7 @@ button{
 #select-type{
     padding:5px;
 }
+
+html, body, body > div, #container, #container-uiarea {
+    height: 100%;
+}
