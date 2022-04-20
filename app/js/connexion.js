@@ -16,7 +16,7 @@ loginButton.addEventListener("click", (e) => {
     for(let user in data.value){
         if (mail === data.value[user].mail && password === data.value[user].password) {
             alert("You have successfully logged in.");
-            console.log("Connexion réussi");
+            console.log("Connexion réussie");
             window.location.href = "./html/choix_categories.html";
         } else {
             loginErrorMsg.style.opacity = 1;
