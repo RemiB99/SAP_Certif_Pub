@@ -92,3 +92,15 @@ h1
 {
     color: #ffc107;
 }
+
+#hidden_message_email{
+    color: red;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+#hidden_message_mdp{
+    color: red;
+    font-size: 0.8em;
+    font-style: italic;
+}
