@@ -1,5 +1,5 @@
 // A changer - identifiant différent pour chaque devSpace
-var URLUsers = 'https://port4004-workspaces-ws-vl9jn.us10.trial.applicationstudio.cloud.sap/sap/Users';
+var URLUsers = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applicationstudio.cloud.sap/sap/Users';
 
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
