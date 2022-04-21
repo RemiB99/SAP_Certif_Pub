@@ -73,7 +73,7 @@ html, body
 
   .main .questionPart .nbRep {
     margin-left : 44%;
-    margin-top : 5%;
+    margin-top : 2%;
     padding :5px;
     background : white;
     text-align: center;
@@ -92,6 +92,7 @@ html, body
     margin-left: 20%;
     text-align: center;
     border: solid 3px #213FDA;
+    font-size : 0.8em;
   }
 
   .main .answerPart{
