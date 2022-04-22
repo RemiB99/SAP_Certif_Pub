@@ -1,10 +1,12 @@
 
 var minute = sessionStorage.getItem("tempsTimer");
-var second = 1;
+var second = sessionStorage.getItem("secondTimer");
 
 setInterval( function(){
     if(minute == 0 && second == 1){
         document.getElementById("counter").innerHTML = "00:00";
+        //alert("Le temps imparti est terminé, vous allez être redirigé vers la page des résultats...");
+        //window.location.href= 'resultatsQuestionnaire.html';
     }else{
         second--;
         if(second == 0){
@@ -17,6 +19,8 @@ setInterval( function(){
         }
         document.getElementById("counter").innerHTML = minute + ":" + second;
     }
+    sessionStorage.setItem("tempsTimer", minute);
+    sessionStorage.setItem("secondTimer", second);
 }, 1000)
 
 setInterval( function(){
@@ -24,4 +28,4 @@ setInterval( function(){
         alert("Le temps imparti est terminé, vous allez être redirigé vers la page des résultats...");
         window.location.href= 'resultatsQuestionnaire.html';
     }
-}, 1000)
+},(5000))

@@ -17,6 +17,7 @@ function handleClick() {
         temps = 5;
     }
     sessionStorage.setItem("tempsTimer", temps);
+    sessionStorage.setItem("secondTimer", 1);
     return strNumberOfQuestions;
 }
 function getQuestions(numberOfQuestions){
