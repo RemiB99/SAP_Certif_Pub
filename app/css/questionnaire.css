@@ -158,3 +158,8 @@ html, body
     width:calc(100% + 30px); /*30px -> row gap*/
     margin-left: 50%;
   }
+
+#counter{
+    font-size: 0.8em;
+    color: red;
+}
