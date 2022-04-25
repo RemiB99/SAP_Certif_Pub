@@ -6,14 +6,48 @@
         <script src="../js/manageResult.js" type="module"></script>
     </head>
     <body>
-        <ul class="list-group" style="width: 200px;">
+        <div id='ul_container'></div>
+        <!-- <ul class="list-group" style="width: 200px;">
             <li class="list-group-item"> <p><img  id="image1"  style="width: 20px" alt="" align="absmiddle" /> Question 1</p></li>
             <li class="list-group-item"> <p><img  id="image2"  style="width: 20px" alt="" align="absmiddle" /> Question 2</p></li>
             <li class="list-group-item"> <p><img  id="image3"  style="width: 20px" alt="" align="absmiddle" /> Question 3</p></li>
-        </ul>
+        </ul> -->
         <h3 id="nbrTotalRep" style="text-align: center; margin-top: 20%; margin-left:13% ;"></h3>
         <div class="btnSuivante">
             <button  id="retourMenu" type="button" class="btn btn-success" onclick= "returnMenu()" style="width: 500px;"  data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">Retour au menu</button>
         </div>
     </body>
+    <script>
+
+        var arr = [];
+        var cont = document.getElementById("ul_container");
+        var numberOfQuestions = parseInt(sessionStorage.getItem('numberOfQuestions'));
+
+        for(let i = 1; i < numberOfQuestions+1; i++){
+            arr.push("Question " + i);
+        }
+        console.log(arr);
+
+        var ul = document.createElement('ul');
+        ul.setAttribute('class', 'list-group');
+        ul.setAttribute('style', 'width: 200px;');
+
+        for(i = 0; i <= arr.length - 1; i++){
+            var li = document.createElement('li');
+            li.setAttribute('class', 'list-group-item');
+            var img = document.createElement('img');
+            img.setAttribute('id', 'image'+(i+1));
+            img.setAttribute('style', 'width: 20px');
+            img.setAttribute('alt', ' ');
+            img.setAttribute('align', 'absmiddle');
+            var p = document.createElement('p');
+            p.innerHTML = arr[i];
+            p.appendChild(img);
+            li.appendChild(p);
+            ul.appendChild(li);
+        }
+
+        cont.appendChild(ul);
+
+    </script>
 </html>

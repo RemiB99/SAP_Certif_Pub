@@ -2,7 +2,7 @@
 var numberOfQuestions = parseInt(sessionStorage.getItem('numberOfQuestions'));
 var currentQuestion = parseInt(sessionStorage.getItem('currentQuestion'));
 var questions = JSON.parse(sessionStorage.getItem('questions'));
-console.log(questions[0]);
+console.log(questions[currentQuestion-1]);
 //var numberOfAnswer = JSON.parse(sessionStorage.getItem())
 function fillHTML() {
 
@@ -33,7 +33,8 @@ function fillHTML() {
     for (let i = 1; i <= 11; i++) {
         var answerDiv = document.getElementById('answer'+i);
         var currentAnswer = questions[currentQuestion-1]['Answer'+i];
-        console.log(currentAnswer);
+
+        console.log("Current Answer : " + currentAnswer);
         if (currentAnswer != "NULL"){
             answerDiv.className = "answerInactive";
             answerDiv.textContent = questions[currentQuestion-1]['Answer'+i];
