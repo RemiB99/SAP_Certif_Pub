@@ -28,7 +28,44 @@ function getQuestions(numberOfQuestions){
         var shuffled = data.value.sort(() => 0.5 - Math.random());
         for (var i = 0; i < numberOfQuestions; i++) {
             var question = shuffled[i];
+            console.log(question);
+            //setTimeout(() => {  console.log("SLEEP"); }, 15000);
+
+            if(question.Answer1 == "NULL"){
+                question.Valid1 = false;
+            }
+            if(question.Answer2 == "NULL"){
+                question.Valid2 = false;
+            }
+            if(question.Answer3 == "NULL"){
+                question.Valid3 = false;
+            }
+            if(question.Answer4 == "NULL"){
+                question.Valid4 = false;
+            }
+            if(question.Answer5 == "NULL"){
+                question.Valid5 = false;
+            }
+            if(question.Answer6 == "NULL"){
+                question.Valid6 = false;
+            }
+            if(question.Answer7 == "NULL"){
+                question.Valid7 = false;
+            }
+            if(question.Answer8 == "NULL"){
+                question.Valid8 = false;
+            }
+            if(question.Answer9 == "NULL"){
+                question.Valid9 = false;
+            }
+            if(question.Answer10 == "NULL"){
+                question.Valid10 = false;
+            }
+            if(question.Answer11 == "NULL"){
+                question.Valid11 = false;
+            }
             questions.push(question);
+            console.log(questions);
         }
         sessionStorage.setItem("questions", JSON.stringify(questions));
         setTimeout(() => { console.log("waiting for questions loading"); }, 3000);
@@ -39,6 +76,7 @@ function startQuestionnaire(){
     var strNumberOfQuestions = handleClick();
     getQuestions(parseInt(strNumberOfQuestions));
     sessionStorage.setItem("currentQuestion", "1");
+    setTimeout(() => {  console.log("SLEEP"); }, 15000);
     alert("Vous allez lancer un questionnaire de " + strNumberOfQuestions + " questions.");
     window.location.href= 'questionnaire.html';
 }
