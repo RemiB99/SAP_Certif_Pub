@@ -14,7 +14,7 @@ function handleClick() {
         temps = 180; 
     }
     else{
-        temps = 5;
+        temps = 1;
     }
     sessionStorage.setItem("tempsTimer", temps);
     sessionStorage.setItem("secondTimer", 1);
@@ -75,6 +75,9 @@ function getQuestions(numberOfQuestions){
 function startQuestionnaire(){
     var strNumberOfQuestions = handleClick();
     getQuestions(parseInt(strNumberOfQuestions));
+    for(let i = 0; i < 81; i++){
+        sessionStorage.removeItem("selectedAnswers"+(i+1));
+    }
     sessionStorage.setItem("currentQuestion", "1");
     //setTimeout(() => {  console.log("SLEEP"); }, 15000);
     alert("Vous allez lancer un questionnaire de " + strNumberOfQuestions + " questions.");

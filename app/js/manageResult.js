@@ -25,39 +25,41 @@ function checkQuestions() {
         answerTab = [false, false, false, false, false, false, false, false, false, false, false];
         reponses = JSON.parse(sessionStorage.getItem('selectedAnswers'+(i+1)));
         console.log(reponses);
-      
-        if (Object.values(reponses).includes("answer1")) {
-            reponseTab[0] = true;
-        }
-        if (Object.values(reponses).includes("answer2")) {
-            reponseTab[1] = true;
-        }
-        if (Object.values(reponses).includes("answer3")) {
-            reponseTab[2] = true;
-        }
-        if (Object.values(reponses).includes("answer4")) {
-            reponseTab[3] = true;
-        }
-        if (Object.values(reponses).includes("answer5")) {
-            reponseTab[4] = true;
-        }
-        if (Object.values(reponses).includes("answer6")) {
-            reponseTab[5] = true;
-        }
-        if (Object.values(reponses).includes("answer7")) {
-            reponseTab[6] = true;
-        }
-        if (Object.values(reponses).includes("answer8")) {
-            reponseTab[7] = true;
-        }
-        if (Object.values(reponses).includes("answer9")) {
-            reponseTab[8] = true;
-        }
-        if (Object.values(reponses).includes("answer10")) {
-            reponseTab[9] = true;
-        }
-        if (Object.values(reponses).includes("answer11")) {
-            reponseTab[10] = true;
+        if(reponses != null){
+
+            if (Object.values(reponses).includes("answer1")) {
+                reponseTab[0] = true;
+            }
+            if (Object.values(reponses).includes("answer2")) {
+                reponseTab[1] = true;
+            }
+            if (Object.values(reponses).includes("answer3")) {
+                reponseTab[2] = true;
+            }
+            if (Object.values(reponses).includes("answer4")) {
+                reponseTab[3] = true;
+            }
+            if (Object.values(reponses).includes("answer5")) {
+                reponseTab[4] = true;
+            }
+            if (Object.values(reponses).includes("answer6")) {
+                reponseTab[5] = true;
+            }
+            if (Object.values(reponses).includes("answer7")) {
+                reponseTab[6] = true;
+            }
+            if (Object.values(reponses).includes("answer8")) {
+                reponseTab[7] = true;
+            }
+            if (Object.values(reponses).includes("answer9")) {
+                reponseTab[8] = true;
+            }
+            if (Object.values(reponses).includes("answer10")) {
+                reponseTab[9] = true;
+            }
+            if (Object.values(reponses).includes("answer11")) {
+                reponseTab[10] = true;
+            }
         }
 
         answerTab[0] = questions[i].Valid1;
