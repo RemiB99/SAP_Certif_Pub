@@ -5,6 +5,7 @@ var numberOfQuestions = parseInt(sessionStorage.getItem('numberOfQuestions'));
 document.getElementById ("retourMenu").addEventListener ("click", returnMenu);
 
 var txtNbrTotalRep = document.querySelector('#nbrTotalRep');
+var txtPercentageTrue = document.querySelector('#percentageTrue');
 var nbRepTotal=0;
 
 var xImgTab = [];
@@ -237,7 +238,9 @@ function initvImg(){
 // nbRepTotal=nbRep1 + nbRep2 +nbRep3;
 console.log(nbRepTotal)
 txtNbrTotalRep.textContent= "Nombre de réponses correctes : " + nbRepTotal + "/" + numberOfQuestions;
-
+var percentage = nbRepTotal * 100 / numberOfQuestions ;
+percentage = Math.round(percentage * 10) / 10
+txtPercentageTrue.textContent = "Pourcentage de bonne réponses : " + percentage + "%";
 
 function returnMenu() {
     window.location.href= 'choix_categories.html';
