@@ -101,6 +101,9 @@ function initvImg(){
     }
 }
 
+function getCorrection(){
+    confirm("TEST CORRECTION !!!");
+}
 // var xImg1 = document.getElementById("image1");
 // var xImg2 = document.getElementById("image2");
 // var xImg3 = document.getElementById("image3");

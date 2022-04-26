@@ -19,8 +19,19 @@
                 <div id='right_top'>
                     <div id='correction'>
 
-                        <p> LA CORRECTION ICI</p>
+                        <!-- <p> LA CORRECTION ICI</p>-->
                     </div>
+                    <div id='Ans1'></div>
+                    <div id='Ans2'></div>
+                    <div id='Ans3'></div>
+                    <div id='Ans4'></div>
+                    <div id='Ans5'></div>
+                    <div id='Ans6'></div>
+                    <div id='Ans7'></div>
+                    <div id='Ans8'></div>
+                    <div id='Ans9'></div>
+                    <div id='Ans10'></div>
+                    <div id='Ans11'></div>
                 </div>
                 <div id='right_bottom'>
                     <div id='right_bottom_elements'>
@@ -56,6 +67,8 @@
         for(i = 0; i <= arr.length - 1; i++){
             var li = document.createElement('li');
             li.setAttribute('class', 'list-group-item');
+            li.setAttribute('id', i);
+            li.setAttribute('onClick', 'getCorrection(this.id)');
             var img = document.createElement('img');
             img.setAttribute('id', 'image'+(i+1));
             img.setAttribute('style', 'width: 20px');
@@ -70,5 +83,131 @@
 
         cont.appendChild(ul);
 
+        var questions = JSON.parse(sessionStorage.getItem('questions'));
+
+        function getCorrection(id){
+            correction.textContent=questions[id].description;
+
+            if(questions[id].Answer1 != 'NULL'){
+                Ans1.textContent=questions[id].Answer1;
+            }else{
+                Ans1.textContent="1";
+            }
+            if(questions[id].Valid1 === true){
+                Ans1.style.color = "green";
+            }else{
+                Ans1.style.color = "red";            
+            }
+
+            if(questions[id].Answer2 != "NULL"){
+                Ans2.textContent=questions[id].Answer2;
+            }else{
+                Ans2.textContent="";
+            }
+            if(questions[id].Valid2 === true){
+                Ans2.style.color = "green";
+            }else{
+                Ans2.style.color = "red";            
+            }
+
+            if(questions[id].Answer3 != "NULL"){
+                Ans3.textContent=questions[id].Answer3;
+            }else{
+                Ans3.textContent="";
+            }
+            if(questions[id].Valid3 === true){
+                Ans3.style.color = "green";
+            }else{
+                Ans3.style.color = "red";            
+            }
+
+            if(questions[id].Answer4 != "NULL"){
+                Ans4.textContent=questions[id].Answer4;
+            }else{
+                Ans4.textContent="";
+            }
+            if(questions[id].Valid4 === true){
+                Ans4.style.color = "green";
+            }else{
+                Ans4.style.color = "red";            
+            }
+
+            if(questions[id].Answer5 != "NULL"){
+                Ans5.textContent=questions[id].Answer5;
+            }else{
+                Ans5.textContent="";
+            }
+            if(questions[id].Valid5 === true){
+                Ans5.style.color = "green";
+            }else{
+                Ans5.style.color = "red";            
+            }
+
+            if(questions[id].Answer6 != "NULL"){
+                Ans6.textContent=questions[id].Answer6;
+            }else{
+                Ans6.textContent="";
+            }
+            if(questions[id].Valid6 === true){
+                Ans6.style.color = "green";
+            }else{
+                Ans6.style.color = "red";            
+            }
+
+            if(questions[id].Answer7 != "NULL"){
+                Ans7.textContent=questions[id].Answer7;
+            }else{
+                Ans7.textContent="";
+            }
+            if(questions[id].Valid7 === true){
+                Ans7.style.color = "green";
+            }else{
+                Ans7.style.color = "red";            
+            }
+
+            if(questions[id].Answer8 != "NULL"){
+                Ans8.textContent=questions[id].Answer8;
+            }else{
+                Ans8.textContent="";
+            }
+            if(questions[id].Valid8 === true){
+                Ans8.style.color = "green";
+            }else{
+                Ans8.style.color = "red";            
+            }
+
+            if(questions[id].Answer9 != "NULL"){
+                Ans9.textContent=questions[id].Answer9;
+            }else{
+                Ans9.textContent="";
+            }
+            if(questions[id].Valid9 === true){
+                Ans9.style.color = "green";
+            }else{
+                Ans9.style.color = "red";            
+            }
+
+            if(questions[id].Answer10 != "NULL"){
+                Ans10.textContent=questions[id].Answer10;
+            }else{
+                Ans10.textContent="";
+            }
+            if(questions[id].Valid10 === true){
+                Ans10.style.color = "green";
+            }else{
+                Ans10.style.color = "red";            
+            }
+
+            if(questions[id].Answer11 != "NULL"){
+                Ans11.textContent=questions[id].Answer11;
+            }else{
+                Ans11.textContent="";
+            }
+            if(questions[id].Valid11 === true){
+                Ans11.style.color = "green";
+            }else{
+                Ans11.style.color = "red";            
+            }
+        }
     </script>
 </html>
