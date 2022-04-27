@@ -40,6 +40,11 @@ function fillHTML() {
             answerDiv.textContent = questions[currentQuestion-1]['Answer'+i];
         }
     }
+
+    var nextQuestion = document.getElementById('nextQuestion');
+    if (currentQuestion === numberOfQuestions) {
+        nextQuestion.textContent = 'Terminer le test';
+    }
 }
 
 function handleClick(divID) {
