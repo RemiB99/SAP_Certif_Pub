@@ -14,15 +14,13 @@ loginButton.addEventListener("click", (e) => {
     .then((data) =>{
         console.log(data);
     for(let user in data.value){
-        console.log(user);
         if (mail === data.value[user].mail && password === data.value[user].password) {
-            //console.log("Connexion réussie, bienvenue " + data.value[user].username);
-            //alert("You have successfully logged in.");
+
             alert("Vous allez être redirigé vers l'accueil de l'application...");
-            //setTimeout(() => {  window.location.href = "./html/choix_categories.html"; }, 2000);
+
             window.location.href = "./html/choix_categories.html";
         } else {
-            //loginErrorMsg.style.opacity = 1;
+
             console.log("Connexion échoué");
         }
     }
@@ -30,5 +28,4 @@ loginButton.addEventListener("click", (e) => {
     let q = document.getElementById('hidden_message_mdp');
     p.removeAttribute("hidden");
     q.removeAttribute("hidden");
-    //alert("Wrong password or email");
 })})

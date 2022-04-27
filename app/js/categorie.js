@@ -28,8 +28,7 @@ function getQuestions(numberOfQuestions){
         var shuffled = data.value.sort(() => 0.5 - Math.random());
         for (var i = 0; i < numberOfQuestions; i++) {
             var question = shuffled[i];
-            //console.log(question);
-            //setTimeout(() => {  console.log("SLEEP"); }, 15000);
+
 
             if(question.Answer1 == "NULL"){
                 question.Valid1 = false;
@@ -65,7 +64,6 @@ function getQuestions(numberOfQuestions){
                 question.Valid11 = false;
             }
             questions.push(question);
-            console.log(questions);
         }
         sessionStorage.setItem("questions", JSON.stringify(questions));
         setTimeout(() => { console.log("waiting for questions loading"); }, 3000);
@@ -79,7 +77,6 @@ function startQuestionnaire(){
         sessionStorage.removeItem("selectedAnswers"+(i+1));
     }
     sessionStorage.setItem("currentQuestion", "1");
-    //setTimeout(() => {  console.log("SLEEP"); }, 15000);
     alert("Vous allez lancer un questionnaire de " + strNumberOfQuestions + " questions.");
     window.location.href= 'questionnaire.html';
 }
