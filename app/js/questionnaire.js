@@ -67,7 +67,10 @@ function submitAnswers() {
     }
     else {
         // Affichage des résultats
-        window.location.href= 'resultatsQuestionnaire.html';
+        if (confirm("Voulez-vous vraiment terminer le test avant la fin du temps imparti ?")){
+
+            window.location.href= 'resultatsQuestionnaire.html';
+        }
     }
     
 }
