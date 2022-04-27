@@ -53,20 +53,24 @@
     
 }
 
-#right_top{
+#right_top_elements{
     height: 50%;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     position : relative;
-}
+    border: 2px solid black;
 
+}
+#right_top{
+    vertical-align:center;
+    height: 50%;
+    text-align: center;
+}
 #right_bottom{
     vertical-align:center;
     height: 50%;
     text-align: center;
-
-
 }
 
 #reponsesCorrectes{
@@ -87,9 +91,6 @@
     transform: translate(-50%, -50%);
 }
 
-/*#correction{
-    position: relative;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}*/
+/* #correction{
+    border: 2px solid black;
+} */
