@@ -14,7 +14,8 @@ function handleClick() {
         temps = 180; 
     }
     else{
-        temps = 1;
+        temps = 10;
+    //    temps = 1;
     }
     sessionStorage.setItem("tempsTimer", temps);
     sessionStorage.setItem("secondTimer", 1);
@@ -24,6 +25,7 @@ function getQuestions(numberOfQuestions){
     fetch(URLQuestions)
     .then(response => response.json())
     .then((data) =>{
+        console.log(data.value);
         var questions = [];
         var shuffled = data.value.sort(() => 0.5 - Math.random());
         for (var i = 0; i < numberOfQuestions; i++) {

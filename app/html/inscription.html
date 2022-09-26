@@ -3,6 +3,10 @@
         <title>Inscription</title>
         <link rel="stylesheet" type="text/css" href="../css/inscription.css">
         <script defer src="../js/inscription.js" type="module"></script>
+        <!-- <script src="scripts/require.js"></script> -->
+        <!-- <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script> -->
+        <!-- <script type="module" src="../js/inscription.js"></script> -->
+        <!-- <script src="../js/inscription.js"></script> -->
     </head>
     <body>
         <div class="loginbox">
@@ -17,7 +21,12 @@
                     <input type="password" name="password" placeholder="Entrez votre mot de passe">
                     <p>Validez votre mot de passe</p>
                     <input type="password" name="password2" placeholder="Entrez votre mot de passe">
-                    <input type="submit" name="click" value="Validez" id="login-form-submit"><br>
+                    <!-- <input type="submit" name="click" value="Validez" id="login-form-submit"><br> -->
+                    <input onclick="redirect()" type="submit" name="click" value="Validez" id="login-form-submit"><br>
+                    <!--<div onclick="redirect()" type="submit" name="click" id="login-form-submit">
+                        Valider
+                    </div>-->
+                    <!--<button onclick="redirect()" name="click" type="submit" id="login-form-submit">Valider</button>-->
                 </form>
         </div>
     </body>
