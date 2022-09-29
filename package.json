@@ -7,10 +7,8 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^5",
-    "express": "^4"
-  },
-  "devDependencies": {
-    "sqlite3": "^5.0.4"
+    "express": "^4",
+    "sqlite3": "^5.1.1"
   },
   "scripts": {
     "start": "cds run"
@@ -45,9 +43,12 @@
       "db": {
         "kind": "sqlite",
         "credentials": {
-          "database": "db/SAP_Certif.db"
+          "database": ":memory:"
         }
       }
+    },
+    "features": {
+      "in_memory_db": true
     }
   }
 }
