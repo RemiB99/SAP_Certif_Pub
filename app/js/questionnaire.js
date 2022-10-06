@@ -2,10 +2,11 @@
 var numberOfQuestions = parseInt(sessionStorage.getItem('numberOfQuestions'));
 var currentQuestion = parseInt(sessionStorage.getItem('currentQuestion'));
 var questions = JSON.parse(sessionStorage.getItem('questions'));
-console.log(questions[currentQuestion-1]);
+
+//console.log(questions[currentQuestion]);
 
 function fillHTML() {
-
+    console.log(questions);
     //SideNav Infos
     var sidenav= document.getElementById('mySidenav');
     var arr = [];
@@ -70,6 +71,46 @@ function fillHTML() {
 
     var selectedAnswers = sessionStorage.getItem('selectedAnswers'+currentQuestion);
     //answerPart
+    // //ADDED ON 30/09/2022
+    // var contents=new Array()
+    // contents[0]= "TEST 1"
+    // contents[1]= "TEST 2"
+    // contents[2]= "TEST 3"
+    // contents[3]= "TEST 4"
+    // contents[4]= "TEST 5"
+    // contents[5]= "TEST 6"
+    // contents[6]= "TEST 7"
+    // contents[7]= "TEST 8"
+    // contents[8]= "TEST 9"
+    // contents[9]= "TEST 10"
+    // contents[10]= "TEST 11"
+
+    // var i=0
+    // //variable used to contain controlled random number 
+    // var random
+    // var random2
+    // var temp
+    // var spacing="<br>"
+    // //while all of array elements haven't been cycled thru
+    // while (i<contents.length){
+    //     //generate random num between 0 and arraylength-1
+    //     random=Math.floor(Math.random()*contents.length)
+    //     random2=Math.floor(Math.random()*contents.length)
+    //     //if element hasn't been marked as "selected"
+    //     temp = contents[random]
+    //     contents[random] = contents[random2]
+    //     contents[random2] = temp
+    //     i++
+    //     // if (contents[random]!="selected"){
+    //     //     //document.write(contents[random]+spacing)
+    //     //     //mark element as selected
+    //     //     contents[random]=random
+    //     //     i++
+    //     // }
+    // }
+    // console.log(contents);
+    // //END ADDED ON 30/09/2022
+
     for (let i = 1; i <= 11; i++) {
         var answerDiv = document.getElementById('answer'+i);
         var currentAnswer = questions[currentQuestion-1]['Answer'+i];
@@ -86,6 +127,13 @@ function fillHTML() {
         }
     }
 
+    // var cards = $(".random");
+    // //var cards = document.getElementsByClassName("random");
+    // for(var i = 0; i < cards.length; i++){
+    //     var target = Math.floor(Math.random() * cards.length -1) + 1;
+    //     var target2 = Math.floor(Math.random() * cards.length -1) +1;
+    //     cards.eq(target).before(cards.eq(target2));
+//}
     var nextQuestion = document.getElementById('nextQuestion');
     if (currentQuestion === numberOfQuestions) {
         nextQuestion.textContent = 'Terminer le test';
@@ -123,7 +171,6 @@ function submitAnswers() {
             window.location.href= 'resultatsQuestionnaire.html';
         }
     }
-    
 }
 
 function switchQuestion(id){

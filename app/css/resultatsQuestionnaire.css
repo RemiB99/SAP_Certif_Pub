@@ -62,6 +62,15 @@
     border: 2px solid black;
 
 }
+#right_mid_elements{
+    height: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position : relative;
+    border: 2px solid black;
+
+}
 #right_top{
     vertical-align:center;
     height: 50%;

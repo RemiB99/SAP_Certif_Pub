@@ -29,6 +29,24 @@
                         <div id='Ans10'></div>
                         <div id='Ans11'></div>
                     </div>
+
+                    <div id='right_mid_elements'>
+                        <div id='selected'>
+
+                            <p><i></i></p>
+                        </div>
+                        <div id='Sel1'></div>
+                        <div id='Sel2'></div>
+                        <div id='Sel3'></div>
+                        <div id='Sel4'></div>
+                        <div id='Sel5'></div>
+                        <div id='Sel6'></div>
+                        <div id='Sel7'></div>
+                        <div id='Sel8'></div>
+                        <div id='Sel9'></div>
+                        <div id='Sel10'></div>
+                        <div id='Sel11'></div>
+                    </div>
                 </div>
                 <div id='right_bottom'>
                     <div id='right_bottom_elements'>
@@ -43,7 +61,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </body>
     <script>
@@ -82,7 +99,12 @@
         var questions = JSON.parse(sessionStorage.getItem('questions'));
 
         function getCorrection(id){
+            var varID = parseInt(id)+1;
+            var reponses = sessionStorage.getItem("selectedAnswers"+varID.toString());
+            //console.log('selectedAnswers' + varID + " : " + reponses);
             correction.textContent=questions[id].description;
+            //selected.textContent=questions[id].description;
+            selected.textContent="You selected : ";
 
             if(questions[id].Answer1 != 'NULL'){
                 Ans1.textContent=questions[id].Answer1;
@@ -94,6 +116,9 @@
             }else{
                 Ans1.style.color = "red";            
             }
+            // if(reponses.includes("answer1")){
+            //     Ans1.textContent = "YOU CHOSE --> " + Ans1.textContent;
+            // }
 
             if(questions[id].Answer2 != "NULL"){
                 Ans2.textContent=questions[id].Answer2;
@@ -105,6 +130,9 @@
             }else{
                 Ans2.style.color = "red";            
             }
+            // if(reponses.includes("answer2")){
+            //     Ans2.textContent = "YOU CHOSE --> " + Ans2.textContent;
+            // }
 
             if(questions[id].Answer3 != "NULL"){
                 Ans3.textContent=questions[id].Answer3;
@@ -116,6 +144,9 @@
             }else{
                 Ans3.style.color = "red";            
             }
+            // if(reponses.includes("answer3")){
+            //     Ans3.textContent = "YOU CHOSE --> " + Ans3.textContent;
+            // }
 
             if(questions[id].Answer4 != "NULL"){
                 Ans4.textContent=questions[id].Answer4;
@@ -127,6 +158,9 @@
             }else{
                 Ans4.style.color = "red";            
             }
+            // if(reponses.includes("answer4")){
+            //     Ans4.textContent = "YOU CHOSE --> " + Ans4.textContent;
+            // }
 
             if(questions[id].Answer5 != "NULL"){
                 Ans5.textContent=questions[id].Answer5;
@@ -138,6 +172,9 @@
             }else{
                 Ans5.style.color = "red";            
             }
+            // if(reponses.includes("answer5")){
+            //     Ans5.textContent = "YOU CHOSE --> " + Ans5.textContent;
+            // }
 
             if(questions[id].Answer6 != "NULL"){
                 Ans6.textContent=questions[id].Answer6;
@@ -149,6 +186,9 @@
             }else{
                 Ans6.style.color = "red";            
             }
+            // if(reponses.includes("answer6")){
+            //     Ans6.textContent = "YOU CHOSE --> " + Ans6.textContent;
+            // }
 
             if(questions[id].Answer7 != "NULL"){
                 Ans7.textContent=questions[id].Answer7;
@@ -160,6 +200,9 @@
             }else{
                 Ans7.style.color = "red";            
             }
+            // if(reponses.includes("answer7")){
+            //     Ans7.textContent = "YOU CHOSE --> " + Ans7.textContent;
+            // }
 
             if(questions[id].Answer8 != "NULL"){
                 Ans8.textContent=questions[id].Answer8;
@@ -171,6 +214,9 @@
             }else{
                 Ans8.style.color = "red";            
             }
+            // if(reponses.includes("answer8")){
+            //     Ans8.textContent = "YOU CHOSE --> " + Ans8.textContent;
+            // }
 
             if(questions[id].Answer9 != "NULL"){
                 Ans9.textContent=questions[id].Answer9;
@@ -182,6 +228,9 @@
             }else{
                 Ans9.style.color = "red";            
             }
+            // if(reponses.includes("answer9")){
+            //     Ans9.textContent = "YOU CHOSE --> " + Ans9.textContent;
+            // }
 
             if(questions[id].Answer10 != "NULL"){
                 Ans10.textContent=questions[id].Answer10;
@@ -193,6 +242,9 @@
             }else{
                 Ans10.style.color = "red";            
             }
+            // if(reponses.includes("answer10")){
+            //     Ans10.textContent = "YOU CHOSE --> " + Ans10.textContent;
+            // }
 
             if(questions[id].Answer11 != "NULL"){
                 Ans11.textContent=questions[id].Answer11;
@@ -204,6 +256,132 @@
             }else{
                 Ans11.style.color = "red";            
             }
+            // if(reponses.includes("answer11")){
+            //     Ans11.textContent = "YOU CHOSE --> " + Ans11.textContent;
+            // }
+
+            // Réponses données par l'utilisateur
+            if(reponses.includes("answer1")){
+                Sel1.textContent = Ans1.textContent;
+            }else{
+                Sel1.textContent = "";
+            }
+            if(questions[id].Valid1 === true){
+                Sel1.style.color = "green";
+            }else{
+                Sel1.style.color = "red";            
+            }
+            
+            if(reponses.includes("answer2")){
+                Sel2.textContent = Ans2.textContent;
+            }else{
+                Sel2.textContent = "";
+            }
+            if(questions[id].Valid2 === true){
+                Sel2.style.color = "green";
+            }else{
+                Sel2.style.color = "red";            
+            }
+            
+            if(reponses.includes("answer3")){
+                Sel3.textContent = Ans3.textContent;
+            }else{
+                Sel3.textContent = "";
+            }
+            if(questions[id].Valid3 === true){
+                Sel3.style.color = "green";
+            }else{
+                Sel3.style.color = "red";            
+            }
+            
+            if(reponses.includes("answer4")){
+                Sel4.textContent = Ans4.textContent;
+            }else{
+                Sel4.textContent = "";
+            }
+            if(questions[id].Valid4 === true){
+                Sel4.style.color = "green";
+            }else{
+                Sel4.style.color = "red";            
+            }
+            
+            if(reponses.includes("answer5")){
+                Sel5.textContent = Ans5.textContent;
+            }else{
+                Sel5.textContent = "";
+            }
+            if(questions[id].Valid5 === true){
+                Sel5.style.color = "green";
+            }else{
+                Sel5.style.color = "red";            
+            }
+            
+            if(reponses.includes("answer6")){
+                Sel6.textContent = Ans6.textContent;
+            }else{
+                Sel6.textContent = "";
+            }
+            if(questions[id].Valid6 === true){
+                Sel6.style.color = "green";
+            }else{
+                Sel6.style.color = "red";            
+            }
+            
+            if(reponses.includes("answer7")){
+                Sel7.textContent = Ans7.textContent;
+            }else{
+                Sel7.textContent = "";
+            }
+            if(questions[id].Valid7 === true){
+                Sel7.style.color = "green";
+            }else{
+                Sel7.style.color = "red";            
+            }
+            
+            if(reponses.includes("answer8")){
+                Sel8.textContent = Ans8.textContent;
+            }else{
+                Sel8.textContent = "";
+            }
+            if(questions[id].Valid8 === true){
+                Sel8.style.color = "green";
+            }else{
+                Sel8.style.color = "red";            
+            }
+            
+            if(reponses.includes("answer9")){
+                Sel9.textContent = Ans9.textContent;
+            }else{
+                Sel9.textContent = "";
+            }
+            if(questions[id].Valid9 === true){
+                Sel9.style.color = "green";
+            }else{
+                Sel9.style.color = "red";            
+            }
+            
+            if(reponses.includes("answer10")){
+                Sel10.textContent = Ans10.textContent;
+            }else{
+                Sel10.textContent = "";
+            }
+            if(questions[id].Valid10 === true){
+                Sel10.style.color = "green";
+            }else{
+                Sel10.style.color = "red";            
+            }
+            
+            if(reponses.includes("answer11")){
+                Sel11.textContent = Ans11.textContent;
+            }else{
+                Sel11.textContent = "";
+            }
+            if(questions[id].Valid11 === true){
+                Sel11.style.color = "green";
+            }else{
+                Sel11.style.color = "red";            
+            }
+
         }
     </script>
 </html>
