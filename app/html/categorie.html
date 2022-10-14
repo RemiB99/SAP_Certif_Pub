@@ -10,13 +10,13 @@
 
     </head>
 
-    <body>
+    <body onload="fillHTML()">
         <div class="page">
 
             <div class="all-container">
 
                 <div id="text">
-                    <h1>Test : SAP</h1>
+                    <h1 id='title_quizz'></h1>
                     <p>Choisissez le nombre de questions que vous souhaitez avoir durant la durée du test</p>
                 </div>
     
@@ -44,7 +44,7 @@
 
                 <div>
                     <button onclick="startQuestionnaire()" name="button-validation" class="validate_button" type="submit">Démarrer</button>
-                    <button onclick="getQuestions(10)" name="button-validation" class="validate_button" type="submit">TEST</button>
+                    <!-- <button onclick="testRedirect()" name="button-validation" class="validate_button" type="submit">TEST</button> -->
                 </div>
 
             </div>

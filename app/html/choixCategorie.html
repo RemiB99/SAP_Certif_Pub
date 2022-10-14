@@ -1,0 +1,19 @@
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="../css/categorie.css">
+        <script src="../js/choixCategorie.js"></script>
+        <title>La liste des domaines</title>
+    </head>
+
+    <body onload="fillHTML()">
+        <p>Choisissez le quizz que vous voulez dans la liste ci-dessous : </p>
+        <select class="select_category" id="categorySelection">
+        </select>
+        <button onclick="chooseCategory()" name="button-validation-category" class="category_validate_button" type="submit">Valider</button>
+    </body>
+
+</html>

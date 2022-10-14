@@ -1,5 +1,6 @@
 // A changer - identifiant différent pour chaque devSpace
 var URLUsers = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applicationstudio.cloud.sap/sap/Users';
+var URLQuestions = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applicationstudio.cloud.sap/sap/Questions';
 
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
@@ -15,17 +16,45 @@ loginButton.addEventListener("click", (e) => {
         console.log(data);
     for(let user in data.value){
         if (mail === data.value[user].mail && password === data.value[user].password) {
+            let p = document.getElementById('hidden_message_email');
+            let q = document.getElementById('hidden_message_mdp');
+            p.hidden = true;
+            q.hidden = true;
+            fetch(URLQuestions)
+            .then(response => response.json())
+            .then((data) =>{
+        //        console.log(data.value);
+                var types = [];
+                var allData;
+                allData = data.value;
+                console.log(allData);
+                
+        //    window.location.href= 'categorie2.html';
+                for (var i = 0; i < allData.length; i++) {
+                    var current;
+                    current = allData[i];
+                    if (types.indexOf(current.type) >= 0){
+                    }else{
+                        types.push(current.type);
+                    }
+                }
+                sessionStorage.setItem("categories", JSON.stringify(types));
+                //location.reload();
+           })
 
-            alert("Vous allez être redirigé vers l'accueil de l'application...");
-
-            window.location.href = "./html/choix_categories.html";
+            alert("Vous allez être redirigé vers l'accueil de l'application... Attendez une dixaine de secondes après avoir cliqué sur 'OK', chargement en cours...");
+            window.location.href = "./html/choixCategorie.html";
         } else {
 
             console.log("Connexion échoué");
+            let p = document.getElementById('hidden_message_email');
+            let q = document.getElementById('hidden_message_mdp');
+            p.removeAttribute("hidden");
+            q.removeAttribute("hidden");
         }
     }
-    let p = document.getElementById('hidden_message_email');
-    let q = document.getElementById('hidden_message_mdp');
-    p.removeAttribute("hidden");
-    q.removeAttribute("hidden");
+    // let p = document.getElementById('hidden_message_email');
+    // let q = document.getElementById('hidden_message_mdp');
+    // p.removeAttribute("hidden");
+    // q.removeAttribute("hidden");
 })})

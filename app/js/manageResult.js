@@ -107,5 +107,5 @@ percentage = Math.round(percentage * 10) / 10
 txtPercentageTrue.textContent = "Pourcentage de bonne réponses : " + percentage + "%";
 
 function returnMenu() {
-    window.location.href= 'choix_categories.html';
+    window.location.href= 'choixCategorie.html';
 }
