@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/admin.css">
+        <script src="../js/admin.js"></script>
+        <title>Page Admin</title>
+    </head>
+
+    <body>
+        <p>Bienvenue sur la page admin</p>
+        <div id="buttons_choice">
+            <button onclick="addQuestionDiv()"     name="button-add-question"      class="action_button">Ajouter Question</button>
+            <button onclick="modifyQuestionDiv()"  name="button-modif-question"    class="action_button">Modifier Question</button>
+            <button onclick="delQuestionDiv()"     name="button-delete-question"   class="action_button">Supprimer Question</button>
+            <button onclick="addQuestionTypDiv()"  name="button-add-questionTyp"   class="action_button">Ajouter Type de Question</button>
+            <button onclick="delQuestionTypDiv()"  name="button-del-questionTyp"   class="action_button">Supprimer Type de Question</button>
+            <button onclick="addCSVDiv()"          name="button-add-csv"           class="action_button">Ajouter CSV</button>
+        </div>
+        <div id="elements">
+            <div id="ajoutQuestion" style="display: none">
+                <p>AJOUT DE QUESTION</p>
+                <button onclick="addQuestionButton()" name="button-add" class="button-add" type="submit">Ajouter</button>
+            </div>
+
+            <div id="modifQuestion" style="display: none">
+                <p>MODIFICATION DE QUESTION</p>
+                <button onclick="modifyQuestionButton()" name="button-modify" class="button-modify" type="submit">Modifier</button>
+            </div>
+
+            <div id="supprQuestion" style="display: none">
+                <p>SUPRESSION DE QUESTION</p>
+                <button onclick="delQuestionButton()" name="button-suppr" class="button-suppr" type="submit">Supprimer</button>
+            </div>
+
+            <div id="ajoutTypeQuestionnaire" style="display: none">
+                <p>AJOUT DE TYPE DE QUESTIONNAIRE</p>
+                <textarea id="typeName" name="typeName" rows="1" cols="40">Entrez le nom du nouveau type...</textarea>
+                <button onclick="addQuestionTypButton()" name="button-add-typ" class="button-add-typ" type="submit">Ajouter</button>
+            </div>
+
+            <div id="supperssionTypeQuestionnaire" style="display: none">
+                <p>SUPRESSION DE TYPE DE QUESTIONNAIRE</p>
+                <select class="selectDel" id="selectDelSelection">
+                </select>
+                <button onclick="delQuestionTypButton()" name="button-suppr-typ" class="button-suppr-typ" type="submit">Supprimer</button>
+            </div>
+
+            <div id="ajoutFichiercsv" style="display: none">
+                <p>AJOUT DE FICHIER CSV</p>
+                <!-- <label for="avatar">File...</label> -->
+                <input type="file" id="csv" name="csv">
+                <button onclick="addCSVButton()" name="button-send-csv" class="button-send-csv" type="submit">Envoyer</button>
+            </div>
+
+        </div>
+    </body>
+</html>

@@ -22,6 +22,14 @@ function fillHTML(){
 //         sessionStorage.setItem("categories", JSON.stringify(types));
 //         //location.reload();
 //    })
+    var admin = document.getElementById('admins');
+    var isAdmin = JSON.parse(sessionStorage.getItem('Admin'));
+    console.log("IS ADMIN : " + isAdmin);
+    if(isAdmin == true){
+        admin.style.display = "block";
+    }
+
+    console.log('Admin : ' + JSON.parse(sessionStorage.getItem('Admin')));
     const categories = JSON.parse(sessionStorage.getItem('categories'));
 //    var stringify = JSON.stringify(categories);
     var select = document.getElementById('categorySelection');
@@ -41,4 +49,8 @@ function chooseCategory(){
     console.log(value);
     sessionStorage.setItem('selectedCategory', value);
     window.location.href= 'categorie.html';
+}
+
+function accessAdminFunc(){
+    window.location.href = 'admin.html';
 }

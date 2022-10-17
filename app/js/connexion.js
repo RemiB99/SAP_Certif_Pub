@@ -1,6 +1,7 @@
 // A changer - identifiant différent pour chaque devSpace
 var URLUsers = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applicationstudio.cloud.sap/sap/Users';
 var URLQuestions = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applicationstudio.cloud.sap/sap/Questions';
+var URLQuestionTypes = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applicationstudio.cloud.sap/sap/QuestionTypes';
 
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
@@ -11,16 +12,20 @@ loginButton.addEventListener("click", (e) => {
     const mail = loginForm.mail.value;
     const password = loginForm.password.value;
     fetch(URLUsers)
+//    fetch(URLQuestionTypes)
     .then(response => response.json())
     .then((data) =>{
         console.log(data);
     for(let user in data.value){
         if (mail === data.value[user].mail && password === data.value[user].password) {
+            sessionStorage.setItem('Admin', data.value[user].role);
+            console.log('ROLE : ' + data.value[user].role);
             let p = document.getElementById('hidden_message_email');
             let q = document.getElementById('hidden_message_mdp');
             p.hidden = true;
             q.hidden = true;
-            fetch(URLQuestions)
+//            fetch(URLQuestions)
+            fetch(URLQuestionTypes)
             .then(response => response.json())
             .then((data) =>{
         //        console.log(data.value);
@@ -33,9 +38,9 @@ loginButton.addEventListener("click", (e) => {
                 for (var i = 0; i < allData.length; i++) {
                     var current;
                     current = allData[i];
-                    if (types.indexOf(current.type) >= 0){
+                    if (types.indexOf(current.name) >= 0){
                     }else{
-                        types.push(current.type);
+                        types.push(current.name);
                     }
                 }
                 sessionStorage.setItem("categories", JSON.stringify(types));

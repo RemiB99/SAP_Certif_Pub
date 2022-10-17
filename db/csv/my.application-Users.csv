@@ -1,4 +1,4 @@
-ID;username;mail;password
-1;Mouha;Mouha.mouha@mouha.fr;mouha
-2;Yoan;Yoan.yoan@yoan.fr;yoan
-3;Aurelien;aurelien.debaene@soprasteria.com;Soprasteria1*
+ID;username;mail;password;role
+1;Mouha;Mouha.mouha@mouha.fr;mouha;0
+2;Yoan;Yoan.yoan@yoan.fr;yoan;1
+3;Aurelien;aurelien.debaene@soprasteria.com;Soprasteria1*;0

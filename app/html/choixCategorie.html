@@ -10,10 +10,18 @@
     </head>
 
     <body onload="fillHTML()">
-        <p>Choisissez le quizz que vous voulez dans la liste ci-dessous : </p>
-        <select class="select_category" id="categorySelection">
-        </select>
-        <button onclick="chooseCategory()" name="button-validation-category" class="category_validate_button" type="submit">Valider</button>
+        <div id='everyone'>
+            <p>Choisissez le quizz que vous voulez dans la liste ci-dessous : </p>
+            <select class="select_category" id="categorySelection">
+            </select>
+            <button onclick="chooseCategory()" name="button-validation-category" class="category_validate_button" type="submit">Valider</button>
+
+            <div id='admins' style="display: none">
+                <p>Vous êtes un admin, cliquez sur le bouton "ADMIN" si vous voulez avoir accès aux fonctions d'admin</p>
+                <button onclick="accessAdminFunc()" name="button-validation-category" class="category_validate_button" type="submit">ADMIN</button>
+            </div>
+
+        </div>
     </body>
 
 </html>

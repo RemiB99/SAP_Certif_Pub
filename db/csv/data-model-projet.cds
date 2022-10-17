@@ -5,6 +5,7 @@ entity Users {
   username  : String;
   mail : String;
   password  : String;
+  role : Boolean;
 }
 
 entity Questions {
@@ -34,4 +35,10 @@ entity Questions {
     Valid9 : Boolean;
     Valid10 : Boolean;
     Valid11 : Boolean;
+}
+
+entity QuestionTypes{
+    key ID : Integer;
+    name : String;
+    description : String;
 }
