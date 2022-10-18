@@ -19,7 +19,59 @@
         </div>
         <div id="elements">
             <div id="ajoutQuestion" style="display: none">
-                <p>AJOUT DE QUESTION</p>
+                <p><b>AJOUT DE QUESTION</b></p>
+                <form>
+                <div>
+                    <p>Type de question : </p>
+                    <select class="addType" id="addType">
+                    </select>
+                </div>
+                <div>
+                    <p>Description de la question : </p>
+                    <textarea id="addDesc" name="addDesc" rows="5" cols="40" placeholder="Entrez la question"></textarea>
+                </div>
+                <div>
+                    <p>Nombre de réponses : </p>
+                    <select class="addNOA" id="addNOA">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Réponses Possibles : </p>
+                    <textarea id="addQ1" name="addQ1" rows="1" cols="100" placeholder="Réponse 1"></textarea>
+                    <input type="checkbox" id="validQ1" name="validQ1">
+                    <textarea id="addQ2" name="addQ2" rows="1" cols="100" placeholder="Réponse 2"></textarea>
+                    <input type="checkbox" id="validQ2" name="validQ2">
+                    <textarea id="addQ3" name="addQ3" rows="1" cols="100" placeholder="Réponse 3"></textarea>
+                    <input type="checkbox" id="validQ3" name="validQ3">
+                    <textarea id="addQ4" name="addQ4" rows="1" cols="100" placeholder="Réponse 4"></textarea>
+                    <input type="checkbox" id="validQ4" name="validQ4">
+                    <textarea id="addQ5" name="addQ5" rows="1" cols="100" placeholder="Réponse 5"></textarea>
+                    <input type="checkbox" id="validQ5" name="validQ5">
+                    <textarea id="addQ6" name="addQ6" rows="1" cols="100" placeholder="Réponse 6"></textarea>
+                    <input type="checkbox" id="validQ6" name="validQ6">
+                    <textarea id="addQ7" name="addQ7" rows="1" cols="100" placeholder="Réponse 7"></textarea>
+                    <input type="checkbox" id="validQ7" name="validQ7">
+                    <textarea id="addQ8" name="addQ8" rows="1" cols="100" placeholder="Réponse 8"></textarea>
+                    <input type="checkbox" id="validQ8" name="validQ8">
+                    <textarea id="addQ9" name="addQ9" rows="1" cols="100" placeholder="Réponse 9"></textarea>
+                    <input type="checkbox" id="validQ9" name="validQ9">
+                    <textarea id="addQ10" name="addQ10" rows="1" cols="100" placeholder="Réponse 10"></textarea>
+                    <input type="checkbox" id="validQ10" name="validQ10">
+                    <textarea id="addQ11" name="addQ11" rows="1" cols="100" placeholder="Réponse 11"></textarea>
+                    <input type="checkbox" id="validQ11" name="validQ11">
+                </div>
+                </form>
                 <button onclick="addQuestionButton()" name="button-add" class="button-add" type="submit">Ajouter</button>
             </div>
 
@@ -35,8 +87,15 @@
 
             <div id="ajoutTypeQuestionnaire" style="display: none">
                 <p>AJOUT DE TYPE DE QUESTIONNAIRE</p>
-                <textarea id="typeName" name="typeName" rows="1" cols="40">Entrez le nom du nouveau type...</textarea>
-                <button onclick="addQuestionTypButton()" name="button-add-typ" class="button-add-typ" type="submit">Ajouter</button>
+                <div>
+                    <textarea id="typeName" name="typeName" rows="1" cols="40">Entrez le nom du nouveau type...</textarea>
+                </div>
+                <div>
+                    <textarea id="typeDesc" name="typeDesc" rows="1" cols="40">Entrez la description du nouveau type...</textarea>
+                </div>
+                <div>
+                    <button onclick="addQuestionTypButton()" name="button-add-typ" class="button-add-typ" type="submit">Ajouter</button>
+                </div>
             </div>
 
             <div id="supperssionTypeQuestionnaire" style="display: none">
