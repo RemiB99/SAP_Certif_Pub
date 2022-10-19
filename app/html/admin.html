@@ -7,7 +7,7 @@
         <title>Page Admin</title>
     </head>
 
-    <body>
+    <body onload="fillHTML()">
         <p>Bienvenue sur la page admin</p>
         <div id="buttons_choice">
             <button onclick="addQuestionDiv()"     name="button-add-question"      class="action_button">Ajouter Question</button>
@@ -82,7 +82,16 @@
 
             <div id="supprQuestion" style="display: none">
                 <p>SUPRESSION DE QUESTION</p>
-                <button onclick="delQuestionButton()" name="button-suppr" class="button-suppr" type="submit">Supprimer</button>
+                <!-- <textarea id="supprID" name="supprID" rows="1" cols="15" placeholder="Suppression ID"></textarea> -->
+                <div id="divChargementDel">
+                    <p id="text-id-suppr">Sélectionnez l'ID de la question à supprimer : </p>
+                    <input type="number" id="supprID" name="supprID" min="1">
+                    <button onclick="displayDivSupperssion()" name="button-div-suppr" class="button-div-suppr" type="submit">Charger</button>
+                </div>
+                <div id="actionDelQuestion" style="display: none">
+                    <p id="selectedDelet">"Question Sélectionnée : "</p>
+                    <button onclick="delQuestionButton()" name="button-suppr" class="button-suppr" type="submit">Supprimer</button>
+                </div>
             </div>
 
             <div id="ajoutTypeQuestionnaire" style="display: none">

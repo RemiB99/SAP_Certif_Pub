@@ -1,5 +1,6 @@
 var URLQuestions = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applicationstudio.cloud.sap/sap/Questions';
 var URLQuestionTypes = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applicationstudio.cloud.sap/sap/QuestionTypes';
+var idQDel;
 
 function addQuestionDiv(){
     document.getElementById("ajoutQuestion").style.display = "block";
@@ -8,6 +9,7 @@ function addQuestionDiv(){
     document.getElementById("ajoutTypeQuestionnaire").style.display = "none";
     document.getElementById("supperssionTypeQuestionnaire").style.display = "none";
     document.getElementById("ajoutFichiercsv").style.display = "none"; 
+    document.getElementById("actionDelQuestion").style.display = "none";
 
     var selectDel = document.getElementById('addType');
     const categories = JSON.parse(sessionStorage.getItem('categories'));
@@ -26,6 +28,7 @@ function modifyQuestionDiv(){
     document.getElementById("ajoutTypeQuestionnaire").style.display = "none";
     document.getElementById("supperssionTypeQuestionnaire").style.display = "none";    
     document.getElementById("ajoutFichiercsv").style.display = "none"; 
+    document.getElementById("actionDelQuestion").style.display = "none";
 }
 
 function delQuestionDiv(){
@@ -34,7 +37,11 @@ function delQuestionDiv(){
     document.getElementById("supprQuestion").style.display = "block";
     document.getElementById("ajoutTypeQuestionnaire").style.display = "none";
     document.getElementById("supperssionTypeQuestionnaire").style.display = "none";  
-    document.getElementById("ajoutFichiercsv").style.display = "none";   
+    document.getElementById("ajoutFichiercsv").style.display = "none"; 
+    document.getElementById("actionDelQuestion").style.display = "none";  
+    var nbQ = sessionStorage.getItem("NbQuestionsTotal");
+    document.getElementById("text-id-suppr").innerText = "Sélectionnez l'ID de la question à supprimer : " + "(min : 1, max : " + nbQ  +")";
+    document.getElementById("supprID").value = "";
 }
 
 function addQuestionTypDiv(){
@@ -44,6 +51,7 @@ function addQuestionTypDiv(){
     document.getElementById("ajoutTypeQuestionnaire").style.display = "block";
     document.getElementById("supperssionTypeQuestionnaire").style.display = "none";   
     document.getElementById("ajoutFichiercsv").style.display = "none";  
+    document.getElementById("actionDelQuestion").style.display = "none";
 }
 
 function delQuestionTypDiv(){
@@ -53,6 +61,7 @@ function delQuestionTypDiv(){
     document.getElementById("ajoutTypeQuestionnaire").style.display = "none";
     document.getElementById("supperssionTypeQuestionnaire").style.display = "block";    
     document.getElementById("ajoutFichiercsv").style.display = "none"; 
+    document.getElementById("actionDelQuestion").style.display = "none";
 
     var selectDel = document.getElementById('selectDelSelection');
     const categories = JSON.parse(sessionStorage.getItem('categories'));
@@ -70,7 +79,8 @@ function addCSVDiv(){
     document.getElementById("supprQuestion").style.display = "none";
     document.getElementById("ajoutTypeQuestionnaire").style.display = "none";
     document.getElementById("supperssionTypeQuestionnaire").style.display = "none";    
-    document.getElementById("ajoutFichiercsv").style.display = "block";   
+    document.getElementById("ajoutFichiercsv").style.display = "block"; 
+    document.getElementById("actionDelQuestion").style.display = "none";  
 }
 
 function addQuestionButton(){
@@ -104,135 +114,135 @@ function addQuestionButton(){
     var nbRep = 0;
 
     if(addingQRep1 != "" && addingQVal1 == true){
-        addingQVal1 = 1;
+//        addingQVal1 = 1;
         checkNbAnswers += 1;
         nbRep += 1;
     }else if(addingQRep1 != "" && addingQVal1 == false){
-        addingQVal1 = 0;
+//        addingQVal1 = 0;
         nbRep += 1;
     }else if(addingQRep1 == ""){
-        addingQRep1 = 'NULL';
-        addingQVal1 = 'NULL';
+       addingQRep1 = "NULL";
+       addingQVal1 = null;
     }
 
     if(addingQRep2 != "" && addingQVal2 == true){
-        addingQVal2 = 1;
+//        addingQVal2 = 1;
         checkNbAnswers += 1;
         nbRep += 1;
     }else if(addingQRep2 != "" && addingQVal2 == false){
-        addingQVal2 = 0;
+ //       addingQVal2 = 0;
         nbRep += 1;
     }else if(addingQRep2 == ""){
-        addingQRep2 = 'NULL';
-        addingQVal2 = 'NULL';
+        addingQRep2 = "NULL";
+        addingQVal2 = null;
     }
 
     if(addingQRep3 != "" && addingQVal3 == true){
-        addingQVal3 = 1;
+        // addingQVal3 = 1;
         checkNbAnswers += 1;
         nbRep += 1;
     }else if(addingQRep3 != "" && addingQVal3 == false){
-        addingQVal3 = 0;
+        // addingQVal3 = 0;
         nbRep += 1;
     }else if(addingQRep3 == ""){
-        addingQRep3 = 'NULL';
-        addingQVal3 = 'NULL';
+        addingQRep3 = "NULL";
+        addingQVal3 = null;
     }
 
     if(addingQRep4 != "" && addingQVal4 == true){
-        addingQVal4 = 1;
+        // addingQVal4 = 1;
         checkNbAnswers += 1;
         nbRep += 1;
     }else if(addingQRep4 != "" && addingQVal4 == false){
-        addingQVal4 = 0;
+        // addingQVal4 = 0;
         nbRep += 1;
     }else if(addingQRep4 == ""){
-        addingQRep4 = 'NULL';
-        addingQVal4 = 'NULL';
+        addingQRep4 = "NULL";
+        addingQVal4 = null;
     }
 
     if(addingQRep5 != "" && addingQVal5 == true){
-        addingQVal5 = 1;
+        // addingQVal5 = 1;
         checkNbAnswers += 1;
         nbRep += 1;
     }else if(addingQRep5 != "" && addingQVal5 == false){
-        addingQVal5 = 0;
+        // addingQVal5 = 0;
         nbRep += 1;
     }else if(addingQRep5 == ""){
-        addingQRep5 = 'NULL';
-        addingQVal5 = 'NULL';
+        addingQRep5 = "NULL";
+        addingQVal5 = null;
     }
 
     if(addingQRep6 != "" && addingQVal6 == true){
-        addingQVal6 = 1;
+        // addingQVal6 = 1;
         checkNbAnswers += 1;
         nbRep += 1;
     }else if(addingQRep6 != "" && addingQVal6 == false){
-        addingQVal6 = 0;
+        // addingQVal6 = 0;
         nbRep += 1;
     }else if(addingQRep6 == ""){
-        addingQRep6 = 'NULL';
-        addingQVal6 = 'NULL';
+        addingQRep6 = "NULL";
+        addingQVal6 = null;
     }
 
     if(addingQRep7 != "" && addingQVal7 == true){
-        addingQVal7 = 1;
+        // addingQVal7 = 1;
         checkNbAnswers += 1;
         nbRep += 1;
     }else if(addingQRep7 != "" && addingQVal7 == false){
-        addingQVal7 = 0;
+        // addingQVal7 = 0;
         nbRep += 1;
     }else if(addingQRep7 == ""){
-        addingQRep7 = 'NULL';
-        addingQVal7 = 'NULL';
+        addingQRep7 = "NULL";
+        addingQVal7 = null;
     }
 
     if(addingQRep8 != "" && addingQVal8 == true){
-        addingQVal8 = 1;
+        // addingQVal8 = 1;
         checkNbAnswers += 1;
         nbRep += 1;
     }else if(addingQRep8 != "" && addingQVal8 == false){
-        addingQVal8 = 0;
+        // addingQVal8 = 0;
         nbRep += 1;
     }else if(addingQRep8 == ""){
-        addingQRep8 = 'NULL';
-        addingQVal8 = 'NULL';
+        addingQRep8 = "NULL";
+        addingQVal8 = null;
     }
 
     if(addingQRep9 != "" && addingQVal9 == true){
-        addingQVal9 = 1;
+        // addingQVal9 = 1;
         checkNbAnswers += 1;
         nbRep += 1;
     }else if(addingQRep9 != "" && addingQVal9 == false){
-        addingQVal9 = 0;
+        // addingQVal9 = 0;
         nbRep += 1;
     }else if(addingQRep9 == ""){
-        addingQRep9 = 'NULL';
-        addingQVal9 = 'NULL';
+        addingQRep9 = "NULL";
+        addingQVal9 = null;
     }
 
     if(addingQRep10 != "" && addingQVal10 == true){
-        addingQVal10 = 1;
+        // addingQVal10 = 1;
         checkNbAnswers += 1;
         nbRep += 1;
     }else if(addingQRep10 != "" && addingQVal10 == false){
-        addingQVal10 = 0;
+        // addingQVal10 = 0;
         nbRep += 1;
     }else if(addingQRep10 == ""){
-        addingQRep10 = 'NULL';
-        addingQVal10 = 'NULL';
+        addingQRep10 = "NULL";
+        addingQVal10 = null;
     }
 
     if(addingQRep11 != "" && addingQVal11 == true){
-        addingQVal11 = 1;
+        // addingQVal11 = 1;
         checkNbAnswers += 1;
         nbRep += 1;
     }else if(addingQRep11 != "" && addingQVal11 == false){
-        addingQVal11 = 0;
+        // addingQVal11 = 0;
         nbRep += 1;
     }else if(addingQRep11 == ""){
-        addingQRep11 = 'NULL';
-        addingQVal11 = 'NULL';
+        addingQRep11 = "NULL";
+        addingQVal11 = null;
     }
 
     console.log(addingQType);
@@ -269,7 +279,53 @@ function addQuestionButton(){
     }else if(nbRep < 2){
         alert("Veuillez entrer plus qu'une réponse possible...");
     }else{
+        const data = { 
+//            ID: 2492, 
+            type: addingQType, 
+            description: addingQDesc, 
+            nbAns: parseInt(addingQNOA), 
+            Answer1: addingQRep1, 
+            Answer2: addingQRep2, 
+            Answer3: addingQRep3, 
+            Answer4: addingQRep4, 
+            Answer5: addingQRep5, 
+            Answer6: addingQRep6, 
+            Answer7: addingQRep7, 
+            Answer8: addingQRep8, 
+            Answer9: addingQRep9, 
+            Answer10: addingQRep10, 
+            Answer11: addingQRep11, 
+            Valid1: addingQVal1, 
+            Valid2: addingQVal2, 
+            Valid3: addingQVal3, 
+            Valid4: addingQVal4, 
+            Valid5: addingQVal5, 
+            Valid6: addingQVal6, 
+            Valid7: addingQVal7, 
+            Valid8: addingQVal8, 
+            Valid9: addingQVal9, 
+            Valid10: addingQVal10, 
+            Valid11: addingQVal11
+        };
+
+fetch(URLQuestions, {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log('Success:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
         alert("Question ajoutée...");
+        var nbQ = sessionStorage.getItem("NbQuestionsTotal");
+        nbQ = parseInt(nbQ) +1;
+        sessionStorage.setItem("NbQuestionsTotal",nbQ);
     }
 
 }
@@ -279,7 +335,14 @@ function modifyQuestionButton(){
 }
 
 function delQuestionButton(){
-    console.log("Suppression de question... TODO");
+    fetch(URLQuestions + '/' + idQDel, {
+  method: 'DELETE',
+})
+.then(res => res.text()) // or res.json()
+.then(res => console.log(res))
+//    console.log("Suppression de question... TODO");
+idQDel = '';
+alert("Question " + idQDel + " supprimée avec succès !");
 }
 
 function addQuestionTypButton(){
@@ -313,4 +376,49 @@ function delQuestionTypButton(){
 
 function addCSVButton(){
     console.log("Ajout de questions par CSV... TODO");
+}
+
+function displayDivSupperssion(){
+    idQDel = '';
+    var nbQTTAL = sessionStorage.getItem("NbQuestionsTotal");
+    console.log("valeur sélectionnée : " + document.getElementById("supprID").value);
+    if(document.getElementById("supprID").value != "" && document.getElementById("supprID").value > 0 && document.getElementById("supprID").value < nbQTTAL+1){
+        alert("Patientez quelques instants, la question choisie charge...");
+        document.getElementById("actionDelQuestion").style.display = "block";
+        fetch(URLQuestions)
+        .then(response => response.json())
+        .then((data) =>{
+            var allDataSup;
+            allDataSup = data.value;            
+            for(var i = 0; i < allDataSup.length; i++){
+                if(parseInt(allDataSup[i].ID) == parseInt(document.getElementById("supprID").value)){
+                    document.getElementById("selectedDelet").innerText = "Question Sélectionnée : " + allDataSup[i].ID + " - " + allDataSup[i].description;
+                    idQDel = allDataSup[i].ID;
+                }
+            }
+       })
+       
+    }else{
+        alert("Données erronées");
+        document.getElementById("actionDelQuestion").style.display = "none";
+    }
+}
+
+function fillHTML(){
+        fetch(URLQuestions)
+    .then(response => response.json())
+    .then((data) =>{
+        var allData;
+        var biggestID = 0;
+        allData = data.value;
+        console.log(allData);
+        for(var i = 0; i < allData.length; i++){
+            if(allData[i].ID > biggestID){
+                console.log(allData[i].ID);
+                biggestID = allData[i].ID;
+            }
+            console.log(biggestID);
+        }
+        sessionStorage.setItem("NbQuestionsTotal", biggestID);
+   })
 }
