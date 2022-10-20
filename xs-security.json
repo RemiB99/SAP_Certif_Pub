@@ -1,0 +1,10 @@
+{
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.authticated-user",
+      "description": "authticated-user"
+    }
+  ],
+  "attributes": [],
+  "role-templates": []
+}

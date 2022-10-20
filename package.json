@@ -7,7 +7,9 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^5",
+    "@sap/xssec": "^3",
     "express": "^4",
+    "passport": "^0",
     "sqlite3": "^5.1.1"
   },
   "scripts": {
@@ -45,6 +47,9 @@
         "credentials": {
           "database": ":memory:"
         }
+      },
+      "auth": {
+        "kind": "xsuaa"
       }
     },
     "features": {
