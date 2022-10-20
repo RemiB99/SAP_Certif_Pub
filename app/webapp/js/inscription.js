@@ -1,5 +1,5 @@
 // A changer - identifiant différent pour chaque devSpace
-var URLUsers = 'https://port4004-workspaces-ws-vl9jn.us10.trial.applicationstudio.cloud.sap/sap/Users';
+var URLUsers = '/odata-api/sap/Users';
 
 var fs = require('fs');
 var stringify = require('csv-stringify');

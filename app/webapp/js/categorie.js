@@ -1,5 +1,5 @@
 // A changer - identifiant différent pour chaque devSpace
-var URLQuestions = 'https://port4004-workspaces-ws-vl9jn.us10.trial.applicationstudio.cloud.sap/sap/Questions';
+var URLQuestions = '/odata-api/sap/Questions';
 
 function handleClick() {
     var numberOfQuestions = document.getElementById("questionsSelection");

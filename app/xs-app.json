@@ -1,0 +1,23 @@
+{
+  "welcomeFile": "app/index.html",
+  "authenticationMethod": "route",
+  "logout": {
+    "logoutEndpoint": "/do/logout",
+    "logoutPage": "/logout-page.html"
+  },
+  "routes": [
+    {
+      "source": "^/app/(.*)$",
+      "target": "$1",
+      "localDir": "webapp",
+      "cacheControl": "no-cache, no-store, must-revalidate"
+    },
+    {
+      "source": "/odata-api/(.*)$",
+      "target": "/$1",
+      "authenticationType": "xsuaa",
+      "destination": "srv_api",
+      "csrfProtection": true
+    }
+  ]
+}
