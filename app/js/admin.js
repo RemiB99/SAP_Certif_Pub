@@ -63,14 +63,14 @@ function delQuestionTypDiv(){
     document.getElementById("ajoutFichiercsv").style.display = "none"; 
     document.getElementById("actionDelQuestion").style.display = "none";
 
-    var selectDel = document.getElementById('selectDelSelection');
-    const categories = JSON.parse(sessionStorage.getItem('categories'));
-    for(let i = 0; i <= categories.length - 1; i++){
-        var option = document.createElement("option");
-        option.setAttribute('id', i);
-        option.text = categories[i];
-        selectDel.appendChild(option);
-    }
+    // var selectDel = document.getElementById('selectDelSelection');
+    // const categories = JSON.parse(sessionStorage.getItem('categories'));
+    // for(let i = 0; i <= categories.length - 1; i++){
+    //     var option = document.createElement("option");
+    //     option.setAttribute('id', i);
+    //     option.text = categories[i];
+    //     selectDel.appendChild(option);
+    // }
 }
 
 function addCSVDiv(){
@@ -357,21 +357,34 @@ function delQuestionTypButton(){
     console.log("Suppression de type de question... TODO");
     var selector = document.getElementById('selectDelSelection');
     var valueSelector = selector.value;
-    console.log(valueSelector);
-//     fetch(URLQuestionTypes, {
-//     method: "DELETE",
-//     headers: {
-//         'Content-type': 'application/json'
-//     }
-// })
-// .then(res => {
-//     if (res.ok) { console.log("HTTP request successful") }
-//     else { console.log("HTTP request unsuccessful") }
-//     return res
-// })
-// .then(res => res.json())
-// .then(data => console.log(data))
-// .catch(error => console.log(error))
+    var textSelector = selector.options[selector.selectedIndex].text;
+//    var selected = selector.selected.id;
+    console.log("type : " + selector.options[selector.selectedIndex].text);
+    console.log("id : " + selector.value);
+    const data = { ID: valueSelector, name: textSelector }
+    console.log(data);
+    // fetch(URLQuestionTypes, {
+    //     method: 'DELETE', // or 'PUT'
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       console.log('Success:', data);
+    //     })
+    //     .catch((error) => {
+    //       console.error('Error:', error);
+    //     });
+    fetch(URLQuestionTypes + '/' + parseInt(valueSelector), {
+        method: 'DELETE',
+      })
+      .then(res => res.text()) // or res.json()
+      .then(res => console.log(res))
+      idQDel = '';
+      alert("Type de question " + textSelector + " supprimée avec succès !");
+
 }
 
 function addCSVButton(){
@@ -381,7 +394,7 @@ function addCSVButton(){
 function displayDivSupperssion(){
     idQDel = '';
     var nbQTTAL = sessionStorage.getItem("NbQuestionsTotal");
-    console.log("valeur sélectionnée : " + document.getElementById("supprID").value);
+    //console.log("valeur sélectionnée : " + document.getElementById("supprID").value);
     if(document.getElementById("supprID").value != "" && document.getElementById("supprID").value > 0 && document.getElementById("supprID").value < nbQTTAL+1){
         alert("Patientez quelques instants, la question choisie charge...");
         document.getElementById("actionDelQuestion").style.display = "block";
@@ -411,14 +424,22 @@ function fillHTML(){
         var allData;
         var biggestID = 0;
         allData = data.value;
-        console.log(allData);
+        //console.log(allData);
         for(var i = 0; i < allData.length; i++){
             if(allData[i].ID > biggestID){
-                console.log(allData[i].ID);
+                //console.log(allData[i].ID);
                 biggestID = allData[i].ID;
             }
-            console.log(biggestID);
+            //console.log(biggestID);
         }
         sessionStorage.setItem("NbQuestionsTotal", biggestID);
    })
+   var selectDel = document.getElementById('selectDelSelection');
+   const categories = JSON.parse(sessionStorage.getItem('categories'));
+   for(let i = 0; i <= categories.length - 1; i++){
+       var option = document.createElement("option");
+       option.setAttribute('value', i+1);
+       option.text = categories[i];
+       selectDel.appendChild(option);
+   }
 }

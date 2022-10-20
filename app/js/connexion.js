@@ -30,6 +30,7 @@ loginButton.addEventListener("click", (e) => {
             .then((data) =>{
         //        console.log(data.value);
                 var types = [];
+                var typesID = [];
                 var allData;
                 allData = data.value;
                 console.log(allData);
@@ -41,6 +42,7 @@ loginButton.addEventListener("click", (e) => {
                     if (types.indexOf(current.name) >= 0){
                     }else{
                         types.push(current.name);
+                        typesID.push(current.ID);
                     }
                 }
                 sessionStorage.setItem("categories", JSON.stringify(types));
