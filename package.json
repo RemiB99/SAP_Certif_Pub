@@ -8,8 +8,10 @@
   "dependencies": {
     "@sap/cds": "^5",
     "express": "^4",
+    "express-openid-connect": "^2.9.0",
     "fs": "^0.0.1-security",
     "jquery": "^3.6.1",
+    "jsonwebtoken": "^8.5.1",
     "require": "^2.4.20"
   },
   "devDependencies": {

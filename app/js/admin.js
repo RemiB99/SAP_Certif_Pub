@@ -351,6 +351,54 @@ function addQuestionTypButton(){
     var addingTyDesc = document.getElementById('typeDesc').value;
     console.log(addingTyType);
     console.log(addingTyDesc);
+    const data = { 
+                    name: addingTyType, 
+                    description: addingTyDesc
+                };
+        if(addingTyType != "" && addingTyDesc != ""){
+            fetch(URLQuestionTypes, {
+              method: 'POST', // or 'PUT'
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                console.log('Success:', data);
+              })
+              .catch((error) => {
+                console.error('Error:', error);
+              });
+              alert("Type de question ajouté avec succès !");
+              fetch(URLQuestionTypes)
+              .then(response => response.json())
+              .then((data) =>{
+          //        console.log(data.value);
+                  var types = [];
+                  var typesID = [];
+                  var allData2;
+                  allData2 = data.value;
+                  console.log(allData2);
+                  
+          //    window.location.href= 'categorie2.html';
+                  for (var i = 0; i < allData2.length; i++) {
+                      var current;
+                      current = allData2[i];
+                      if (types.indexOf(current.name) >= 0){
+                      }else{
+                          types.push(current.name);
+                          typesID.push(current.ID);
+                      }
+                  }
+                  sessionStorage.setItem("categories", JSON.stringify(types));
+              location.reload();
+              })
+        }else{
+            document.getElementById('typeName').value = "";
+            document.getElementById('typeDesc').value = "";
+            alert("Erreur rencontrée lors de l'ajout, veuillez recommencer :/"); 
+        }
 }
 
 function delQuestionTypButton(){
@@ -385,6 +433,31 @@ function delQuestionTypButton(){
       idQDel = '';
       alert("Type de question " + textSelector + " supprimée avec succès !");
 
+      fetch(URLQuestionTypes)
+              .then(response => response.json())
+              .then((data) =>{
+          //        console.log(data.value);
+                  var types = [];
+                  var typesID = [];
+                  var allData2;
+                  allData2 = data.value;
+                  console.log(allData2);
+                  
+          //    window.location.href= 'categorie2.html';
+                  for (var i = 0; i < allData2.length; i++) {
+                      var current;
+                      current = allData2[i];
+                      if (types.indexOf(current.name) >= 0){
+                      }else{
+                          types.push(current.name);
+                          typesID.push(current.ID);
+                      }
+                  }
+                  console.log("types : " + types);
+                  sessionStorage.setItem("categories", JSON.stringify(types));
+                  location.reload();
+              
+              })
 }
 
 function addCSVButton(){
@@ -434,6 +507,19 @@ function fillHTML(){
         }
         sessionStorage.setItem("NbQuestionsTotal", biggestID);
    })
+
+   fetch(URLQuestionTypes)
+   .then(response => response.json())
+   .then((data) =>{
+       var allDataTypes;
+       var types = [];
+       allDataTypes = data.value;
+       for(var j = 0; j < allDataTypes.length; j++){
+            types.push(allDataTypes[j].name);
+       }
+       sessionStorage.setItem("categories", JSON.stringify(types));
+  })
+
    var selectDel = document.getElementById('selectDelSelection');
    const categories = JSON.parse(sessionStorage.getItem('categories'));
    for(let i = 0; i <= categories.length - 1; i++){
