@@ -1,7 +1,7 @@
 {
     "requires": {
       "auth": {
-        "impl": "srv/config/auth.js"
+        "impl": "srv/auth.js"
       }
     }
-  }
+}
