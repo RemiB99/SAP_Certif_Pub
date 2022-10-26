@@ -1,5 +1,6 @@
 const cds = require("@sap/cds");
 const { auth, requiresAuth } = require("express-openid-connect");
+//const config = require('./config/config');
 module.exports = cds.server;
 
 const config = {
@@ -8,7 +9,7 @@ const config = {
   authorizationParams: { // required to retrieve JWT including permissions (our roles) 
     response_type: "code",
     scope: "openid",
-    audience: "<https://cap-auth0-SAPcertif-api.com>",
+    audience: "https://cap-auth0-SAPcertif-api.com",
   },
 };
 
