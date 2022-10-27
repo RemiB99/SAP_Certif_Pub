@@ -18,6 +18,7 @@ const settings = {
 cds.on("bootstrap", (app) => {
   // initialize openid-connect with auth0 configuration
   app.use(auth(settings));
+//  app.use('/', requiresAuth());
   app.get('/profile', requiresAuth(), (req, res) => {
     const jwtDecoded = jsonwebtoken.decode(req.oidc.accessToken.access_token);
     res.send(JSON.stringify({ ...req.oidc.user, ...jwtDecoded.permissions }));
