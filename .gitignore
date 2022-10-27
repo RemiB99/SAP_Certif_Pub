@@ -7,7 +7,7 @@ default-*.json
 gen/
 node_modules/
 target/
-*env
+
 # Web IDE, App Studio
 .che/
 .gen/
@@ -28,3 +28,4 @@ mta_archives/
 # IDEs
 # .vscode
 # .idea
+.env

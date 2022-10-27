@@ -1,9 +1,11 @@
 const cds = require("@sap/cds");
 const { auth, requiresAuth } = require("express-openid-connect");
-//const config = require('./config/config');
+const express = require('express');
+const config = require('./config/config');
+const jsonwebtoken = require('jsonwebtoken');
 module.exports = cds.server;
 
-const config = {
+const settings = {
   authRequired: false, // deactivate auth for all routes
   auth0Logout: true, // logout from IdP
   authorizationParams: { // required to retrieve JWT including permissions (our roles) 
@@ -15,7 +17,11 @@ const config = {
 
 cds.on("bootstrap", (app) => {
   // initialize openid-connect with auth0 configuration
-  app.use(auth(config));
+  app.use(auth(settings));
+  app.get('/profile', requiresAuth(), (req, res) => {
+    const jwtDecoded = jsonwebtoken.decode(req.oidc.accessToken.access_token);
+    res.send(JSON.stringify({ ...req.oidc.user, ...jwtDecoded.permissions }));
+    });
 });
 
 module.exports = cds.server;
