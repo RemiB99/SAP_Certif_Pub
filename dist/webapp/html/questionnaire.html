@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Questionnaire</title>
+        <link rel="stylesheet" type="text/css" href="../css/questionnaire.css">
+        <script type="text/javascript" src="../js/questionnaire.js"></script>
+    </head>
+    <body onload="fillHTML()">
+        <div id="mySidenav" class="sidenav">
+          </div>
+
+        <div id="main" class= "main">
+            <div id="questionPart" class = "questionPart">
+                <div id="numberOfQuestion" class="numberofQuestion">
+                </div> 
+                <div id="timer" class="timer">
+                    timer <!-- TODO -->
+                </div> 
+                <div id="question" class="question">
+                </div> 
+            </div> 
+            <div id="answersPart" class="answerPart">
+                <div id ="answer1" class ="answerInactive hiddenAnswer" onclick="handleClick('answer1')">
+                </div>
+                <div id ="answer2" class ="answerInactive hiddenAnswer" onclick="handleClick('answer2')">
+                </div>
+                <div id ="answer3" class ="answerInactive hiddenAnswer" onclick="handleClick('answer3')">
+                </div>
+                <div id ="answer4" class ="answerInactive hiddenAnswer" onclick="handleClick('answer4')">
+                </div>
+                <div id ="answer5" class ="answerInactive hiddenAnswer" onclick="handleClick('answer5')">
+                </div>
+                <div id ="answer6" class ="answerInactive hiddenAnswer" onclick="handleClick('answer6')">
+                </div>
+                <div id ="answer7" class ="answerInactive hiddenAnswer" onclick="handleClick('answer7')">
+                </div>
+                <div id ="answer8" class ="answerInactive hiddenAnswer" onclick="handleClick('answer8')">
+                </div>
+                <div id ="answer9" class ="answerInactive hiddenAnswer" onclick="handleClick('answer9')">
+                </div>
+                <div id ="answer10" class ="answerInactive hiddenAnswer" onclick="handleClick('answer10')">
+                </div>
+                <div id ="answer11" class ="answerInactive hiddenAnswer" onclick="handleClick('answer11')">
+                </div>
+                <div id = "nextQuestion" class = "nextQuestion" onclick="submitAnswers()">
+                    Question suivante
+                </div>
+            </div> 
+        </div> 
+    </body>
+</html>

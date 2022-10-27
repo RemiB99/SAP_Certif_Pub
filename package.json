@@ -7,7 +7,7 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^5",
-    "express": "^4",
+    "express": "^4.18.2",
     "express-openid-connect": "^2.9.0",
     "fs": "^0.0.1-security",
     "jquery": "^3.6.1",
@@ -58,6 +58,9 @@
         "credentials": {
           "database": "db/SAP_Certif.db"
         }
+      },
+      "auth": {
+        "impl": "srv/config/auth.js"
       }
     }
   }
