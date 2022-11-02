@@ -30,7 +30,7 @@ function getQuestions(numberOfQuestions){
     .then((data) =>{
         console.log(data.value);
         var questions = [];
-        var needShuffle = JSON.parse(sessionStorage.getItem("RandomQuestions"));;
+        var needShuffle = JSON.parse(sessionStorage.getItem("RandomQuestions"));
         var questionsCategorie = [];
         var category = sessionStorage.getItem('selectedCategory');
         var shuffled;
@@ -130,27 +130,31 @@ function getQuestions(numberOfQuestions){
             contents2[9]= question.Valid10;
             contents2[10]= question.Valid11;
 
-            var j=0;
-            //variable used to contain controlled random number 
-            var random;
-            var random2;
-            var temp;
-            var temp2;
-            //while all of array elements haven't been cycled thru
-            while (j<nbProp-1){
-                //generate random num between 0 and arraylength-1
-                random=Math.floor(Math.random()*(nbProp-1));
-                random2=Math.floor(Math.random()*(nbProp-1));
+            var randomOrder = JSON.parse(sessionStorage.getItem("RandomAnswers")); 
+            console.log(randomOrder);
+            if(randomOrder == "true"){
+                var j=0;
+                //variable used to contain controlled random number 
+                var random;
+                var random2;
+                var temp;
+                var temp2;
+                //while all of array elements haven't been cycled thru
+                while (j<nbProp-1){
+                    //generate random num between 0 and arraylength-1
+                    random=Math.floor(Math.random()*(nbProp-1));
+                    random2=Math.floor(Math.random()*(nbProp-1));
 
-                temp = contents[random];
-                contents[random] = contents[random2];
-                contents[random2] = temp;
-               
-                temp2 = contents2[random];
-                contents2[random] = contents2[random2];
-                contents2[random2] = temp2;
+                    temp = contents[random];
+                    contents[random] = contents[random2];
+                    contents[random2] = temp;
+                
+                    temp2 = contents2[random];
+                    contents2[random] = contents2[random2];
+                    contents2[random2] = temp2;
 
-                j++;
+                    j++;
+                }
             }
             question.Answer1 = contents[0];
             question.Answer2 = contents[1];
