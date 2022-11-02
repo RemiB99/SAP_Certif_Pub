@@ -33,11 +33,15 @@ function getQuestions(numberOfQuestions){
         var needShuffle = JSON.parse(sessionStorage.getItem("RandomQuestions"));
         var questionsCategorie = [];
         var category = sessionStorage.getItem('selectedCategory');
+        var noRandomStartID = 1;
         var shuffled;
         if(needShuffle == "true"){
             shuffled = data.value.sort(() => 0.5 - Math.random());
+            noRandomStartID = 1;
         }else{
             shuffled = data.value;
+            noRandomStartID = parseInt(sessionStorage.getItem("startID"));
+            console.log("noRandomStartID : " + noRandomStartID);
         }
         console.log('category : ' + category);
         console.log('length' + shuffled.length);
@@ -54,9 +58,12 @@ function getQuestions(numberOfQuestions){
 //        console.log(shuffled);
         tailleTabQuestions = questionsCategorie.length;
         console.log(questionsCategorie);
-        for (var i = 0; i < numberOfQuestions; i++) {
+        //noRandomStartID--;
+        //for (var i = 0; i < numberOfQuestions; i++) {
+        for (var i = noRandomStartID-1; i < (numberOfQuestions + noRandomStartID-1); i++) {
 //            var question = shuffled[i];
             var question = questionsCategorie[i];
+            console.log(question);
             var nbProp = 11;
 
             if(question.Answer1 == "NULL"){
@@ -131,7 +138,7 @@ function getQuestions(numberOfQuestions){
             contents2[10]= question.Valid11;
 
             var randomOrder = JSON.parse(sessionStorage.getItem("RandomAnswers")); 
-            console.log(randomOrder);
+            //console.log(randomOrder);
             if(randomOrder == "true"){
                 var j=0;
                 //variable used to contain controlled random number 
@@ -193,6 +200,7 @@ function startQuestionnaire(){
     var learningMode = document.getElementById("learnMode");
     var randomAnswers = document.getElementById("randomAnswers");
     var randomQuestions = document.getElementById("randomQuestions");
+    var startID = document.getElementById("startID");
     var strNumberOfQuestions = handleClick();
 
     //setTimeout(() => { console.log("test"); }, 3000);
@@ -221,6 +229,8 @@ function startQuestionnaire(){
         console.log(randomQuestions.checked);
     }
 
+    sessionStorage.setItem("startID", startID.value);
+
     getQuestions(parseInt(strNumberOfQuestions));
     for(let i = 0; i < 81; i++){
         sessionStorage.removeItem("selectedAnswers"+(i+1));
@@ -228,7 +238,7 @@ function startQuestionnaire(){
     //setTimeout(3000);
     console.log("nb questions choisies" + parseInt(strNumberOfQuestions));
     console.log("nb questions dans base" + tailleTabQuestions);
-    setTimeout(() => { delayCheck(strNumberOfQuestions); }, 1500);
+    setTimeout(() => { delayCheck(strNumberOfQuestions); }, 3000);
     // if(parseInt(strNumberOfQuestions) < tailleTabQuestions){
     //     sessionStorage.setItem("currentQuestion", "1");
     //     alert("Vous allez lancer un questionnaire de " + strNumberOfQuestions + " questions.");
