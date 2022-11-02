@@ -42,11 +42,15 @@
                     </select>
                 </div>
 
-                <div>
+                
                     <p><b>Mode learning : </b></p>
                     <input type="checkbox" id="learnMode" name="learnMode">
-                </div>
-
+                    <p><b>Réponses aléatoires : </b></p>
+                    <input type="checkbox" id="randomAnswers" name="randomAnswers">                
+                    <p><b>Questions aléatoires : </b></p>
+                    <input type="checkbox" id="randomQuestions" name="randomQuestions" checked>
+                    <p><b>ID de base : (Si questions aléatoires non sélectionné) </b></p>
+                    <input type="number" id="startID" name="startID" min="1">
                 <div>
                     <button onclick="startQuestionnaire()" name="button-validation" class="validate_button" type="submit">Démarrer</button>
                     <!-- <button onclick="testRedirect()" name="button-validation" class="validate_button" type="submit">TEST</button> -->

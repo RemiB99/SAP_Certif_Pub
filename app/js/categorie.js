@@ -30,9 +30,15 @@ function getQuestions(numberOfQuestions){
     .then((data) =>{
         console.log(data.value);
         var questions = [];
+        var needShuffle = JSON.parse(sessionStorage.getItem("RandomQuestions"));;
         var questionsCategorie = [];
         var category = sessionStorage.getItem('selectedCategory');
-        var shuffled = data.value.sort(() => 0.5 - Math.random());
+        var shuffled;
+        if(needShuffle == "true"){
+            shuffled = data.value.sort(() => 0.5 - Math.random());
+        }else{
+            shuffled = data.value;
+        }
         console.log('category : ' + category);
         console.log('length' + shuffled.length);
         for (var i = 0; i < shuffled.length; i++){
@@ -181,6 +187,8 @@ function getQuestions(numberOfQuestions){
 
 function startQuestionnaire(){
     var learningMode = document.getElementById("learnMode");
+    var randomAnswers = document.getElementById("randomAnswers");
+    var randomQuestions = document.getElementById("randomQuestions");
     var strNumberOfQuestions = handleClick();
 
     //setTimeout(() => { console.log("test"); }, 3000);
@@ -191,6 +199,22 @@ function startQuestionnaire(){
     }else{
         sessionStorage.setItem("LearningMode", JSON.stringify("false"));
         console.log(learningMode.checked);
+    }
+
+    if(randomAnswers.checked == true){
+        sessionStorage.setItem("RandomAnswers", JSON.stringify("true"));
+        console.log(randomAnswers.checked);
+    }else{
+        sessionStorage.setItem("RandomAnswers", JSON.stringify("false"));
+        console.log(randomAnswers.checked);
+    }
+
+    if(randomQuestions.checked == true){
+        sessionStorage.setItem("RandomQuestions", JSON.stringify("true"));
+        console.log(randomQuestions.checked);
+    }else{
+        sessionStorage.setItem("RandomQuestions", JSON.stringify("false"));
+        console.log(randomQuestions.checked);
     }
 
     getQuestions(parseInt(strNumberOfQuestions));
