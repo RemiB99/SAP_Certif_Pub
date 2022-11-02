@@ -159,6 +159,15 @@ function submitAnswers() {
     }
 //console.log("selectedAnswers"+currentQuestion);
     sessionStorage.setItem("selectedAnswers"+currentQuestion, JSON.stringify(selectedAnswers));
+
+
+//    alert("Selected answers : " + selec);
+    var reponseTab = [false, false, false, false, false, false, false, false, false, false, false];
+    var answerTab = [false, false, false, false, false, false, false, false, false, false, false];
+    
+    checkQuestion();
+
+
     if (currentQuestion != numberOfQuestions) {
         var nextQuestion = currentQuestion+1;
     sessionStorage.setItem("currentQuestion", nextQuestion.toString());
@@ -178,4 +187,98 @@ function switchQuestion(id){
     var varID = parseInt(id)+1;
     sessionStorage.setItem("currentQuestion", varID.toString());
     location.reload();
+}
+
+function checkQuestion() {
+    
+        reponseTab = [false, false, false, false, false, false, false, false, false, false, false];
+        answerTab = [false, false, false, false, false, false, false, false, false, false, false];
+        var currentQuestion = parseInt(sessionStorage.getItem('currentQuestion'));
+        reponses = JSON.parse(sessionStorage.getItem('selectedAnswers'+(currentQuestion)));
+
+        if(reponses != null){
+
+            if (Object.values(reponses).includes("answer1")) {
+                reponseTab[0] = true;
+            }
+            if (Object.values(reponses).includes("answer2")) {
+                reponseTab[1] = true;
+            }
+            if (Object.values(reponses).includes("answer3")) {
+                reponseTab[2] = true;
+            }
+            if (Object.values(reponses).includes("answer4")) {
+                reponseTab[3] = true;
+            }
+            if (Object.values(reponses).includes("answer5")) {
+                reponseTab[4] = true;
+            }
+            if (Object.values(reponses).includes("answer6")) {
+                reponseTab[5] = true;
+            }
+            if (Object.values(reponses).includes("answer7")) {
+                reponseTab[6] = true;
+            }
+            if (Object.values(reponses).includes("answer8")) {
+                reponseTab[7] = true;
+            }
+            if (Object.values(reponses).includes("answer9")) {
+                reponseTab[8] = true;
+            }
+            if (Object.values(reponses).includes("answer10")) {
+                reponseTab[9] = true;
+            }
+            if (Object.values(reponses).includes("answer11")) {
+                reponseTab[10] = true;
+            }
+        }
+
+        answerTab[0] = questions[currentQuestion-1].Valid1;
+        answerTab[1] = questions[currentQuestion-1].Valid2;
+        answerTab[2] = questions[currentQuestion-1].Valid3;
+        answerTab[3] = questions[currentQuestion-1].Valid4;
+        answerTab[4] = questions[currentQuestion-1].Valid5;
+        answerTab[5] = questions[currentQuestion-1].Valid6;
+        answerTab[6] = questions[currentQuestion-1].Valid7;
+        answerTab[7] = questions[currentQuestion-1].Valid8;
+        answerTab[8] = questions[currentQuestion-1].Valid9;
+        answerTab[9] = questions[currentQuestion-1].Valid10;
+        answerTab[10] = questions[currentQuestion-1].Valid11;
+    
+        if(reponseTab[0] == answerTab[0] && 
+            reponseTab[1] == answerTab[1] && 
+            reponseTab[2] == answerTab[2] && 
+            reponseTab[3] == answerTab[3] && 
+            reponseTab[4] == answerTab[4] && 
+            reponseTab[5] == answerTab[5] && 
+            reponseTab[6] == answerTab[6] && 
+            reponseTab[7] == answerTab[7] && 
+            reponseTab[8] == answerTab[8] && 
+            reponseTab[9] == answerTab[9] && 
+            reponseTab[10] == answerTab[10]){
+            alert("Bonne réponse !");
+        }else{
+            console.log(reponseTab);
+            console.log(answerTab);
+            let alrt = "Mauvaise Réponse...\nVous avez sélectionné : ";
+            let alrt2 = "Les réponses étaient : ";
+            // var sel = ["A","B","C","D","E","F","G","H","I","J","K"];
+            // var ans = ["A","B","C","D","E","F","G","H","I","J","K"];
+            var sel = [];
+            var ans = [];
+            for(var y=0; y<11; y++){
+                console.log(y);
+                if(reponseTab[y] == true){
+                    sel.push(y+1);
+                }
+            }
+            for(var z = 0; z<11; z++){
+                if(answerTab[z] == true){
+                    ans.push(z+1);
+                }
+            }
+            console.log("sel : " + sel);
+            console.log("ans : " + ans);
+            alert(alrt + sel + "\n" + alrt2 + ans);
+        }
 }
