@@ -180,9 +180,18 @@ function getQuestions(numberOfQuestions){
 }
 
 function startQuestionnaire(){
+    var learningMode = document.getElementById("learnMode");
     var strNumberOfQuestions = handleClick();
 
     //setTimeout(() => { console.log("test"); }, 3000);
+
+    if(learningMode.checked == true){
+        sessionStorage.setItem("LearningMode", JSON.stringify("true"));
+        console.log(learningMode.checked);
+    }else{
+        sessionStorage.setItem("LearningMode", JSON.stringify("false"));
+        console.log(learningMode.checked);
+    }
 
     getQuestions(parseInt(strNumberOfQuestions));
     for(let i = 0; i < 81; i++){
