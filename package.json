@@ -58,10 +58,10 @@
         "credentials": {
           "database": "db/SAP_Certif.db"
         }
+      },
+      "auth": {
+        "impl": "srv/config/auth.js"
       }
     }
-  },
-  "auth": {
-    "impl": "srv/config/auth.js"
   }
 }
