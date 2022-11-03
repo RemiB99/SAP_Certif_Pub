@@ -1,6 +1,7 @@
 var URLQuestions = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applicationstudio.cloud.sap/sap/Questions';
 var URLQuestionTypes = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applicationstudio.cloud.sap/sap/QuestionTypes';
 var idQDel;
+var dataToDelete;
 
 function addQuestionDiv(){
     document.getElementById("ajoutQuestion").style.display = "block";
@@ -402,15 +403,34 @@ function addQuestionTypButton(){
 }
 
 function delQuestionTypButton(){
-    console.log("Suppression de type de question... TODO");
+    //console.log("Suppression de type de question... TODO");
     var selector = document.getElementById('selectDelSelection');
     var valueSelector = selector.value;
     var textSelector = selector.options[selector.selectedIndex].text;
 //    var selected = selector.selected.id;
-    console.log("type : " + selector.options[selector.selectedIndex].text);
-    console.log("id : " + selector.value);
-    const data = { ID: valueSelector, name: textSelector }
-    console.log(data);
+    //console.log("type : " + selector.options[selector.selectedIndex].text);
+    //console.log("id : " + selector.value);
+    const dataDelete = { ID: valueSelector, name: textSelector };
+    const dataCheckType = { name: textSelector };
+    //var dataToDelete;
+    //console.log(dataDelete);
+    setTimeout(() => { getId(textSelector); }, 3000);
+    console.log("data to delete : " + dataToDelete);
+    // fetch(URLQuestionTypes)
+    //           .then(response => response.json())
+    //           .then((data) =>{
+    //               var allData3 = data.value;
+    //               dataToDelete = undefined;
+    //               for(let z=0; z < allData3.length; z++){
+    //                 var current;
+    //                 current = allData3[z];
+    //                 //console.log("current : " + current.name);
+    //                 if(current.name == textSelector){
+    //                     dataToDelete = current.ID;
+    //                     //console.log("TO DELETE : " + dataToDelete);
+    //                 }
+    //               }
+    //           })
     // fetch(URLQuestionTypes, {
     //     method: 'DELETE', // or 'PUT'
     //     headers: {
@@ -425,7 +445,8 @@ function delQuestionTypButton(){
     //     .catch((error) => {
     //       console.error('Error:', error);
     //     });
-    fetch(URLQuestionTypes + '/' + parseInt(valueSelector), {
+    //setTimeout(() => { console.log("waiting for fetching"); }, 3000);
+    fetch(URLQuestionTypes + '/' + dataToDelete, {
         method: 'DELETE',
       })
       .then(res => res.text()) // or res.json()
@@ -455,6 +476,7 @@ function delQuestionTypButton(){
                   }
                   console.log("types : " + types);
                   sessionStorage.setItem("categories", JSON.stringify(types));
+                  alert(dataToDelete);
                   location.reload();
               
               })
@@ -528,4 +550,22 @@ function fillHTML(){
        option.text = categories[i];
        selectDel.appendChild(option);
    }
+}
+
+function getId(textSelector){
+    fetch(URLQuestionTypes)
+              .then(response => response.json())
+              .then((data) =>{
+                  var allData3 = data.value;
+                  dataToDelete = undefined;
+                  for(let z=0; z < allData3.length; z++){
+                    var current;
+                    current = allData3[z];
+                    console.log("current : " + current.name);
+                    if(current.name == textSelector){
+                        dataToDelete = current.ID;
+                        console.log("TO DELETE : " + dataToDelete);
+                    }
+                  }
+              })
 }
