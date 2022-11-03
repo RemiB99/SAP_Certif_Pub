@@ -414,23 +414,22 @@ function delQuestionTypButton(){
     const dataCheckType = { name: textSelector };
     //var dataToDelete;
     //console.log(dataDelete);
-    setTimeout(() => { getId(textSelector); }, 3000);
-    console.log("data to delete : " + dataToDelete);
-    // fetch(URLQuestionTypes)
-    //           .then(response => response.json())
-    //           .then((data) =>{
-    //               var allData3 = data.value;
-    //               dataToDelete = undefined;
-    //               for(let z=0; z < allData3.length; z++){
-    //                 var current;
-    //                 current = allData3[z];
-    //                 //console.log("current : " + current.name);
-    //                 if(current.name == textSelector){
-    //                     dataToDelete = current.ID;
-    //                     //console.log("TO DELETE : " + dataToDelete);
-    //                 }
-    //               }
-    //           })
+    //setTimeout(3000);
+    fetch(URLQuestionTypes)
+              .then(response => response.json())
+              .then((data) =>{
+                  var allData3 = data.value;
+                  dataToDelete = undefined;
+                  for(let z=0; z < allData3.length; z++){
+                    var current;
+                    current = allData3[z];
+                    //console.log("current : " + current.name);
+                    if(current.name == textSelector){
+                        dataToDelete = current.ID;
+                        //console.log("TO DELETE : " + dataToDelete);
+                    }
+                  }
+              })
     // fetch(URLQuestionTypes, {
     //     method: 'DELETE', // or 'PUT'
     //     headers: {
@@ -446,40 +445,43 @@ function delQuestionTypButton(){
     //       console.error('Error:', error);
     //     });
     //setTimeout(() => { console.log("waiting for fetching"); }, 3000);
-    fetch(URLQuestionTypes + '/' + dataToDelete, {
-        method: 'DELETE',
-      })
-      .then(res => res.text()) // or res.json()
-      .then(res => console.log(res))
-      idQDel = '';
-      alert("Type de question " + textSelector + " supprimée avec succès !");
+    setTimeout(function () {
+        delID(textSelector);
+        }, 3000);
+    // fetch(URLQuestionTypes + '/' + dataToDelete, {
+    //     method: 'DELETE',
+    //   })
+    //   .then(res => res.text()) // or res.json()
+    //   .then(res => console.log(res))
+    //   idQDel = '';
+    //   alert("Type de question " + textSelector + " supprimée avec succès !");
 
-      fetch(URLQuestionTypes)
-              .then(response => response.json())
-              .then((data) =>{
-          //        console.log(data.value);
-                  var types = [];
-                  var typesID = [];
-                  var allData2;
-                  allData2 = data.value;
-                  console.log(allData2);
+    //   fetch(URLQuestionTypes)
+    //           .then(response => response.json())
+    //           .then((data) =>{
+    //       //        console.log(data.value);
+    //               var types = [];
+    //               var typesID = [];
+    //               var allData2;
+    //               allData2 = data.value;
+    //               console.log(allData2);
                   
-          //    window.location.href= 'categorie2.html';
-                  for (var i = 0; i < allData2.length; i++) {
-                      var current;
-                      current = allData2[i];
-                      if (types.indexOf(current.name) >= 0){
-                      }else{
-                          types.push(current.name);
-                          typesID.push(current.ID);
-                      }
-                  }
-                  console.log("types : " + types);
-                  sessionStorage.setItem("categories", JSON.stringify(types));
-                  alert(dataToDelete);
-                  location.reload();
+    //       //    window.location.href= 'categorie2.html';
+    //               for (var i = 0; i < allData2.length; i++) {
+    //                   var current;
+    //                   current = allData2[i];
+    //                   if (types.indexOf(current.name) >= 0){
+    //                   }else{
+    //                       types.push(current.name);
+    //                       typesID.push(current.ID);
+    //                   }
+    //               }
+    //               console.log("types : " + types);
+    //               sessionStorage.setItem("categories", JSON.stringify(types));
+    //               alert(dataToDelete);
+    //               location.reload();
               
-              })
+    //           })
 }
 
 function addCSVButton(){
@@ -552,20 +554,39 @@ function fillHTML(){
    }
 }
 
-function getId(textSelector){
-    fetch(URLQuestionTypes)
+function delID(textSelector){
+    fetch(URLQuestionTypes + '/' + dataToDelete, {
+        method: 'DELETE',
+      })
+      .then(res => res.text()) // or res.json()
+      .then(res => console.log(res))
+      idQDel = '';
+      alert("Type de question " + textSelector + " supprimée avec succès !");
+
+      fetch(URLQuestionTypes)
               .then(response => response.json())
               .then((data) =>{
-                  var allData3 = data.value;
-                  dataToDelete = undefined;
-                  for(let z=0; z < allData3.length; z++){
-                    var current;
-                    current = allData3[z];
-                    console.log("current : " + current.name);
-                    if(current.name == textSelector){
-                        dataToDelete = current.ID;
-                        console.log("TO DELETE : " + dataToDelete);
-                    }
+          //        console.log(data.value);
+                  var types = [];
+                  var typesID = [];
+                  var allData2;
+                  allData2 = data.value;
+                  console.log(allData2);
+                  
+          //    window.location.href= 'categorie2.html';
+                  for (var i = 0; i < allData2.length; i++) {
+                      var current;
+                      current = allData2[i];
+                      if (types.indexOf(current.name) >= 0){
+                      }else{
+                          types.push(current.name);
+                          typesID.push(current.ID);
+                      }
                   }
+                  console.log("types : " + types);
+                  sessionStorage.setItem("categories", JSON.stringify(types));
+                  //alert(dataToDelete);
+                  location.reload();
+              
               })
 }
