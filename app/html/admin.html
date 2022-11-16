@@ -117,9 +117,14 @@
             <div id="ajoutFichiercsv" style="display: none">
                 <p>AJOUT DE FICHIER CSV</p>
                 <!-- <label for="avatar">File...</label> -->
-                <input id="csv" type="file" accept=".csv">
-                <pre id="out"><p>File contents will appear here</p></pre>
-                <button onclick="addCSVButton()" name="button-send-csv" class="button-send-csv" type="submit">Envoyer</button>
+                <!-- <input id="csv" type="file" accept=".csv"-->
+                <!-- <pre id="out"><p>File contents will appear here</p></pre> -->
+                <!--<button onclick="addCSVButton()" name="button-send-csv" class="button-send-csv" type="submit">Envoyer</button> -->
+
+                Select a file: <input type="file" id="myFile" >
+                <button onclick='addCSVButton()'>Process</button>
+                <table id="myTable" style="display: none"></table>
+
             </div>
 
         </div>

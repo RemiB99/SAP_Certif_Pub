@@ -344,6 +344,7 @@ function delQuestionButton(){
 //    console.log("Suppression de question... TODO");
 idQDel = '';
 alert("Question " + idQDel + " supprimée avec succès !");
+location.reload();
 }
 
 function addQuestionTypButton(){
@@ -445,6 +446,7 @@ function delQuestionTypButton(){
     //       console.error('Error:', error);
     //     });
     //setTimeout(() => { console.log("waiting for fetching"); }, 3000);
+    console.log(textSelector);
     setTimeout(function () {
         delID(textSelector);
         }, 3000);
@@ -485,18 +487,225 @@ function delQuestionTypButton(){
 }
 
 function addCSVButton(){
-    console.log("CSV !");
-    const fileInput = document.getElementById('csv')
-    const readFile = () => {
-      const reader = new FileReader()
-      reader.onload = () => {
-        document.getElementById('out').innerHTML = reader.result
-      }
-      // start reading the file. When it is done, calls the onload event defined above.
-      reader.readAsBinaryString(fileInput.files[0])
+
+    var fileSize = 0;
+    //get file
+    var theFile = document.getElementById("myFile");
+    
+     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+     //check if file is CSV
+     if (regex.test(theFile.value.toLowerCase())) {
+     //check if browser support FileReader
+        if (typeof (FileReader) != "undefined") {
+       //get table element
+        var table = document.getElementById("myTable");
+        var headerLine = "";
+
+        var lignesAjoutees;
+        var countTotal;
+        //create html5 file reader object
+        var myReader = new FileReader();
+        // call filereader. onload function
+        myReader.onload = function(e) {
+            var content = myReader.result;
+            //split csv file using "\n" for new line ( each row)
+            var lines = content.split("\r");
+            //loop all rows
+            for (var count = 0; count < lines.length; count++) {
+                //create a tr element
+                var row = document.createElement("tr");
+                //split each row content
+                var rowContent = lines[count].split(",");
+                //loop throw all columns of a row
+                for (var i = 0; i < rowContent.length; i++) {
+                   //create td element 
+                    var cellElement = document.createElement("td");
+                    if (count == 0) {
+                        cellElement = document.createElement("th");
+                    } else {
+                        cellElement = document.createElement("td");
+                    }
+                    //add a row element as a node for table
+                    var cellContent = document.createTextNode(rowContent[i]);
+                    
+                    cellElement.appendChild(cellContent);
+                    //append row child
+                    row.appendChild(cellElement);
+                    
+                }
+                //append table contents
+                    myTable.appendChild(row);
+                    console.log("zrzrzrzer" + rowContent[0]);
+                    var rowElements = rowContent[0].split(';')
+                    var countAdded = 0;
+                    if( rowElements[1] != null && rowElements[2] != null && rowElements[3] != null && rowElements[4] != null && rowElements[5] != null &&
+                        rowElements[6] != null && rowElements[7] != null && rowElements[8] != null && rowElements[9] != null && rowElements[10] != null &&
+                        rowElements[11] != null && rowElements[12] != null && rowElements[13] != null && rowElements[14] != null && rowElements[15] != null &&
+                        rowElements[16] != null && rowElements[17] != null && rowElements[18] != null && rowElements[19] != null && rowElements[20] != null &&
+                        rowElements[21] != null && rowElements[22] != null && rowElements[23] != null && rowElements[24] != null && rowElements[25] !=  null)
+                    {
+                        countAdded += 1;
+                        console.log("valid 1 : " + rowElements[15]);
+                        if(rowElements[15] == "0"){
+                            rowElements[15] = false;
+                            //addingQVal1 == false;
+                        }else if(rowElements[15] == "1"){
+                            rowElements[15] = true;
+                            //addingQVal1 =
+                        }else{
+                            rowElements[15] = null;
+                        }
+                        
+                        if(rowElements[16] == "0"){
+                            rowElements[16] = false;
+                        }else if(rowElements[16] == "1"){
+                            rowElements[16] = true;
+                        }else{
+                            rowElements[16] = null;
+                        }
+                        
+                        if(rowElements[17] == "0"){
+                            rowElements[17] = false;
+                        }else if(rowElements[17] == "1"){
+                            rowElements[17] = true;
+                        }else{
+                            rowElements[17] = null;
+                        }
+                        
+                        if(rowElements[18] == "0"){
+                            rowElements[18] = false;
+                        }else if(rowElements[18] == "1"){
+                            rowElements[18] = true;
+                        }else{
+                            rowElements[18] = null;
+                        }
+                        
+                        if(rowElements[19] == "0"){
+                            rowElements[19] = false;
+                        }else if(rowElements[19] == "1"){
+                            rowElements[19] = true;
+                        }else{
+                            rowElements[19] = null;
+                        }
+                        
+                        if(rowElements[20] == "0"){
+                            rowElements[20] = false;
+                        }else if(rowElements[20] == "1"){
+                            rowElements[20] = true;
+                        }else{
+                            rowElements[20] = null;
+                        }
+                        
+                        if(rowElements[21] == "0"){
+                            rowElements[21] = false;
+                        }else if(rowElements[21] == "1"){
+                            rowElements[21] = true;
+                        }else{
+                            rowElements[21] = null;
+                        }
+                        
+                        if(rowElements[22] == "0"){
+                            rowElements[22] = false;
+                        }else if(rowElements[22] == "1"){
+                            rowElements[22] = true;
+                        }else{
+                            rowElements[22] = null;
+                        }
+                        
+                        if(rowElements[23] == "0"){
+                            rowElements[23] = false;
+                        }else if(rowElements[23] == "1"){
+                            rowElements[23] = true;
+                        }else{
+                            rowElements[23] = null;
+                        }
+                        
+                        if(rowElements[24] == "0"){
+                            rowElements[24] = false;
+                        }else if(rowElements[24] == "1"){
+                            rowElements[24] = true;
+                        }else{
+                            rowElements[24] = null;
+                        }
+                        
+                        if(rowElements[25] == "0"){
+                            rowElements[25] = false;
+                        }else if(rowElements[25] == "1"){
+                            rowElements[25] = true;
+                        }else{
+                            rowElements[25] = null;
+                        }
+                        
+
+                        const data = { 
+                                        type: rowElements[1], 
+                                        description: rowElements[2], 
+                                        nbAns: parseInt(rowElements[3]), 
+                                        Answer1: rowElements[4], 
+                                        Answer2: rowElements[5], 
+                                        Answer3: rowElements[6], 
+                                        Answer4: rowElements[7], 
+                                        Answer5: rowElements[8], 
+                                        Answer6: rowElements[9], 
+                                        Answer7: rowElements[10], 
+                                        Answer8: rowElements[11], 
+                                        Answer9: rowElements[12], 
+                                        Answer10: rowElements[13], 
+                                        Answer11: rowElements[14], 
+                                        Valid1: rowElements[15], 
+                                        Valid2: rowElements[16], 
+                                        Valid3: rowElements[17], 
+                                        Valid4: rowElements[18], 
+                                        Valid5: rowElements[19], 
+                                        Valid6: rowElements[20], 
+                                        Valid7: rowElements[21], 
+                                        Valid8: rowElements[22], 
+                                        Valid9: rowElements[23], 
+                                        Valid10: rowElements[24], 
+                                        Valid11: rowElements[25]
+                                    };
+                        console.log(data);
+                        
+                        fetch(URLQuestions, {
+                            method: 'POST', // or 'PUT'
+                            headers: {
+                              'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(data),
+                          })
+                            .then((response) => response.json())
+                            .then((data) => {
+                              console.log('Success:', data);
+                              lignesAjoutees ++;
+                            })
+                            .catch((error) => {
+                              console.error('Error:', error);
+                            });
+                    }
+                    countTotal++;
+                    
+                    var nbQ = sessionStorage.getItem("NbQuestionsTotal");
+                    nbQ = parseInt(nbQ) + countAdded;
+                    sessionStorage.setItem("NbQuestionsTotal",nbQ);
+
+            }
+            
+        }
+        //setTimeout(alert(lignesAjoutees + "/" + (countTotal-1) + " Données ajoutées avec succès"), 3000);
+         //call file reader onload
+          myReader.readAsText(theFile.files[0]);
+        }
+        else 
+        {
+              alert("This browser does not support HTML5.");
+        }
+        
+    }
+    else {
+                alert("Please upload a valid CSV file.");
     }
     
-    fileInput.addEventListener('change', readFile)
+    return false;
 }
 
 function displayDivSupperssion(){
