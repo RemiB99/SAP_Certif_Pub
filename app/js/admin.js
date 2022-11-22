@@ -30,6 +30,8 @@ function modifyQuestionDiv(){
     document.getElementById("supperssionTypeQuestionnaire").style.display = "none";    
     document.getElementById("ajoutFichiercsv").style.display = "none"; 
     document.getElementById("actionDelQuestion").style.display = "none";
+    var nbQ = sessionStorage.getItem("NbQuestionsTotal");
+    document.getElementById("text-id-modif").innerText = "Sélectionnez l'ID de la question à modifier : " + "(min : 1, max : " + nbQ  +")";
 }
 
 function delQuestionDiv(){
@@ -712,7 +714,7 @@ function displayDivSupperssion(){
     idQDel = '';
     var nbQTTAL = sessionStorage.getItem("NbQuestionsTotal");
     //console.log("valeur sélectionnée : " + document.getElementById("supprID").value);
-    if(document.getElementById("supprID").value != "" && document.getElementById("supprID").value > 0 && document.getElementById("supprID").value < nbQTTAL+1){
+    if(document.getElementById("supprID").value != "" && document.getElementById("supprID").value > 0 && document.getElementById("supprID").value < parseInt(nbQTTAL)+1){
         alert("Patientez quelques instants, la question choisie charge...");
         document.getElementById("actionDelQuestion").style.display = "block";
         fetch(URLQuestions)
@@ -732,6 +734,32 @@ function displayDivSupperssion(){
         alert("Données erronées");
         document.getElementById("actionDelQuestion").style.display = "none";
     }
+}
+
+function displayDivModification(){
+    var idQModif = '';
+    var nbQTTAL = sessionStorage.getItem("NbQuestionsTotal");
+    if(document.getElementById("modifID").value != "" && document.getElementById("modifID").value > 0 && document.getElementById("modifID").value < parseInt(nbQTTAL)+1){
+        alert("Patientez quelques instants, la question choisie charge...");
+        document.getElementById("modifyForm").style.display = "block";
+        fetch(URLQuestions)
+        .then(response => response.json())
+        .then((data) =>{
+            var allDataMod;
+            allDataMod = data.value;            
+            for(var i = 0; i < allDataMod.length; i++){
+                if(parseInt(allDataMod[i].ID) == parseInt(document.getElementById("modifID").value)){
+                    document.getElementById("modType").value = allDataMod[i].type;
+                    idQModif = allDataMod[i].ID;
+                }
+            }
+       })
+       
+    }else{
+        alert("Données erronées");
+        document.getElementById("modifyForm").style.display = "none";
+    }
+
 }
 
 function fillHTML(){

@@ -77,21 +77,87 @@
 
             <div id="modifQuestion" style="display: none">
                 <p>MODIFICATION DE QUESTION</p>
-                <button onclick="modifyQuestionButton()" name="button-modify" class="button-modify" type="submit">Modifier</button>
+                <div id="modifyQuestionDiv">
+                    <div id="divChargementDel">
+                        <p id="text-id-modif">Sélectionnez l'ID de la question à supprimer : </p>
+                        <input type="number" id="modifID" name="modifID" min="1">
+                        <button onclick="displayDivModification()" name="button-div-modif" class="button-div-modif" type="submit">Charger</button>
+                    </div>
+                    <div id="modifyForm" style="display: none">
+                        <form>
+                            <div>
+                                <p>Type de question : </p>
+                                <select class="modType" id="modType">
+                                </select>
+                            </div>
+                            <div>
+                                <p>Description de la question : </p>
+                                <textarea id="modDesc" name="modDesc" rows="5" cols="40" placeholder="Entrez la question"></textarea>
+                            </div>
+                            <div>
+                                <p>Nombre de réponses : </p>
+                                <select class="modNOA" id="modNOA">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p>Réponses Possibles : </p>
+                                <textarea id="modQ1" name="modQ1" rows="1" cols="100" placeholder="Réponse 1"></textarea>
+                                <input type="checkbox" id="modvalidQ1" name="modvalidQ1">
+                                <textarea id="modQ2" name="modQ2" rows="1" cols="100" placeholder="Réponse 2"></textarea>
+                                <input type="checkbox" id="modvalidQ2" name="modvalidQ2">
+                                <textarea id="modQ3" name="modQ3" rows="1" cols="100" placeholder="Réponse 3"></textarea>
+                                <input type="checkbox" id="modvalidQ3" name="modvalidQ3">
+                                <textarea id="modQ4" name="modQ4" rows="1" cols="100" placeholder="Réponse 4"></textarea>
+                                <input type="checkbox" id="modvalidQ4" name="modvalidQ4">
+                                <textarea id="modQ5" name="modQ5" rows="1" cols="100" placeholder="Réponse 5"></textarea>
+                                <input type="checkbox" id="modvalidQ5" name="modvalidQ5">
+                                <textarea id="modQ6" name="modQ6" rows="1" cols="100" placeholder="Réponse 6"></textarea>
+                                <input type="checkbox" id="modvalidQ6" name="modvalidQ6">
+                                <textarea id="modQ7" name="modQ7" rows="1" cols="100" placeholder="Réponse 7"></textarea>
+                                <input type="checkbox" id="modvalidQ7" name="modvalidQ7">
+                                <textarea id="modQ8" name="modQ8" rows="1" cols="100" placeholder="Réponse 8"></textarea>
+                                <input type="checkbox" id="modvalidQ8" name="modvalidQ8">
+                                <textarea id="modQ9" name="modQ9" rows="1" cols="100" placeholder="Réponse 9"></textarea>
+                                <input type="checkbox" id="modvalidQ9" name="modvalidQ9">
+                                <textarea id="modQ10" name="modQ10" rows="1" cols="100" placeholder="Réponse 10"></textarea>
+                                <input type="checkbox" id="modvalidQ10" name="modvalidQ10">
+                                <textarea id="modQ11" name="modQ11" rows="1" cols="100" placeholder="Réponse 11"></textarea>
+                                <input type="checkbox" id="modvalidQ11" name="modvalidQ11">
+                            </div>
+                        </form>
+                    
+                
+                        <button onclick="modifyQuestionButton()" name="button-modify" class="button-modify" type="submit">Modifier</button>
+                    </div>
+                </div>
             </div>
 
             <div id="supprQuestion" style="display: none">
+                
                 <p>SUPRESSION DE QUESTION</p>
-                <!-- <textarea id="supprID" name="supprID" rows="1" cols="15" placeholder="Suppression ID"></textarea> -->
+
                 <div id="divChargementDel">
                     <p id="text-id-suppr">Sélectionnez l'ID de la question à supprimer : </p>
                     <input type="number" id="supprID" name="supprID" min="1">
                     <button onclick="displayDivSupperssion()" name="button-div-suppr" class="button-div-suppr" type="submit">Charger</button>
                 </div>
+
                 <div id="actionDelQuestion" style="display: none">
                     <p id="selectedDelet">"Question Sélectionnée : "</p>
                     <button onclick="delQuestionButton()" name="button-suppr" class="button-suppr" type="submit">Supprimer</button>
                 </div>
+
             </div>
 
             <div id="ajoutTypeQuestionnaire" style="display: none">
