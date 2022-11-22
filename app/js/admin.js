@@ -32,6 +32,15 @@ function modifyQuestionDiv(){
     document.getElementById("actionDelQuestion").style.display = "none";
     var nbQ = sessionStorage.getItem("NbQuestionsTotal");
     document.getElementById("text-id-modif").innerText = "Sélectionnez l'ID de la question à modifier : " + "(min : 1, max : " + nbQ  +")";
+
+    var selectMod = document.getElementById('modType');
+    const categories = JSON.parse(sessionStorage.getItem('categories'));
+    for(let i = 0; i <= categories.length - 1; i++){
+        var option = document.createElement("option");
+        option.setAttribute('id', i);
+        option.text = categories[i];
+        selectMod.appendChild(option);
+    }
 }
 
 function delQuestionDiv(){
@@ -749,7 +758,95 @@ function displayDivModification(){
             allDataMod = data.value;            
             for(var i = 0; i < allDataMod.length; i++){
                 if(parseInt(allDataMod[i].ID) == parseInt(document.getElementById("modifID").value)){
+
+                    // marche pas
                     document.getElementById("modType").value = allDataMod[i].type;
+
+                    document.getElementById("modDesc").value = allDataMod[i].description;
+
+                    //marche pas
+                    var nombreRep = allDataMod[i].nbAns.toString();
+                    //console.log("nombre de réponses : " + nombreRep);
+                    document.getElementById("modNOA").value = nombreRep;
+
+                    document.getElementById("modQ1").value = allDataMod[i].Answer1;
+                    document.getElementById("modQ2").value = allDataMod[i].Answer2;
+                    document.getElementById("modQ3").value = allDataMod[i].Answer3;
+                    document.getElementById("modQ4").value = allDataMod[i].Answer4;
+                    document.getElementById("modQ5").value = allDataMod[i].Answer5;
+                    document.getElementById("modQ6").value = allDataMod[i].Answer6;
+                    document.getElementById("modQ7").value = allDataMod[i].Answer7;
+                    document.getElementById("modQ8").value = allDataMod[i].Answer8;
+                    document.getElementById("modQ9").value = allDataMod[i].Answer9;
+                    document.getElementById("modQ10").value = allDataMod[i].Answer10;
+                    document.getElementById("modQ11").value = allDataMod[i].Answer11;
+
+                    if(allDataMod[i].Valid1 == 1 && allDataMod[i].Answer1 != "" && allDataMod[i].Answer1 != "NULL"){
+                        document.getElementById("modvalidQ1").checked = true;
+                    }else{
+                        document.getElementById("modvalidQ1").checked = false;
+                    }
+
+                    if(allDataMod[i].Valid2 == 1 && allDataMod[i].Answer2 != "" && allDataMod[i].Answer2 != "NULL"){
+                        document.getElementById("modvalidQ2").checked = true;
+                    }else{
+                        document.getElementById("modvalidQ2").checked = false;
+                    }
+
+                    if(allDataMod[i].Valid3 == 1 && allDataMod[i].Answer3 != "" && allDataMod[i].Answer3 != "NULL"){
+                        document.getElementById("modvalidQ3").checked = true;
+                    }else{
+                        document.getElementById("modvalidQ3").checked = false;
+                    }
+                    
+                    if(allDataMod[i].Valid4 == 1 && allDataMod[i].Answer4 != "" && allDataMod[i].Answer4 != "NULL"){
+                        document.getElementById("modvalidQ4").checked = true;
+                    }else{
+                        document.getElementById("modvalidQ4").checked = false;
+                    }
+
+                    if(allDataMod[i].Valid5 == 1 && allDataMod[i].Answer5 != "" && allDataMod[i].Answer5 != "NULL"){
+                        document.getElementById("modvalidQ5").checked = true;
+                    }else{
+                        document.getElementById("modvalidQ5").checked = false;
+                    }
+
+                    if(allDataMod[i].Valid6 == 1 && allDataMod[i].Answer6 != "" && allDataMod[i].Answer6 != "NULL"){
+                        document.getElementById("modvalidQ6").checked = true;
+                    }else{
+                        document.getElementById("modvalidQ6").checked = false;
+                    }
+
+                    if(allDataMod[i].Valid7 == 1 && allDataMod[i].Answer7 != "" && allDataMod[i].Answer7 != "NULL"){
+                        document.getElementById("modvalidQ7").checked = true;
+                    }else{
+                        document.getElementById("modvalidQ7").checked = false;
+                    }
+
+                    if(allDataMod[i].Valid8 == 1 && allDataMod[i].Answer8 != "" && allDataMod[i].Answer8 != "NULL"){
+                        document.getElementById("modvalidQ8").checked = true;
+                    }else{
+                        document.getElementById("modvalidQ8").checked = false;
+                    }
+
+                    if(allDataMod[i].Valid9 == 1 && allDataMod[i].Answer9 != "" && allDataMod[i].Answer9 != "NULL"){
+                        document.getElementById("modvalidQ9").checked = true;
+                    }else{
+                        document.getElementById("modvalidQ9").checked = false;
+                    }
+
+                    if(allDataMod[i].Valid10 == 1 && allDataMod[i].Answer10 != "" && allDataMod[i].Answer10 != "NULL"){
+                        document.getElementById("modvalidQ10").checked = true;
+                    }else{
+                        document.getElementById("modvalidQ10").checked = false;
+                    }
+
+                    if(allDataMod[i].Valid11 == 1 && allDataMod[i].Answer11 != "" && allDataMod[i].Answer11 != "NULL"){
+                        document.getElementById("modvalidQ11").checked = true;
+                    }else{
+                        document.getElementById("modvalidQ11").checked = false;
+                    }
+
                     idQModif = allDataMod[i].ID;
                 }
             }
