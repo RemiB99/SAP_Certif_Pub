@@ -98,6 +98,7 @@ function addCSVDiv(){
 
 function addQuestionButton(){
     console.log("Ajout de question... TODO");
+    if(confirm("Voulez-vous vraiment ajouter cette question ?")){
     var addingQType = document.getElementById('addType').value;
     var addingQDesc = document.getElementById('addDesc').value;
     var addingQNOA = document.getElementById('addNOA').value;
@@ -339,255 +340,263 @@ fetch(URLQuestions, {
         var nbQ = sessionStorage.getItem("NbQuestionsTotal");
         nbQ = parseInt(nbQ) +1;
         sessionStorage.setItem("NbQuestionsTotal",nbQ);
+        location.reload();
+    }
     }
 
 }
 
 function modifyQuestionButton(){
     console.log("Modification de question... TODO");
-    var modifQType = document.getElementById('modType').value;
-    var modifQDesc = document.getElementById('modDesc').value;
-    var modifQNOA = document.getElementById('modNOA').value;
-    var modifQRep1 = document.getElementById('modQ1').value;
-    var modifQRep2 = document.getElementById('modQ2').value;
-    var modifQRep3 = document.getElementById('modQ3').value;
-    var modifQRep4 = document.getElementById('modQ4').value;
-    var modifQRep5 = document.getElementById('modQ5').value;
-    var modifQRep6 = document.getElementById('modQ6').value;
-    var modifQRep7 = document.getElementById('modQ7').value;
-    var modifQRep8 = document.getElementById('modQ8').value;
-    var modifQRep9 = document.getElementById('modQ9').value;
-    var modifQRep10 = document.getElementById('modQ10').value;
-    var modifQRep11 = document.getElementById('modQ11').value;
-    var modifQVal1 = document.getElementById('modvalidQ1').checked;
-    var modifQVal2 = document.getElementById('modvalidQ2').checked;
-    var modifQVal3 = document.getElementById('modvalidQ3').checked;
-    var modifQVal4 = document.getElementById('modvalidQ4').checked;
-    var modifQVal5 = document.getElementById('modvalidQ5').checked;
-    var modifQVal6 = document.getElementById('modvalidQ6').checked;
-    var modifQVal7 = document.getElementById('modvalidQ7').checked;
-    var modifQVal8 = document.getElementById('modvalidQ8').checked;
-    var modifQVal9 = document.getElementById('modvalidQ9').checked;
-    var modifQVal10 = document.getElementById('modvalidQ10').checked;
-    var modifQVal11 = document.getElementById('modvalidQ11').checked;
-    var checkNbAnswers = 0;
-    var nbRep = 0;
-    var id;
+    idConfirm = sessionStorage.getItem("IDQMODIF");
+    if(confirm("Voulez-vous vraiment modifier la question n°" + idConfirm + " ?")){
+        var modifQType = document.getElementById('modType').value;
+        var modifQDesc = document.getElementById('modDesc').value;
+        var modifQNOA = document.getElementById('modNOA').value;
+        var modifQRep1 = document.getElementById('modQ1').value;
+        var modifQRep2 = document.getElementById('modQ2').value;
+        var modifQRep3 = document.getElementById('modQ3').value;
+        var modifQRep4 = document.getElementById('modQ4').value;
+        var modifQRep5 = document.getElementById('modQ5').value;
+        var modifQRep6 = document.getElementById('modQ6').value;
+        var modifQRep7 = document.getElementById('modQ7').value;
+        var modifQRep8 = document.getElementById('modQ8').value;
+        var modifQRep9 = document.getElementById('modQ9').value;
+        var modifQRep10 = document.getElementById('modQ10').value;
+        var modifQRep11 = document.getElementById('modQ11').value;
+        var modifQVal1 = document.getElementById('modvalidQ1').checked;
+        var modifQVal2 = document.getElementById('modvalidQ2').checked;
+        var modifQVal3 = document.getElementById('modvalidQ3').checked;
+        var modifQVal4 = document.getElementById('modvalidQ4').checked;
+        var modifQVal5 = document.getElementById('modvalidQ5').checked;
+        var modifQVal6 = document.getElementById('modvalidQ6').checked;
+        var modifQVal7 = document.getElementById('modvalidQ7').checked;
+        var modifQVal8 = document.getElementById('modvalidQ8').checked;
+        var modifQVal9 = document.getElementById('modvalidQ9').checked;
+        var modifQVal10 = document.getElementById('modvalidQ10').checked;
+        var modifQVal11 = document.getElementById('modvalidQ11').checked;
+        var checkNbAnswers = 0;
+        var nbRep = 0;
+        var id;
 
-    console.log(modifQType);
-    console.log(modifQDesc);
-    console.log(modifQNOA);
-    console.log('rep 1 : ' + modifQRep1);
-    console.log('rep 2 : ' + modifQRep2);
-    console.log('rep 3 : ' + modifQRep3);
-    console.log('rep 4 : ' + modifQRep4);
-    console.log('rep 5 : ' + modifQRep5);
-    console.log('rep 6 : ' + modifQRep6);
-    console.log('rep 7 : ' + modifQRep7);
-    console.log('rep 8 : ' + modifQRep8);
-    console.log('rep 9 : ' + modifQRep9);
-    console.log('rep 10 : ' + modifQRep10);
-    console.log('rep 11 : ' + modifQRep11);
-    console.log('val 1 : ' + modifQVal1);
-    console.log('val 2 : ' + modifQVal2);
-    console.log('val 3 : ' + modifQVal3);
-    console.log('val 4 : ' + modifQVal4);
-    console.log('val 5 : ' + modifQVal5);
-    console.log('val 6 : ' + modifQVal6);
-    console.log('val 7 : ' + modifQVal7);
-    console.log('val 8 : ' + modifQVal8);
-    console.log('val 9 : ' + modifQVal9);
-    console.log('val 10 : ' + modifQVal10);
-    console.log('val 11 : ' + modifQVal11);
+        console.log(modifQType);
+        console.log(modifQDesc);
+        console.log(modifQNOA);
+        console.log('rep 1 : ' + modifQRep1);
+        console.log('rep 2 : ' + modifQRep2);
+        console.log('rep 3 : ' + modifQRep3);
+        console.log('rep 4 : ' + modifQRep4);
+        console.log('rep 5 : ' + modifQRep5);
+        console.log('rep 6 : ' + modifQRep6);
+        console.log('rep 7 : ' + modifQRep7);
+        console.log('rep 8 : ' + modifQRep8);
+        console.log('rep 9 : ' + modifQRep9);
+        console.log('rep 10 : ' + modifQRep10);
+        console.log('rep 11 : ' + modifQRep11);
+        console.log('val 1 : ' + modifQVal1);
+        console.log('val 2 : ' + modifQVal2);
+        console.log('val 3 : ' + modifQVal3);
+        console.log('val 4 : ' + modifQVal4);
+        console.log('val 5 : ' + modifQVal5);
+        console.log('val 6 : ' + modifQVal6);
+        console.log('val 7 : ' + modifQVal7);
+        console.log('val 8 : ' + modifQVal8);
+        console.log('val 9 : ' + modifQVal9);
+        console.log('val 10 : ' + modifQVal10);
+        console.log('val 11 : ' + modifQVal11);
 
-            if(modifQRep1 != "" && modifQVal1 == true){
-                checkNbAnswers += 1;
-                nbRep += 1;
-            }else if(modifQRep1 != "" && modifQVal1 == false){
-                nbRep += 1;
-            }else if(modifQRep1 == ""){
-                modifQRep1 = "NULL";
-                modifQVal1 = null;
-            }
-        
-            if(modifQRep2 != "" && modifQVal2 == true){
-                checkNbAnswers += 1;
-                nbRep += 1;
-            }else if(modifQRep2 != "" && modifQVal2 == false){
-                nbRep += 1;
-            }else if(modifQRep2 == ""){
-                modifQRep2 = "NULL";
-                modifQVal2 = null;
-            }
-        
-            if(modifQRep3 != "" && modifQVal3 == true){
-                checkNbAnswers += 1;
-                nbRep += 1;
-            }else if(modifQRep3 != "" && modifQVal3 == false){
-                nbRep += 1;
-            }else if(modifQRep3 == ""){
-                modifQRep3 = "NULL";
-                modifQVal3 = null;
-            }
-        
-            if(modifQRep4 != "" && modifQVal4 == true){
-                checkNbAnswers += 1;
-                nbRep += 1;
-            }else if(modifQRep4 != "" && modifQVal4 == false){
-                nbRep += 1;
-            }else if(modifQRep4 == ""){
-                modifQRep4 = "NULL";
-                modifQVal4 = null;
-            }
-        
-            if(modifQRep5 != "" && modifQVal5 == true){
-                checkNbAnswers += 1;
-                nbRep += 1;
-            }else if(modifQRep5 != "" && modifQVal5 == false){
-                nbRep += 1;
-            }else if(modifQRep5 == ""){
-                modifQRep5 = "NULL";
-                modifQVal5 = null;
-            }
-        
-            if(modifQRep6 != "" && modifQVal6 == true){
-                checkNbAnswers += 1;
-                nbRep += 1;
-            }else if(modifQRep6 != "" && modifQVal6 == false){
-                nbRep += 1;
-            }else if(modifQRep6 == ""){
-                modifQRep6 = "NULL";
-                modifQVal6 = null;
-            }
-        
-            if(modifQRep7 != "" && modifQVal7 == true){
-                checkNbAnswers += 1;
-                nbRep += 1;
-            }else if(modifQRep7 != "" && modifQVal7 == false){
-                nbRep += 1;
-            }else if(modifQRep7 == ""){
-                modifQRep7 = "NULL";
-                modifQVal7 = null;
-            }
-        
-            if(modifQRep8 != "" && modifQVal8 == true){
-                checkNbAnswers += 1;
-                nbRep += 1;
-            }else if(modifQRep8 != "" && modifQVal8 == false){
-                nbRep += 1;
-            }else if(modifQRep8 == ""){
-                modifQRep8 = "NULL";
-                modifQVal8 = null;
-            }
-        
-            if(modifQRep9 != "" && modifQVal9 == true){
-                checkNbAnswers += 1;
-                nbRep += 1;
-            }else if(modifQRep9 != "" && modifQVal9 == false){
-                nbRep += 1;
-            }else if(modifQRep9 == ""){
-                modifQRep9 = "NULL";
-                modifQVal9 = null;
-            }
-        
-            if(modifQRep10 != "" && modifQVal10 == true){
-                checkNbAnswers += 1;
-                nbRep += 1;
-            }else if(modifQRep10 != "" && modifQVal10 == false){
-                nbRep += 1;
-            }else if(modifQRep10 == ""){
-                modifQRep10 = "NULL";
-                modifQVal10 = null;
-            }
-        
-            if(modifQRep11 != "" && modifQVal11 == true){
-                checkNbAnswers += 1;
-                nbRep += 1;
-            }else if(modifQRep11 != "" && modifQVal11 == false){
-                nbRep += 1;
-            }else if(modifQRep11 == ""){
-                modifQRep11 = "NULL";
-                modifQVal11 = null;
-            }
+                if(modifQRep1 != "" && modifQVal1 == true){
+                    checkNbAnswers += 1;
+                    nbRep += 1;
+                }else if(modifQRep1 != "" && modifQVal1 == false){
+                    nbRep += 1;
+                }else if(modifQRep1 == ""){
+                    modifQRep1 = "NULL";
+                    modifQVal1 = null;
+                }
+            
+                if(modifQRep2 != "" && modifQVal2 == true){
+                    checkNbAnswers += 1;
+                    nbRep += 1;
+                }else if(modifQRep2 != "" && modifQVal2 == false){
+                    nbRep += 1;
+                }else if(modifQRep2 == ""){
+                    modifQRep2 = "NULL";
+                    modifQVal2 = null;
+                }
+            
+                if(modifQRep3 != "" && modifQVal3 == true){
+                    checkNbAnswers += 1;
+                    nbRep += 1;
+                }else if(modifQRep3 != "" && modifQVal3 == false){
+                    nbRep += 1;
+                }else if(modifQRep3 == ""){
+                    modifQRep3 = "NULL";
+                    modifQVal3 = null;
+                }
+            
+                if(modifQRep4 != "" && modifQVal4 == true){
+                    checkNbAnswers += 1;
+                    nbRep += 1;
+                }else if(modifQRep4 != "" && modifQVal4 == false){
+                    nbRep += 1;
+                }else if(modifQRep4 == ""){
+                    modifQRep4 = "NULL";
+                    modifQVal4 = null;
+                }
+            
+                if(modifQRep5 != "" && modifQVal5 == true){
+                    checkNbAnswers += 1;
+                    nbRep += 1;
+                }else if(modifQRep5 != "" && modifQVal5 == false){
+                    nbRep += 1;
+                }else if(modifQRep5 == ""){
+                    modifQRep5 = "NULL";
+                    modifQVal5 = null;
+                }
+            
+                if(modifQRep6 != "" && modifQVal6 == true){
+                    checkNbAnswers += 1;
+                    nbRep += 1;
+                }else if(modifQRep6 != "" && modifQVal6 == false){
+                    nbRep += 1;
+                }else if(modifQRep6 == ""){
+                    modifQRep6 = "NULL";
+                    modifQVal6 = null;
+                }
+            
+                if(modifQRep7 != "" && modifQVal7 == true){
+                    checkNbAnswers += 1;
+                    nbRep += 1;
+                }else if(modifQRep7 != "" && modifQVal7 == false){
+                    nbRep += 1;
+                }else if(modifQRep7 == ""){
+                    modifQRep7 = "NULL";
+                    modifQVal7 = null;
+                }
+            
+                if(modifQRep8 != "" && modifQVal8 == true){
+                    checkNbAnswers += 1;
+                    nbRep += 1;
+                }else if(modifQRep8 != "" && modifQVal8 == false){
+                    nbRep += 1;
+                }else if(modifQRep8 == ""){
+                    modifQRep8 = "NULL";
+                    modifQVal8 = null;
+                }
+            
+                if(modifQRep9 != "" && modifQVal9 == true){
+                    checkNbAnswers += 1;
+                    nbRep += 1;
+                }else if(modifQRep9 != "" && modifQVal9 == false){
+                    nbRep += 1;
+                }else if(modifQRep9 == ""){
+                    modifQRep9 = "NULL";
+                    modifQVal9 = null;
+                }
+            
+                if(modifQRep10 != "" && modifQVal10 == true){
+                    checkNbAnswers += 1;
+                    nbRep += 1;
+                }else if(modifQRep10 != "" && modifQVal10 == false){
+                    nbRep += 1;
+                }else if(modifQRep10 == ""){
+                    modifQRep10 = "NULL";
+                    modifQVal10 = null;
+                }
+            
+                if(modifQRep11 != "" && modifQVal11 == true){
+                    checkNbAnswers += 1;
+                    nbRep += 1;
+                }else if(modifQRep11 != "" && modifQVal11 == false){
+                    nbRep += 1;
+                }else if(modifQRep11 == ""){
+                    modifQRep11 = "NULL";
+                    modifQVal11 = null;
+                }
 
-            if(modifQDesc == ""){
-                alert("La description est vide, veuillez en insérer une...");
-            }else if(checkNbAnswers != parseInt(modifQNOA)){
-                alert("Nombre de réponses justes différent du nombre de réponses valides cochées, veuillez re-vérifier...");
-            }else if(nbRep < 2){
-                alert("Veuillez entrer plus qu'une réponse possible...");
-            }else{
-                const data = { 
-                    //ID: idQmodif,
-                    type: modifQType, 
-                    description: modifQDesc, 
-                    nbAns: parseInt(modifQNOA), 
-                    Answer1: modifQRep1, 
-                    Answer2: modifQRep2, 
-                    Answer3: modifQRep3, 
-                    Answer4: modifQRep4, 
-                    Answer5: modifQRep5, 
-                    Answer6: modifQRep6, 
-                    Answer7: modifQRep7, 
-                    Answer8: modifQRep8, 
-                    Answer9: modifQRep9, 
-                    Answer10: modifQRep10, 
-                    Answer11: modifQRep11, 
-                    Valid1: modifQVal1, 
-                    Valid2: modifQVal2, 
-                    Valid3: modifQVal3, 
-                    Valid4: modifQVal4, 
-                    Valid5: modifQVal5, 
-                    Valid6: modifQVal6, 
-                    Valid7: modifQVal7, 
-                    Valid8: modifQVal8, 
-                    Valid9: modifQVal9, 
-                    Valid10: modifQVal10, 
-                    Valid11: modifQVal11
-                };
+                if(modifQDesc == ""){
+                    alert("La description est vide, veuillez en insérer une...");
+                }else if(checkNbAnswers != parseInt(modifQNOA)){
+                    alert("Nombre de réponses justes différent du nombre de réponses valides cochées, veuillez re-vérifier...");
+                }else if(nbRep < 2){
+                    alert("Veuillez entrer plus qu'une réponse possible...");
+                }else{
+                    const data = { 
+                        //ID: idQmodif,
+                        type: modifQType, 
+                        description: modifQDesc, 
+                        nbAns: parseInt(modifQNOA), 
+                        Answer1: modifQRep1, 
+                        Answer2: modifQRep2, 
+                        Answer3: modifQRep3, 
+                        Answer4: modifQRep4, 
+                        Answer5: modifQRep5, 
+                        Answer6: modifQRep6, 
+                        Answer7: modifQRep7, 
+                        Answer8: modifQRep8, 
+                        Answer9: modifQRep9, 
+                        Answer10: modifQRep10, 
+                        Answer11: modifQRep11, 
+                        Valid1: modifQVal1, 
+                        Valid2: modifQVal2, 
+                        Valid3: modifQVal3, 
+                        Valid4: modifQVal4, 
+                        Valid5: modifQVal5, 
+                        Valid6: modifQVal6, 
+                        Valid7: modifQVal7, 
+                        Valid8: modifQVal8, 
+                        Valid9: modifQVal9, 
+                        Valid10: modifQVal10, 
+                        Valid11: modifQVal11
+                    };
 
-                id = sessionStorage.getItem("IDQMODIF");
-                console.log("idQmodif dans l'url : " + id);
-                var URLID = URLQuestions + "/" + id;
-                console.log(URLID);
-                fetch(URLID, {
-                    method: 'PATCH', // or 'PUT'
-                    headers: {
-                      'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                  })
-                    .then((response) => response.json())
-                    .then((data) => {
-                      console.log('Success:', data);
-                      alert("Question " + id + " modifiée avec succès !");
-                      sessionStorage.setItem("IDQMODIF", 0);
-                      location.reload();
+                    id = sessionStorage.getItem("IDQMODIF");
+                    console.log("idQmodif dans l'url : " + id);
+                    var URLID = URLQuestions + "/" + id;
+                    console.log(URLID);
+                    fetch(URLID, {
+                        method: 'PATCH', // or 'PUT'
+                        headers: {
+                        'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
                     })
-                    .catch((error) => {
-                      console.error('Error:', error);
-                      alert("erreur lors de l'update");
-                    });
-            }
+                        .then((response) => response.json())
+                        .then((data) => {
+                        console.log('Success:', data);
+                        alert("Question " + id + " modifiée avec succès !");
+                        sessionStorage.setItem("IDQMODIF", 0);
+                        location.reload();
+                        })
+                        .catch((error) => {
+                        console.error('Error:', error);
+                        alert("erreur lors de l'update");
+                        });
+                }
+    }
         
 }
 
 function delQuestionButton(){
-    fetch(URLQuestions + '/' + idQDel, {
-  method: 'DELETE',
-})
-.then(res => res.text()) // or res.json()
-.then(res => console.log(res))
-//    console.log("Suppression de question... TODO");
-idQDel = '';    
-alert("Question " + idQDel + " supprimée avec succès !");
-location.reload();
+    if(confirm("Voulez-vous vraiment supprimer la question n°" + idQDel + " ?")){
+            fetch(URLQuestions + '/' + idQDel, {
+        method: 'DELETE',
+        })
+        .then(res => res.text()) // or res.json()
+        .then(res => console.log(res))
+        //    console.log("Suppression de question... TODO");
+        idQDel = '';    
+        alert("Question " + idQDel + " supprimée avec succès !");
+        location.reload();
+    }
 }
 
 function addQuestionTypButton(){
     console.log("Ajout de type de question... TODO");
     var addingTyType = document.getElementById('typeName').value;
     var addingTyDesc = document.getElementById('typeDesc').value;
+    if(confirm("Voulez-vous vraiment ajouter le type de question suivant : " + addingTyType + " ?")){
     console.log(addingTyType);
     console.log(addingTyDesc);
     const data = { 
@@ -638,6 +647,7 @@ function addQuestionTypButton(){
             document.getElementById('typeDesc').value = "";
             alert("Erreur rencontrée lors de l'ajout, veuillez recommencer :/"); 
         }
+    }
 }
 
 function delQuestionTypButton(){
@@ -724,7 +734,7 @@ function delQuestionTypButton(){
 }
 
 function addCSVButton(){
-
+    if(confirm("Voulez-vous vraiment importer toutes les questions en provenance de ce fichier ?")){
     var fileSize = 0;
     //get file
     var theFile = document.getElementById("myFile");
@@ -944,6 +954,7 @@ function addCSVButton(){
     
     return false;
 }
+}
 
 function displayDivSupperssion(){
     idQDel = '';
@@ -1158,38 +1169,40 @@ function fillHTML(){
 }
 
 function delID(textSelector){
-    fetch(URLQuestionTypes + '/' + dataToDelete, {
-        method: 'DELETE',
-      })
-      .then(res => res.text()) // or res.json()
-      .then(res => console.log(res))
-      idQDel = '';
-      alert("Type de question " + textSelector + " supprimée avec succès !");
+    if(confirm("Voulez-vous vraiment supprimer le type de question " + textSelector + " ?")){
+        fetch(URLQuestionTypes + '/' + dataToDelete, {
+            method: 'DELETE',
+        })
+        .then(res => res.text()) // or res.json()
+        .then(res => console.log(res))
+        idQDel = '';
+        alert("Type de question " + textSelector + " supprimée avec succès !");
 
-      fetch(URLQuestionTypes)
-              .then(response => response.json())
-              .then((data) =>{
-          //        console.log(data.value);
-                  var types = [];
-                  var typesID = [];
-                  var allData2;
-                  allData2 = data.value;
-                  console.log(allData2);
-                  
-          //    window.location.href= 'categorie2.html';
-                  for (var i = 0; i < allData2.length; i++) {
-                      var current;
-                      current = allData2[i];
-                      if (types.indexOf(current.name) >= 0){
-                      }else{
-                          types.push(current.name);
-                          typesID.push(current.ID);
-                      }
-                  }
-                  console.log("types : " + types);
-                  sessionStorage.setItem("categories", JSON.stringify(types));
-                  //alert(dataToDelete);
-                  location.reload();
-              
-              })
+        fetch(URLQuestionTypes)
+                .then(response => response.json())
+                .then((data) =>{
+            //        console.log(data.value);
+                    var types = [];
+                    var typesID = [];
+                    var allData2;
+                    allData2 = data.value;
+                    console.log(allData2);
+                    
+            //    window.location.href= 'categorie2.html';
+                    for (var i = 0; i < allData2.length; i++) {
+                        var current;
+                        current = allData2[i];
+                        if (types.indexOf(current.name) >= 0){
+                        }else{
+                            types.push(current.name);
+                            typesID.push(current.ID);
+                        }
+                    }
+                    console.log("types : " + types);
+                    sessionStorage.setItem("categories", JSON.stringify(types));
+                    //alert(dataToDelete);
+                    location.reload();
+                
+                })
+    }
 }
