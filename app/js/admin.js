@@ -2,6 +2,7 @@ var URLQuestions = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applications
 var URLQuestionTypes = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applicationstudio.cloud.sap/sap/QuestionTypes';
 var idQDel;
 var dataToDelete;
+var idQModif;
 
 function addQuestionDiv(){
     document.getElementById("ajoutQuestion").style.display = "block";
@@ -344,6 +345,231 @@ fetch(URLQuestions, {
 
 function modifyQuestionButton(){
     console.log("Modification de question... TODO");
+    var modifQType = document.getElementById('modType').value;
+    var modifQDesc = document.getElementById('modDesc').value;
+    var modifQNOA = document.getElementById('modNOA').value;
+    var modifQRep1 = document.getElementById('modQ1').value;
+    var modifQRep2 = document.getElementById('modQ2').value;
+    var modifQRep3 = document.getElementById('modQ3').value;
+    var modifQRep4 = document.getElementById('modQ4').value;
+    var modifQRep5 = document.getElementById('modQ5').value;
+    var modifQRep6 = document.getElementById('modQ6').value;
+    var modifQRep7 = document.getElementById('modQ7').value;
+    var modifQRep8 = document.getElementById('modQ8').value;
+    var modifQRep9 = document.getElementById('modQ9').value;
+    var modifQRep10 = document.getElementById('modQ10').value;
+    var modifQRep11 = document.getElementById('modQ11').value;
+    var modifQVal1 = document.getElementById('modvalidQ1').checked;
+    var modifQVal2 = document.getElementById('modvalidQ2').checked;
+    var modifQVal3 = document.getElementById('modvalidQ3').checked;
+    var modifQVal4 = document.getElementById('modvalidQ4').checked;
+    var modifQVal5 = document.getElementById('modvalidQ5').checked;
+    var modifQVal6 = document.getElementById('modvalidQ6').checked;
+    var modifQVal7 = document.getElementById('modvalidQ7').checked;
+    var modifQVal8 = document.getElementById('modvalidQ8').checked;
+    var modifQVal9 = document.getElementById('modvalidQ9').checked;
+    var modifQVal10 = document.getElementById('modvalidQ10').checked;
+    var modifQVal11 = document.getElementById('modvalidQ11').checked;
+    var checkNbAnswers = 0;
+    var nbRep = 0;
+    var id;
+
+    console.log(modifQType);
+    console.log(modifQDesc);
+    console.log(modifQNOA);
+    console.log('rep 1 : ' + modifQRep1);
+    console.log('rep 2 : ' + modifQRep2);
+    console.log('rep 3 : ' + modifQRep3);
+    console.log('rep 4 : ' + modifQRep4);
+    console.log('rep 5 : ' + modifQRep5);
+    console.log('rep 6 : ' + modifQRep6);
+    console.log('rep 7 : ' + modifQRep7);
+    console.log('rep 8 : ' + modifQRep8);
+    console.log('rep 9 : ' + modifQRep9);
+    console.log('rep 10 : ' + modifQRep10);
+    console.log('rep 11 : ' + modifQRep11);
+    console.log('val 1 : ' + modifQVal1);
+    console.log('val 2 : ' + modifQVal2);
+    console.log('val 3 : ' + modifQVal3);
+    console.log('val 4 : ' + modifQVal4);
+    console.log('val 5 : ' + modifQVal5);
+    console.log('val 6 : ' + modifQVal6);
+    console.log('val 7 : ' + modifQVal7);
+    console.log('val 8 : ' + modifQVal8);
+    console.log('val 9 : ' + modifQVal9);
+    console.log('val 10 : ' + modifQVal10);
+    console.log('val 11 : ' + modifQVal11);
+
+            if(modifQRep1 != "" && modifQVal1 == true){
+                checkNbAnswers += 1;
+                nbRep += 1;
+            }else if(modifQRep1 != "" && modifQVal1 == false){
+                nbRep += 1;
+            }else if(modifQRep1 == ""){
+                modifQRep1 = "NULL";
+                modifQVal1 = null;
+            }
+        
+            if(modifQRep2 != "" && modifQVal2 == true){
+                checkNbAnswers += 1;
+                nbRep += 1;
+            }else if(modifQRep2 != "" && modifQVal2 == false){
+                nbRep += 1;
+            }else if(modifQRep2 == ""){
+                modifQRep2 = "NULL";
+                modifQVal2 = null;
+            }
+        
+            if(modifQRep3 != "" && modifQVal3 == true){
+                checkNbAnswers += 1;
+                nbRep += 1;
+            }else if(modifQRep3 != "" && modifQVal3 == false){
+                nbRep += 1;
+            }else if(modifQRep3 == ""){
+                modifQRep3 = "NULL";
+                modifQVal3 = null;
+            }
+        
+            if(modifQRep4 != "" && modifQVal4 == true){
+                checkNbAnswers += 1;
+                nbRep += 1;
+            }else if(modifQRep4 != "" && modifQVal4 == false){
+                nbRep += 1;
+            }else if(modifQRep4 == ""){
+                modifQRep4 = "NULL";
+                modifQVal4 = null;
+            }
+        
+            if(modifQRep5 != "" && modifQVal5 == true){
+                checkNbAnswers += 1;
+                nbRep += 1;
+            }else if(modifQRep5 != "" && modifQVal5 == false){
+                nbRep += 1;
+            }else if(modifQRep5 == ""){
+                modifQRep5 = "NULL";
+                modifQVal5 = null;
+            }
+        
+            if(modifQRep6 != "" && modifQVal6 == true){
+                checkNbAnswers += 1;
+                nbRep += 1;
+            }else if(modifQRep6 != "" && modifQVal6 == false){
+                nbRep += 1;
+            }else if(modifQRep6 == ""){
+                modifQRep6 = "NULL";
+                modifQVal6 = null;
+            }
+        
+            if(modifQRep7 != "" && modifQVal7 == true){
+                checkNbAnswers += 1;
+                nbRep += 1;
+            }else if(modifQRep7 != "" && modifQVal7 == false){
+                nbRep += 1;
+            }else if(modifQRep7 == ""){
+                modifQRep7 = "NULL";
+                modifQVal7 = null;
+            }
+        
+            if(modifQRep8 != "" && modifQVal8 == true){
+                checkNbAnswers += 1;
+                nbRep += 1;
+            }else if(modifQRep8 != "" && modifQVal8 == false){
+                nbRep += 1;
+            }else if(modifQRep8 == ""){
+                modifQRep8 = "NULL";
+                modifQVal8 = null;
+            }
+        
+            if(modifQRep9 != "" && modifQVal9 == true){
+                checkNbAnswers += 1;
+                nbRep += 1;
+            }else if(modifQRep9 != "" && modifQVal9 == false){
+                nbRep += 1;
+            }else if(modifQRep9 == ""){
+                modifQRep9 = "NULL";
+                modifQVal9 = null;
+            }
+        
+            if(modifQRep10 != "" && modifQVal10 == true){
+                checkNbAnswers += 1;
+                nbRep += 1;
+            }else if(modifQRep10 != "" && modifQVal10 == false){
+                nbRep += 1;
+            }else if(modifQRep10 == ""){
+                modifQRep10 = "NULL";
+                modifQVal10 = null;
+            }
+        
+            if(modifQRep11 != "" && modifQVal11 == true){
+                checkNbAnswers += 1;
+                nbRep += 1;
+            }else if(modifQRep11 != "" && modifQVal11 == false){
+                nbRep += 1;
+            }else if(modifQRep11 == ""){
+                modifQRep11 = "NULL";
+                modifQVal11 = null;
+            }
+
+            if(modifQDesc == ""){
+                alert("La description est vide, veuillez en insérer une...");
+            }else if(checkNbAnswers != parseInt(modifQNOA)){
+                alert("Nombre de réponses justes différent du nombre de réponses valides cochées, veuillez re-vérifier...");
+            }else if(nbRep < 2){
+                alert("Veuillez entrer plus qu'une réponse possible...");
+            }else{
+                const data = { 
+                    //ID: idQmodif,
+                    type: modifQType, 
+                    description: modifQDesc, 
+                    nbAns: parseInt(modifQNOA), 
+                    Answer1: modifQRep1, 
+                    Answer2: modifQRep2, 
+                    Answer3: modifQRep3, 
+                    Answer4: modifQRep4, 
+                    Answer5: modifQRep5, 
+                    Answer6: modifQRep6, 
+                    Answer7: modifQRep7, 
+                    Answer8: modifQRep8, 
+                    Answer9: modifQRep9, 
+                    Answer10: modifQRep10, 
+                    Answer11: modifQRep11, 
+                    Valid1: modifQVal1, 
+                    Valid2: modifQVal2, 
+                    Valid3: modifQVal3, 
+                    Valid4: modifQVal4, 
+                    Valid5: modifQVal5, 
+                    Valid6: modifQVal6, 
+                    Valid7: modifQVal7, 
+                    Valid8: modifQVal8, 
+                    Valid9: modifQVal9, 
+                    Valid10: modifQVal10, 
+                    Valid11: modifQVal11
+                };
+
+                id = sessionStorage.getItem("IDQMODIF");
+                console.log("idQmodif dans l'url : " + id);
+                var URLID = URLQuestions + "/" + id;
+                console.log(URLID);
+                fetch(URLID, {
+                    method: 'PATCH', // or 'PUT'
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                  })
+                    .then((response) => response.json())
+                    .then((data) => {
+                      console.log('Success:', data);
+                      alert("Question " + id + " modifiée avec succès !");
+                      sessionStorage.setItem("IDQMODIF", 0);
+                      location.reload();
+                    })
+                    .catch((error) => {
+                      console.error('Error:', error);
+                      alert("erreur lors de l'update");
+                    });
+            }
+        
 }
 
 function delQuestionButton(){
@@ -353,7 +579,7 @@ function delQuestionButton(){
 .then(res => res.text()) // or res.json()
 .then(res => console.log(res))
 //    console.log("Suppression de question... TODO");
-idQDel = '';
+idQDel = '';    
 alert("Question " + idQDel + " supprimée avec succès !");
 location.reload();
 }
@@ -746,7 +972,7 @@ function displayDivSupperssion(){
 }
 
 function displayDivModification(){
-    var idQModif = '';
+    idQmodif = 0;
     var nbQTTAL = sessionStorage.getItem("NbQuestionsTotal");
     if(document.getElementById("modifID").value != "" && document.getElementById("modifID").value > 0 && document.getElementById("modifID").value < parseInt(nbQTTAL)+1){
         alert("Patientez quelques instants, la question choisie charge...");
@@ -758,28 +984,56 @@ function displayDivModification(){
             allDataMod = data.value;            
             for(var i = 0; i < allDataMod.length; i++){
                 if(parseInt(allDataMod[i].ID) == parseInt(document.getElementById("modifID").value)){
-
-                    // marche pas
                     document.getElementById("modType").value = allDataMod[i].type;
-
                     document.getElementById("modDesc").value = allDataMod[i].description;
-
-                    //marche pas
                     var nombreRep = allDataMod[i].nbAns.toString();
-                    //console.log("nombre de réponses : " + nombreRep);
                     document.getElementById("modNOA").value = nombreRep;
 
-                    document.getElementById("modQ1").value = allDataMod[i].Answer1;
-                    document.getElementById("modQ2").value = allDataMod[i].Answer2;
-                    document.getElementById("modQ3").value = allDataMod[i].Answer3;
-                    document.getElementById("modQ4").value = allDataMod[i].Answer4;
-                    document.getElementById("modQ5").value = allDataMod[i].Answer5;
-                    document.getElementById("modQ6").value = allDataMod[i].Answer6;
-                    document.getElementById("modQ7").value = allDataMod[i].Answer7;
-                    document.getElementById("modQ8").value = allDataMod[i].Answer8;
-                    document.getElementById("modQ9").value = allDataMod[i].Answer9;
-                    document.getElementById("modQ10").value = allDataMod[i].Answer10;
-                    document.getElementById("modQ11").value = allDataMod[i].Answer11;
+                    if(allDataMod[i].Answer1 != 'NULL'){
+                        document.getElementById("modQ1").value = allDataMod[i].Answer1;
+                    }
+
+                    if(allDataMod[i].Answer2 != 'NULL'){
+                        document.getElementById("modQ2").value = allDataMod[i].Answer2;
+                    }
+
+                    if(allDataMod[i].Answer3 != 'NULL'){
+                        document.getElementById("modQ3").value = allDataMod[i].Answer3;
+                    }
+
+                    if(allDataMod[i].Answer4 != 'NULL'){
+                        document.getElementById("modQ4").value = allDataMod[i].Answer4;
+                    }
+
+                    if(allDataMod[i].Answer5 != 'NULL'){
+                        document.getElementById("modQ5").value = allDataMod[i].Answer5;
+                    }
+
+                    if(allDataMod[i].Answer6 != 'NULL'){
+                        document.getElementById("modQ6").value = allDataMod[i].Answer6;
+                    }
+
+                    if(allDataMod[i].Answer7 != 'NULL'){
+                        document.getElementById("modQ7").value = allDataMod[i].Answer7;
+                    }
+
+                    if(allDataMod[i].Answer8 != 'NULL'){
+                        document.getElementById("modQ8").value = allDataMod[i].Answer8;
+                    }
+
+                    if(allDataMod[i].Answer9 != 'NULL'){
+                        document.getElementById("modQ9").value = allDataMod[i].Answer9;
+                    }
+
+                    if(allDataMod[i].Answer10 != 'NULL'){
+                        document.getElementById("modQ10").value = allDataMod[i].Answer10;
+                    }
+
+                    if(allDataMod[i].Answer11 != 'NULL'){
+                        document.getElementById("modQ11").value = allDataMod[i].Answer11;
+                    }
+
+
 
                     if(allDataMod[i].Valid1 == 1 && allDataMod[i].Answer1 != "" && allDataMod[i].Answer1 != "NULL"){
                         document.getElementById("modvalidQ1").checked = true;
@@ -848,6 +1102,10 @@ function displayDivModification(){
                     }
 
                     idQModif = allDataMod[i].ID;
+                    console.log("IDQMODIF : " + idQModif);
+                    sessionStorage.setItem("IDQMODIF", allDataMod[i].ID);
+                    //var test = sessionStorage.getItem("IDQMODIF").
+                    //console.log("session storage : " + test);
                 }
             }
        })
