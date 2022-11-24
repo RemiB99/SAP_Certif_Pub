@@ -2,6 +2,8 @@ var questions = JSON.parse(sessionStorage.getItem('questions'));
 var currentQuestion = parseInt(sessionStorage.getItem('currentQuestion'));
 var numberOfQuestions = parseInt(sessionStorage.getItem('numberOfQuestions'));
 
+var URLStatistiques = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applicationstudio.cloud.sap/sap/Statistiques';
+
 document.getElementById ("retourMenu").addEventListener ("click", returnMenu);
 
 var txtNbrTotalRep = document.querySelector('#nbrTotalRep');
@@ -19,6 +21,21 @@ var answerTab = [false, false, false, false, false, false, false, false, false, 
 initvImg();
 initxImg();
 checkQuestions();
+getStats();
+postStat();
+
+// infos pour les statistiques
+var statUSER = sessionStorage.getItem("utilisateur");
+var statDATE = new Date();
+var statTYPEQUESTIONNAIRE = sessionStorage.getItem("selectedCategory");
+var statNBQ = parseInt(sessionStorage.getItem('numberOfQuestions'));
+var statNBJUSTE;
+var statPOURCENTAGE;
+
+var day = statDATE.getDate();
+var month = statDATE.getMonth() + 1;
+var year = statDATE.getFullYear();
+statDATE = `${day}-${month}-${year}`;
 
 function checkQuestions() {
     for (let i = 0; i < numberOfQuestions; i++) {
@@ -100,12 +117,49 @@ function getCorrection(){
     confirm("TEST CORRECTION !!!");
 }
 
-console.log(nbRepTotal)
-txtNbrTotalRep.textContent= "Nombre de réponses correctes : " + nbRepTotal + "/" + numberOfQuestions;
-var percentage = nbRepTotal * 100 / numberOfQuestions ;
-percentage = Math.round(percentage * 10) / 10
-txtPercentageTrue.textContent = "Pourcentage de bonne réponses : " + percentage + "%";
+function getStats(){
+    console.log(nbRepTotal)
+    statNBJUSTE = nbRepTotal;
+    txtNbrTotalRep.textContent= "Nombre de réponses correctes : " + nbRepTotal + "/" + numberOfQuestions;
+    var percentage = nbRepTotal * 100 / numberOfQuestions ;
+    percentage = Math.round(percentage * 10) / 10
+    txtPercentageTrue.textContent = "Pourcentage de bonne réponses : " + percentage + "%";
+    statPOURCENTAGE = percentage;
+}
 
 function returnMenu() {
     window.location.href= 'choixCategorie.html';
+}
+
+function postStat(){
+    console.log("Utilisateur : "        + statUSER);
+    console.log("Date : "               + statDATE);
+    console.log("Type Questionnaire : " + statTYPEQUESTIONNAIRE);
+    console.log("Nombre Questions : "   + statNBQ);
+    console.log("Bonnes Réponses : "    + statNBJUSTE);
+    console.log("Pourcentage : "        + statPOURCENTAGE);
+
+    const data = {
+        user : statUSER,
+        typeQuestionnaire : statTYPEQUESTIONNAIRE,
+        date : statDATE,
+        nbQ : statNBQ,
+        nbJuste : statNBJUSTE,
+        pourcentage : statPOURCENTAGE
+    }
+
+    fetch(URLStatistiques, {
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
 }

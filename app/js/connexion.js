@@ -46,6 +46,7 @@ loginButton.addEventListener("click", (e) => {
                     }
                 }
                 sessionStorage.setItem("categories", JSON.stringify(types));
+                sessionStorage.setItem("utilisateur", mail);
                 //location.reload();
            })
 
