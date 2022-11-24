@@ -1,6 +1,6 @@
 ID;user;typeQuestionnaire;date;nbQ;nbJuste;pourcentage;learningMode;reponsesAlea;questionsAlea;baseID
-1;Yoan.yoan@yoan.fr;2022-11-24;SAP4/HANA;80;77;96.3;true;true;true;null
-2;Yoan.yoan@yoan.fr;2022-11-24;SAP4/HANA;80;80;100;true;true;true;null
+1;Yoan.yoan@yoan.fr;2022-11-24;SAP4/HANA;80;77;96.3;true;true;true;
+2;Yoan.yoan@yoan.fr;2022-11-24;SAP4/HANA;80;80;100;true;true;true;
 3;Yoan.yoan@yoan.fr;2022-11-24;SAP4/HANA;40;39;97.5;true;true;false;1
-4;aurelien.debaene@soprasteria.com;2022-11-24;SAP4/HANA;80;74;92.5;true;true;true;null
+4;aurelien.debaene@soprasteria.com;2022-11-24;SAP4/HANA;80;74;92.5;true;true;true;
 5;aurelien.debaene@soprasteria.com;2022-11-24;SAP4/HANA;40;38;95;true;true;false;1
