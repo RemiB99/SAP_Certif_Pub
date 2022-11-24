@@ -53,6 +53,6 @@ entity Statistiques{
   pourcentage : Decimal;
   learningMode : Boolean;
   reponsesAlea : Boolean;
-  questionAlea : Boolean;
+  questionsAlea : Boolean;
   baseID : Integer;
 }

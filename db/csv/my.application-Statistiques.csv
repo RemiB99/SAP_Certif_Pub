@@ -1,4 +1,4 @@
-ID;user;typeQuestionnaire;date;nbQ;nbJuste;pourcentage;learningMode;reponsesAlea;questionAlea;baseID
+ID;user;typeQuestionnaire;date;nbQ;nbJuste;pourcentage;learningMode;reponsesAlea;questionsAlea;baseID
 1;Yoan.yoan@yoan.fr;2022-11-24;SAP4/HANA;80;77;96.3;true;true;true;null
 2;Yoan.yoan@yoan.fr;2022-11-24;SAP4/HANA;80;80;100;true;true;true;null
 3;Yoan.yoan@yoan.fr;2022-11-24;SAP4/HANA;40;39;97.5;true;true;false;1

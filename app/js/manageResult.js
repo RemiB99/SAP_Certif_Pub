@@ -25,6 +25,10 @@ var statTYPEQUESTIONNAIRE = sessionStorage.getItem("selectedCategory");
 var statNBQ = parseInt(sessionStorage.getItem('numberOfQuestions'));
 var statNBJUSTE;
 var statPOURCENTAGE;
+var statLEARNINGMODE = sessionStorage.getItem("LearningMode");
+var statREPALEA = sessionStorage.getItem("RandomAnswers");
+var statQUALEA = sessionStorage.getItem("RandomQuestions");
+var statBASEID = sessionStorage.getItem("startID");
 
 var day = statDATE.getDate();
 var month = statDATE.getMonth() + 1;
@@ -132,12 +136,17 @@ function returnMenu() {
 }
 
 function postStat(){
-    console.log("Utilisateur : "        + statUSER);
-    console.log("Date : "               + statDATE);
-    console.log("Type Questionnaire : " + statTYPEQUESTIONNAIRE);
-    console.log("Nombre Questions : "   + statNBQ);
-    console.log("Bonnes Réponses : "    + statNBJUSTE);
-    console.log("Pourcentage : "        + statPOURCENTAGE);
+    console.log("Utilisateur : "            + statUSER);
+    console.log("Date : "                   + statDATE);
+    console.log("Type Questionnaire : "     + statTYPEQUESTIONNAIRE);
+    console.log("Nombre Questions : "       + statNBQ);
+    console.log("Bonnes Réponses : "        + statNBJUSTE);
+    console.log("Pourcentage : "            + statPOURCENTAGE);
+
+    console.log("Learning Mode : "          + statLEARNINGMODE);
+    console.log("Réponses Aléatoires : "    + statREPALEA);
+    console.log("Questions Aléatoires : "   + statQUALEA);
+    console.log("Base ID : "                + statBASEID);
 
     const data = {
         user : statUSER,
@@ -145,7 +154,11 @@ function postStat(){
         date : statDATE,
         nbQ : statNBQ,
         nbJuste : statNBJUSTE,
-        pourcentage : statPOURCENTAGE
+        pourcentage : statPOURCENTAGE,
+        learningMode : statLEARNINGMODE,
+        responsesAlea : statREPALEA,
+        questionsAlea : statQUALEA,
+        baseID : statBASEID
     }
 
     fetch(URLStatistiques, {
