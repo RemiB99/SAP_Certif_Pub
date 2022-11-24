@@ -42,3 +42,13 @@ entity QuestionTypes{
     name : String;
     description : String;
 }
+
+entity Statistiques{
+  key ID : Integer;
+  user : String;
+  typeQuestionnaire : String;
+  date : Date;
+  nbQ : Integer;
+  nbJuste : Integer;
+  pourcentage : Decimal;
+}
