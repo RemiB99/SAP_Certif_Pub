@@ -54,3 +54,7 @@ function chooseCategory(){
 function accessAdminFunc(){
     window.location.href = 'admin.html';
 }
+
+function userPage(){
+    window.location.href = 'utilisateur.html';
+}

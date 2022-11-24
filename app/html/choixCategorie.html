@@ -11,12 +11,20 @@
 
     <body onload="fillHTML()">
         <div id='everyone'>
-            <p>Choisissez le quizz que vous voulez dans la liste ci-dessous : </p>
-            <select class="select_category" id="categorySelection">
-            </select>
-            <button onclick="chooseCategory()" name="button-validation-category" class="category_validate_button" type="submit">Valider</button>
 
-            <div id='admins' style="display: none">
+            <div id="quizz" class="quizz">
+                <p>Choisissez le quizz que vous voulez dans la liste ci-dessous : </p>
+                <select class="select_category" id="categorySelection">
+                </select>
+                <button onclick="chooseCategory()" name="button-validation-category" class="category_validate_button" type="submit">Valider</button>
+            </div>
+
+            <div id="userSpace" class="userSpace">
+                <p>Pour accéder à votre espace utilisateur, cliquez sur le bouton ci-dessous : </p>
+                <button onclick="userPage()" name="button-validation-category" class="category_validate_button" type="submit">Espace Utilisateur</button>
+            </div>
+
+            <div id='admins' style="display: none" class="admins">
                 <p>Vous êtes un admin, cliquez sur le bouton "ADMIN" si vous voulez avoir accès aux fonctions d'admin</p>
                 <button onclick="accessAdminFunc()" name="button-validation-category" class="category_validate_button" type="submit">ADMIN</button>
             </div>

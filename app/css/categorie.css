@@ -63,3 +63,18 @@ button{
 html, body, body > div, #container, #container-uiarea {
     height: 100%;
 }
+
+.quizz{
+    padding : 50px;
+    outline: thick double #0b6081;
+}
+
+.userSpace{
+    padding : 50px;
+    outline: thick double #0b6081;
+}
+
+.admins{
+    padding : 50px;
+    outline: thick double #0b6081;
+}
