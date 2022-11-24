@@ -51,4 +51,8 @@ entity Statistiques{
   nbQ : Integer;
   nbJuste : Integer;
   pourcentage : Decimal;
+  learningMode : Boolean;
+  reponsesAlea : Boolean;
+  questionAlea : Boolean;
+  baseID : Integer;
 }

@@ -18,12 +18,6 @@ var reponses;
 var reponseTab = [false, false, false, false, false, false, false, false, false, false, false];
 var answerTab = [false, false, false, false, false, false, false, false, false, false, false];
 
-initvImg();
-initxImg();
-checkQuestions();
-getStats();
-postStat();
-
 // infos pour les statistiques
 var statUSER = sessionStorage.getItem("utilisateur");
 var statDATE = new Date();
@@ -35,7 +29,13 @@ var statPOURCENTAGE;
 var day = statDATE.getDate();
 var month = statDATE.getMonth() + 1;
 var year = statDATE.getFullYear();
-statDATE = `${day}-${month}-${year}`;
+statDATE = `${year}-${month}-${day}`;
+
+initvImg();
+initxImg();
+checkQuestions();
+getStats();
+postStat();
 
 function checkQuestions() {
     for (let i = 0; i < numberOfQuestions; i++) {
