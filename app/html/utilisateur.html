@@ -8,7 +8,7 @@
         <title>Espace Utilisateur</title>
     </head>
 
-    <body>
+    <body onload="fillHTML()">
 
         <ul>
             <li><a href="#Profil" onclick="profileDiv()">Profil</a></li>
@@ -25,7 +25,19 @@
         </div>
 
         <div id="histoDiv" style="display: none">
-            <p>L'HISTORIQUE</p>
+            <!-- <p>L'HISTORIQUE</p> -->
+            <table id="tableHisto" border="2" style="width:100%">
+                <tr>
+                    <td class="entete">Date</td>
+                    <td class="entete">Type Questionnaire</td>
+                    <td class="entete">Résultat</td>
+                    <td class="entete">Pourcentage</td>
+                    <td class="entete">Mode Apprentissage</td>
+                    <td class="entete">Réponses Aléatoires</td>
+                    <td class="entete">Questions Aléatoires</td>
+                    <td class="entete">ID de départ</td>
+                </tr>
+            </table>
         </div>
 
     </body>

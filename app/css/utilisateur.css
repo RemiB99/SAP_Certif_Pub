@@ -33,3 +33,14 @@ ul {
     font-family: "Montserrat";
 
 }
+
+td.dataCell {
+  text-align : center;
+  font-family: "Montserrat";
+}
+
+td.entete {
+  font-weight: bold;
+  text-align : center;
+  font-family: "Montserrat";
+}
