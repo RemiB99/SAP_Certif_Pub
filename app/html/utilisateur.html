@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/utilisateur.css">
-        <script src="../js/utilisateur.js"></script>
         <title>Espace Utilisateur</title>
+        <script src="../js/utilisateur.js"></script>
     </head>
 
     <body onload="fillHTML()">
@@ -16,8 +16,33 @@
             <li><a href="#Historique" onclick="histoDiv()">Historique</a></li>
         </ul>
 
-        <div id="profileDiv" style="display: none">
-            <p>LE PROFIL</p>
+        <div id="profileDiv" class="profileDiv" style="display: none">
+
+            <div class="contentDiv">
+                <!-- <p>LE PROFIL</p> -->
+
+                <div class="contentElements">
+                    <div class="profileImage">
+                        <img src="../images/img_avatar.png" alt="Avatar">
+                    </div>
+
+                    <div id="textElement" class="firstName">
+                        <p>No first name provided yet</p>
+                    </div>
+
+                    <div id="textElement" class="lastName">
+                        <p>No last name given yet</p>
+                    </div>
+
+                    <div id="textElement" class="email">
+                        <p>No email given yet</p>
+                    </div>
+
+                    <div id="textElement" class="job">
+                        <p>No job given yet</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="statsDiv" style="display: none">

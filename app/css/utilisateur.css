@@ -10,7 +10,7 @@ ul {
   
   li {
     float: left;
-    width : 33.3%
+    width : 33.3%;
   }
   
   li a {
@@ -43,4 +43,51 @@ td.entete {
   font-weight: bold;
   text-align : center;
   font-family: "Montserrat";
+}
+
+.profileImage {
+  width : 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom : 25px;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+.profileDiv{
+  height : 92%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentDiv {
+  width : 50%;
+  height: 60%;
+  text-align: center;
+  border: 3px solid green;
+  background-color: #2185C5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left : 25%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+}
+
+#textElement {
+  height : 7%;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }
