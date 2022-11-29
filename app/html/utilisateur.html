@@ -50,7 +50,25 @@
         </div>
 
         <div id="statsDiv" style="display: none">
-            <p>LES STATISTIQUES</p>
+            <p>Choisissez la catégorie de questionnaire sur laquelle vous souhaitez consulter vos statistiques</p>
+            <select class="select_category" id="categorySelection">
+            </select>
+            <button onclick="chooseCategory()" name="button-validation-category" class="category_validate_button" type="submit">Charger</button>
+            <div id="statsContentDiv" style="display: none">
+                <br/>
+                <p id="textGlobal"><b>Statistiques globales de --- sur le thème de --- : </b></p>
+                <br/>
+                <p id="textNbTest">Nombre total de tests : </p>
+                <p id="textNbQuestions">Nombre total de questions : </p>
+                <p id="textNbQuestionsJustes">Nombre total de questions justes : </p>
+                <p id="textNbQuestionsFausses">Nombre total de questions fausses : </p>
+                <br/>
+                <p id="textPourcentageMoyen">Pourcentage moyen : </p>
+                <p id="textMeilleurRésultat">Meilleur résultat : </p>
+                <p id="textPireRésultat">Pire résultat : </p>
+                <br/>
+                <p id="textModePrefere">Mode préféré : </p>
+            </div>
         </div>
 
         <div id="histoDiv" style="display: none">

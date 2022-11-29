@@ -22,10 +22,12 @@ function fillHTML(){
     var user = sessionStorage.getItem("utilisateur");
     console.log("utilisateur courant : " + user);
 
-    // HISTORIQUE
+    ///////////////////
+    // HISTORIC PAGE //
+    ///////////////////
+
     var table = document.getElementById("tableHisto");
     fetch(URLStatistiques)
-//    fetch(URLQuestionTypes)
     .then(response => response.json())
     .then((data) =>{
         console.log(data);
@@ -154,4 +156,97 @@ function fillHTML(){
     }else if(isAdmin == false){
         roleText.innerHTML = ("<b>Rôle : </b>Aucun");
     }
+
+    ////////////////
+    // STATS PAGE //
+    ////////////////
+
+    const categories = JSON.parse(sessionStorage.getItem('categories'));
+        var select = document.getElementById('categorySelection');
+        console.log(categories);
+        for(let i = 0; i <= categories.length - 1; i++){
+            var option = document.createElement("option");
+            option.setAttribute('id', i);
+            option.text = categories[i];
+            select.appendChild(option);
+        }
+}
+
+function chooseCategory(){
+    var select = document.getElementById('categorySelection');
+    var typeQ = select.value;
+    var user = sessionStorage.getItem("utilisateur");
+    var username = sessionStorage.getItem("UserName");
+
+    var pireResultat, meilleurResultat, modePrefere, pourcentageMoyen;
+    var ttalQuestions = 0;
+    var ttalJuste = 0;
+    var ttalFausse = 0;
+    var ttalTests = 0;
+
+    document.getElementById("statsContentDiv").style.display = "block";
+
+    fetch(URLStatistiques)
+    //    fetch(URLQuestionTypes)
+        .then(response => response.json())
+        .then((data) =>{
+            for(let element in data.value){
+                if(user === data.value[element].user && typeQ === data.value[element].typeQuestionnaire){
+                    ttalQuestions += data.value[element].nbQ;
+                    ttalTests = ttalTests + 1;
+                    ttalJuste = ttalJuste + data.value[element].nbJuste;
+                    ttalFausse = ttalFausse + (data.value[element].nbQ - data.value[element].nbJuste);
+
+                    if(pireResultat == null){
+                        pireResultat = data.value[element].pourcentage;
+                    }else if(pireResultat > data.value[element].pourcentage){
+                        pireResultat = data.value[element].pourcentage;
+                    }
+
+                    if(meilleurResultat == null){
+                        meilleurResultat = data.value[element].pourcentage;
+                    }else if(meilleurResultat < data.value[element].pourcentage){
+                        meilleurResultat = data.value[element].pourcentage;
+                    }
+
+                }
+            }
+            // text global
+            var textGlobal = document.getElementById("textGlobal");
+            textGlobal.innerHTML = ("<b>Statistiques globales de " + username + " sur le thème de " + typeQ + " :</b>");
+
+            // texte nb tests
+            var textNbTests = document.getElementById("textNbTest");
+            textNbTests.innerHTML = ("<b>Nombre total de tests : </b>" + ttalTests);
+
+            // texte nb questions
+            var textNbQuestions = document.getElementById("textNbQuestions");
+            textNbQuestions.innerHTML = ("<b>Nombre total de questions : </b>" + ttalQuestions);
+
+            // texte nb questions justes
+            var textNbJuste = document.getElementById("textNbQuestionsJustes");
+            textNbJuste.innerHTML = ("<b>Nombre total de questions justes : </b>" + ttalJuste);
+
+            // texte nb questions fausses
+            var textNbFausse = document.getElementById("textNbQuestionsFausses");
+            textNbFausse.innerHTML = ("<b>Nombre total de questions fausses : </b>" + ttalFausse);
+
+            // texte pourcentage moyen
+            var textPourcentage = document.getElementById("textPourcentageMoyen");
+            var calculPourcentage = ttalJuste * 100 / ttalQuestions;
+            calculPourcentage = Math.round(calculPourcentage * 10) / 10
+            textPourcentage.innerHTML = ("<b>Pourcentage moyen : </b>" + calculPourcentage + "%");
+
+            // texte meilleur résultat
+            var textMeilleurResultat = document.getElementById("textMeilleurRésultat");
+            textMeilleurResultat.innerHTML = ("<b>Meilleur résultat : </b>" + meilleurResultat + "%");
+
+            // texte pire résultat
+            var textPireResultat = document.getElementById("textPireRésultat");
+            textPireResultat.innerHTML = ("<b>Pire résultat : </b>" + pireResultat + "%");
+
+            // texte mode préféré
+            var textModePrefere = document.getElementById("textModePrefere");
+            textModePrefere.innerHTML = ("<b>Mode préféré : </b>" + "mode a définir");
+        })
 }
