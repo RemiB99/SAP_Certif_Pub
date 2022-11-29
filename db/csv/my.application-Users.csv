@@ -1,4 +1,8 @@
-ID;username;mail;password;role
-1;Mouha;Mouha.mouha@mouha.fr;mouha;0
-2;Yoan;Yoan.yoan@yoan.fr;yoan;1
-3;Aurelien;aurelien.debaene@soprasteria.com;Soprasteria1*;0
+ID;username;mail;password;role;firstName;lastName;job
+1;Mouha;Mouha.mouha@mouha.fr;mouha;0;Mouhammad;Nour;Etudiant
+2;amelooty;Yoan.yoan@yoan.fr;yoan;1;Yoan;Ameloot;Developpeur
+3;debaenea;aurelien.debaene@soprasteria.com;Soprasteria1*;0;Aurélien;Debaene;Technical Leader
+4;audureauh;hugues.audureau@soprasteria.com;Annecy1*;0;Hugues;Audureau;Developpeur
+5;beaurezm;maxence.baurez@soprasteria.com;Annecy1*;0;Maxence;Baurez;Developpeur
+6;favres;sacha.favre@soprasteria.com;Annecy1*;0;Sacha;Favre-Teylaz;Developpeur
+7;ruatg;gwenael.ruat@soprasteria.com;Annecy1*;0;Gwenael;Ruat;Technical Leader

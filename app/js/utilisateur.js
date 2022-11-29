@@ -20,7 +20,9 @@ function histoDiv(){
 
 function fillHTML(){
     var user = sessionStorage.getItem("utilisateur");
-    console.log("utilsiateur courant : " + user);
+    console.log("utilisateur courant : " + user);
+
+    // HISTORIQUE
     var table = document.getElementById("tableHisto");
     fetch(URLStatistiques)
 //    fetch(URLQuestionTypes)
@@ -112,4 +114,44 @@ function fillHTML(){
             }
         }
     })
+    //////////////////
+    // PROFILE PAGE //
+    //////////////////
+
+    // Name
+    var firstName = sessionStorage.getItem('FirstName');
+    var lastName = sessionStorage.getItem('LastName');
+    var nameText = document.getElementById("textElementName");
+    if(firstName != "" && lastName != ""){
+        nameText.innerHTML = ("<b>Name : </b>" + firstName + " " + lastName);
+    }
+
+    // Username
+    var username = sessionStorage.getItem('UserName');
+    var usernameText = document.getElementById("textElementUsername");
+    if(username != ""){
+        usernameText.innerHTML = ("<b>Username : </b>" + username);
+    }
+
+    // Email
+    var emailText = document.getElementById("textElementEmail");
+    if(user != ""){
+        emailText.innerHTML = ("<b>Email : </b>" + user);
+    }
+
+    // Job
+    var job = sessionStorage.getItem('Job');
+    var jobText = document.getElementById("textElementJob");
+    if(job != ""){
+        jobText.innerHTML = ("<b>Job : </b>" + job);
+    }
+
+    // Rôle
+    var isAdmin = JSON.parse(sessionStorage.getItem('Admin'));
+    var roleText = document.getElementById("textElementRole");
+    if(isAdmin == true){
+        roleText.innerHTML = ("<b>Rôle : </b>Administrateur");
+    }else if(isAdmin == false){
+        roleText.innerHTML = ("<b>Rôle : </b>Aucun");
+    }
 }

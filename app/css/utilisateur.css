@@ -69,7 +69,7 @@ img {
   width : 50%;
   height: 60%;
   text-align: center;
-  border: 3px solid green;
+  border: 3px solid black; 
   background-color: #2185C5;
   display: flex;
   justify-content: center;

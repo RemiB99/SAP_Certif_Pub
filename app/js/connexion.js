@@ -19,6 +19,10 @@ loginButton.addEventListener("click", (e) => {
     for(let user in data.value){
         if (mail === data.value[user].mail && password === data.value[user].password) {
             sessionStorage.setItem('Admin', data.value[user].role);
+            sessionStorage.setItem('FirstName', data.value[user].firstName);
+            sessionStorage.setItem('LastName', data.value[user].lastName);
+            sessionStorage.setItem('UserName', data.value[user].username);
+            sessionStorage.setItem('Job', data.value[user].job);
             console.log('ROLE : ' + data.value[user].role);
             let p = document.getElementById('hidden_message_email');
             let q = document.getElementById('hidden_message_mdp');

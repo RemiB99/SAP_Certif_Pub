@@ -6,6 +6,9 @@ entity Users {
   mail : String;
   password  : String;
   role : Boolean;
+  firstName : String;
+  lastName : String;
+  job : String;
 }
 
 entity Questions {
