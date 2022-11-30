@@ -1,4 +1,4 @@
-
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200,400,700");
 #wrapper{
     width: 100%;
 }
@@ -12,6 +12,7 @@
 
 .list-group{
     width: 100%;
+    font-family : "Montserrat";
 }
 
 .sidenav{
@@ -60,6 +61,7 @@
     transform: translate(-50%, -50%);
     position : relative;
     border: 2px solid black;
+    font-family : "Montserrat";
 
 }
 #right_mid_elements{
@@ -69,6 +71,7 @@
     transform: translate(-50%, -50%);
     position : relative;
     border: 2px solid black;
+    font-family : "Montserrat";
 
 }
 #right_top{
@@ -98,5 +101,9 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    font-family : "Montserrat";
 }
 
+html {
+    font-family : "Montserrat";
+}
