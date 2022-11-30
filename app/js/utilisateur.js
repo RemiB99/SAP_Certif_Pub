@@ -243,16 +243,28 @@ function chooseCategory(){
             // texte pourcentage moyen
             var textPourcentage = document.getElementById("textPourcentageMoyen");
             var calculPourcentage = ttalJuste * 100 / ttalQuestions;
-            calculPourcentage = Math.round(calculPourcentage * 10) / 10
-            textPourcentage.innerHTML = ("<b>Pourcentage moyen : </b>" + calculPourcentage + "%");
+            calculPourcentage = Math.round(calculPourcentage * 10) / 10;
+            if(ttalTests != 0){
+                textPourcentage.innerHTML = ("<b>Pourcentage moyen : </b>" + calculPourcentage + "%");
+            }else{
+                textPourcentage.innerHTML = ("<b>Pourcentage moyen : </b> Aucun test réalisé dans cette catégorie");
+            }
 
             // texte meilleur résultat
             var textMeilleurResultat = document.getElementById("textMeilleurRésultat");
-            textMeilleurResultat.innerHTML = ("<b>Meilleur résultat : </b>" + meilleurResultat + "%");
+            if(ttalTests != 0){
+                textMeilleurResultat.innerHTML = ("<b>Meilleur résultat : </b>" + meilleurResultat + "%");
+            }else{
+                textMeilleurResultat.innerHTML = ("<b>Meilleur résultat : </b> Aucun meilleur résultat");
+            }
 
             // texte pire résultat
             var textPireResultat = document.getElementById("textPireRésultat");
-            textPireResultat.innerHTML = ("<b>Pire résultat : </b>" + pireResultat + "%");
+            if(ttalTests != 0){
+                textPireResultat.innerHTML = ("<b>Pire résultat : </b>" + pireResultat + "%");
+            }else{
+                textPireResultat.innerHTML = ("<b>Pire résultat : </b> Aucun pire résultat");
+            }
 
             // texte mode préféré
             var textModePrefere = document.getElementById("textModePrefere");
@@ -277,7 +289,10 @@ function chooseCategory(){
                 valeurPrefere = arrPref["80"]
             }
             console.log("APRES arrPref de 80 : " + arrPref["80"] + ", modePrefere = " + modePrefere + ", valeurPrefere = " + valeurPrefere);
-            textModePrefere.innerHTML = ("<b>Mode préféré : </b>" + modePrefere + " questions");
-            
+            if(ttalTests != 0){
+                textModePrefere.innerHTML = ("<b>Mode préféré : </b>" + modePrefere + " questions");
+            }else{
+                textModePrefere.innerHTML = ("<b>Mode préféré : </b> Aucun");
+            }
         })
 }
