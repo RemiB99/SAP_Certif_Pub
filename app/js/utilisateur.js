@@ -178,12 +178,13 @@ function chooseCategory(){
     var user = sessionStorage.getItem("utilisateur");
     var username = sessionStorage.getItem("UserName");
 
-    var pireResultat, meilleurResultat, modePrefere, pourcentageMoyen;
+    var pireResultat, meilleurResultat, modePrefere, valeurPrefere;
     var ttalQuestions = 0;
     var ttalJuste = 0;
     var ttalFausse = 0;
     var ttalTests = 0;
 
+    var arrPref = { "3" : 0, "40" : 0, "80": 0 };
     document.getElementById("statsContentDiv").style.display = "block";
 
     fetch(URLStatistiques)
@@ -207,6 +208,14 @@ function chooseCategory(){
                         meilleurResultat = data.value[element].pourcentage;
                     }else if(meilleurResultat < data.value[element].pourcentage){
                         meilleurResultat = data.value[element].pourcentage;
+                    }
+
+                    if(data.value[element].nbQ == 3){
+                        arrPref["3"] += 1;
+                    }else if(data.value[element].nbQ == 40){
+                        arrPref["40"] += 1;
+                    }else if(data.value[element].nbQ == 80){
+                        arrPref["80"] += 1;
                     }
 
                 }
@@ -247,6 +256,28 @@ function chooseCategory(){
 
             // texte mode préféré
             var textModePrefere = document.getElementById("textModePrefere");
-            textModePrefere.innerHTML = ("<b>Mode préféré : </b>" + "mode a définir");
+            console.log(arrPref["3"]);
+            console.log(arrPref["40"]);
+            console.log(arrPref["80"]);
+            modePrefere = 0;
+            valeurPrefere = 0;
+            console.log("AVANT arrPref de 3 : " + arrPref["3"] + ", modePrefere = " + modePrefere + ", valeurPrefere = " + valeurPrefere);
+            if(arrPref["3"] >= valeurPrefere){
+                modePrefere = "3";
+                valeurPrefere = arrPref["3"];
+            }
+            console.log("AVANT arrPref de 40 : " + arrPref["40"] + ", modePrefere = " + modePrefere + ", valeurPrefere = " + valeurPrefere);
+            if(arrPref["40"] >= valeurPrefere){
+                modePrefere = "40";
+                valeurPrefere = arrPref["40"]
+            }
+            console.log("AVANT arrPref de 80 : " + arrPref["80"] + ", modePrefere = " + modePrefere + ", valeurPrefere = " + valeurPrefere);
+            if(arrPref["80"] >= valeurPrefere){
+                modePrefere = "80";
+                valeurPrefere = arrPref["80"]
+            }
+            console.log("APRES arrPref de 80 : " + arrPref["80"] + ", modePrefere = " + modePrefere + ", valeurPrefere = " + valeurPrefere);
+            textModePrefere.innerHTML = ("<b>Mode préféré : </b>" + modePrefere + " questions");
+            
         })
 }
