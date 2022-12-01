@@ -263,7 +263,7 @@ function checkQuestion() {
                     reponseTab[9] == answerTab[9] && 
                     reponseTab[10] == answerTab[10]){
                     //alert("Bonne réponse !");
-                    setTimeout(function(){ alert("Bonne réponse !"); }, 10);
+                    setTimeout(function(){ alert("Bonne réponse !"); }, 100);
                     // setTimeout(3000);
                 }else{
                     console.log(reponseTab);
@@ -287,7 +287,7 @@ function checkQuestion() {
                     }
                     console.log("sel : " + sel);
                     console.log("ans : " + ans);
-                    setTimeout(function(){ alert("Mauvaise Réponse..."); }, 10);
+                    setTimeout(function(){ alert(alrt + sel + "\n" + alrt2 + ans); }, 100);
                     // alert(alrt + sel + "\n" + alrt2 + ans);
                     //setTimeout(3000);
                 }

@@ -101,7 +101,7 @@
         function getCorrection(id){
             var varID = parseInt(id)+1;
             var reponses = sessionStorage.getItem("selectedAnswers"+varID.toString());
-            //console.log('selectedAnswers' + varID + " : " + reponses);
+            console.log('selectedAnswers' + varID + " : " + reponses);
             correction.textContent=questions[id].description;
             //selected.textContent=questions[id].description;
             selected.textContent="You selected : ";

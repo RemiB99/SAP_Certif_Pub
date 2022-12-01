@@ -33,6 +33,14 @@ var statBASEID = parseInt(sessionStorage.getItem("startID"));
 var day = statDATE.getDate();
 var month = statDATE.getMonth() + 1;
 var year = statDATE.getFullYear();
+
+if(day == "1" || day == "2"|| day == "3"|| day == "4"|| day == "5"|| day == "6"|| day == "7"|| day == "8"|| day == "9"){
+    day = "0" + day;
+}
+if(month == "1" || month == "2"|| month == "3"|| month == "4"|| month == "5"|| month == "6"|| month == "7"|| month == "8"|| month == "9"){
+    month = "0" + month;
+}
+
 statDATE = `${year}-${month}-${day}`;
 
 initvImg();
