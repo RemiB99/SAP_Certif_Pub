@@ -124,16 +124,16 @@ html, body
     display:grid;
     align-content:center;
     justify-content:center;
-    stroke : black;
-    stroke-width    : .5px;
   }
 
   .main .answerPart .answerActive {
     background: #90a0ee;
-    color : red;
+    /* color : red; */
+    color : white;
     text-shadow: 0 0 2px #213FDA;
     padding: 10px;
-    border: solid 3px #213FDA;
+    /* border: solid 3px #213FDA; */
+    border: solid 5px orange;
     cursor: pointer;
     font-size : 20px;
     display:grid;
@@ -148,7 +148,7 @@ html, body
   }
 
   .main .answerPart .nextQuestion {
-    background: #069826;
+    background: #213FDA;
     color : white;
     text-shadow: 0 0 2px #069826;
     padding: 10px;
@@ -162,9 +162,20 @@ html, body
     grid-column-end: 2;
     width:calc(100% + 30px); /*30px -> row gap*/
     margin-left: 50%;
+    font-family : "Montserrat";
+    border-radius: 25px;
+    font-weight: bold;
   }
 
 #counter{
     font-size: 0.8em;
     color: red;
 }
+
+.isTrue{
+  background : green;
+}
+
+.isFalse{
+  background : red;
+} 

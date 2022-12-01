@@ -244,44 +244,165 @@ function checkQuestion() {
         answerTab[8] = questions[currentQuestion-1].Valid9;
         answerTab[9] = questions[currentQuestion-1].Valid10;
         answerTab[10] = questions[currentQuestion-1].Valid11;
-        
+       
         if(learnMode == "true"){
 
-            if(reponseTab[0] == answerTab[0] && 
-                reponseTab[1] == answerTab[1] && 
-                reponseTab[2] == answerTab[2] && 
-                reponseTab[3] == answerTab[3] && 
-                reponseTab[4] == answerTab[4] && 
-                reponseTab[5] == answerTab[5] && 
-                reponseTab[6] == answerTab[6] && 
-                reponseTab[7] == answerTab[7] && 
-                reponseTab[8] == answerTab[8] && 
-                reponseTab[9] == answerTab[9] && 
-                reponseTab[10] == answerTab[10]){
-                alert("Bonne réponse !");
-            }else{
-                console.log(reponseTab);
-                console.log(answerTab);
-                let alrt = "Mauvaise Réponse...\nVous avez sélectionné : ";
-                let alrt2 = "Les réponses étaient : ";
-                // var sel = ["A","B","C","D","E","F","G","H","I","J","K"];
-                // var ans = ["A","B","C","D","E","F","G","H","I","J","K"];
-                var sel = [];
-                var ans = [];
-                for(var y=0; y<11; y++){
-                    console.log(y);
-                    if(reponseTab[y] == true){
-                        sel.push(y+1);
+            console.log("Réponses Données: " + reponseTab);
+            console.log("Bonnes réponses : " + answerTab);
+
+            setColor();
+                if(reponseTab[0] == answerTab[0] && 
+                    reponseTab[1] == answerTab[1] && 
+                    reponseTab[2] == answerTab[2] && 
+                    reponseTab[3] == answerTab[3] && 
+                    reponseTab[4] == answerTab[4] && 
+                    reponseTab[5] == answerTab[5] && 
+                    reponseTab[6] == answerTab[6] && 
+                    reponseTab[7] == answerTab[7] && 
+                    reponseTab[8] == answerTab[8] && 
+                    reponseTab[9] == answerTab[9] && 
+                    reponseTab[10] == answerTab[10]){
+                    //alert("Bonne réponse !");
+                    setTimeout(function(){ alert("Bonne réponse !"); }, 10);
+                    // setTimeout(3000);
+                }else{
+                    console.log(reponseTab);
+                    console.log(answerTab);
+                    let alrt = "Mauvaise Réponse...\nVous avez sélectionné : ";
+                    let alrt2 = "Les réponses étaient : ";
+                    // var sel = ["A","B","C","D","E","F","G","H","I","J","K"];
+                    // var ans = ["A","B","C","D","E","F","G","H","I","J","K"];
+                    var sel = [];
+                    var ans = [];
+                    for(var y=0; y<11; y++){
+                        console.log(y);
+                        if(reponseTab[y] == true){
+                            sel.push(y+1);
+                        }
                     }
-                }
-                for(var z = 0; z<11; z++){
-                    if(answerTab[z] == true){
-                        ans.push(z+1);
+                    for(var z = 0; z<11; z++){
+                        if(answerTab[z] == true){
+                            ans.push(z+1);
+                        }
                     }
+                    console.log("sel : " + sel);
+                    console.log("ans : " + ans);
+                    setTimeout(function(){ alert("Mauvaise Réponse..."); }, 10);
+                    // alert(alrt + sel + "\n" + alrt2 + ans);
+                    //setTimeout(3000);
                 }
-                console.log("sel : " + sel);
-                console.log("ans : " + ans);
-                alert(alrt + sel + "\n" + alrt2 + ans);
+        }
+}
+
+async function setColor(){
+
+    console.log("Réponses Données: " + reponseTab);
+    console.log("Bonnes réponses : " + answerTab);
+
+    if(answerTab[0] == true){
+        // document.getElementById("answer1").className = "isTrue";
+        document.getElementById("answer1").style.background="green";
+    }else{
+        // document.getElementById("answer1").className = "isFalse";
+        document.getElementById("answer1").style.background="red";
+    }
+
+    if(answerTab[1] == true){
+        document.getElementById("answer2").style.background="green";
+    }else{
+        document.getElementById("answer2").style.background="red";
+    }
+
+    if(answerTab[2] == true){
+        document.getElementById("answer3").style.background="green";
+    }else{
+        document.getElementById("answer3").style.background="red";
+    }
+
+    if(answerTab[3] == true){
+        document.getElementById("answer4").style.background="green";
+    }else{
+        document.getElementById("answer4").style.background="red";
+    }
+
+    if(answerTab[4] == true){
+        document.getElementById("answer5").style.background="green";
+    }else{
+        document.getElementById("answer5").style.background="red";
+    }
+
+    if(answerTab[5] == true){
+        document.getElementById("answer6").style.background="green";
+    }else{
+        document.getElementById("answer6").style.background="red";
+    }
+
+    if(answerTab[6] == true){
+        document.getElementById("answer7").style.background="green";
+    }else{
+        document.getElementById("answer7").style.background="red";
+    }
+
+    if(answerTab[7] == true){
+        document.getElementById("answer8").style.background="green";
+    }else{
+        document.getElementById("answer8").style.background="red";
+    }
+
+    if(answerTab[8] == true){
+        document.getElementById("answer9").style.background="green";
+    }else{
+        document.getElementById("answer9").style.background="red";
+    }
+
+    if(answerTab[9] == true){
+        document.getElementById("answer10").style.background="green";
+    }else{
+        document.getElementById("answer10").style.background="red";
+    }
+
+    if(answerTab[10] == true){
+        document.getElementById("answer11").style.background="green";
+    }else{
+        document.getElementById("answer11").style.background="red";
+    }
+}
+
+function annonce(){
+    if(reponseTab[0] == answerTab[0] && 
+        reponseTab[1] == answerTab[1] && 
+        reponseTab[2] == answerTab[2] && 
+        reponseTab[3] == answerTab[3] && 
+        reponseTab[4] == answerTab[4] && 
+        reponseTab[5] == answerTab[5] && 
+        reponseTab[6] == answerTab[6] && 
+        reponseTab[7] == answerTab[7] && 
+        reponseTab[8] == answerTab[8] && 
+        reponseTab[9] == answerTab[9] && 
+        reponseTab[10] == answerTab[10]){
+        alert("Bonne réponse !");
+    }else{
+        console.log(reponseTab);
+        console.log(answerTab);
+        let alrt = "Mauvaise Réponse...\nVous avez sélectionné : ";
+        let alrt2 = "Les réponses étaient : ";
+        // var sel = ["A","B","C","D","E","F","G","H","I","J","K"];
+        // var ans = ["A","B","C","D","E","F","G","H","I","J","K"];
+        var sel = [];
+        var ans = [];
+        for(var y=0; y<11; y++){
+            console.log(y);
+            if(reponseTab[y] == true){
+                sel.push(y+1);
             }
         }
+        for(var z = 0; z<11; z++){
+            if(answerTab[z] == true){
+                ans.push(z+1);
+            }
+        }
+        console.log("sel : " + sel);
+        console.log("ans : " + ans);
+        alert(alrt + sel + "\n" + alrt2 + ans);
+    }
 }
