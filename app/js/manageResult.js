@@ -163,6 +163,7 @@ function returnMenu() {
 function postStat(){
     console.log("Utilisateur : "            + statUSER);
     console.log("Date : "                   + statDATE);
+    console.log("Heure : "                  + statTIME);
     console.log("Type Questionnaire : "     + statTYPEQUESTIONNAIRE);
     console.log("Nombre Questions : "       + statNBQ);
     console.log("Bonnes Réponses : "        + statNBJUSTE);
@@ -176,6 +177,7 @@ function postStat(){
         user : statUSER,
         typeQuestionnaire : statTYPEQUESTIONNAIRE,
         date : statDATE,
+        heure : statTIME,
         nbQ : statNBQ,
         nbJuste : statNBJUSTE,
         pourcentage : statPOURCENTAGE,
