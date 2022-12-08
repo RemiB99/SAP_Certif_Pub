@@ -21,6 +21,7 @@ var answerTab = [false, false, false, false, false, false, false, false, false, 
 // infos pour les statistiques
 var statUSER = sessionStorage.getItem("utilisateur");
 var statDATE = new Date();
+var statTIME;
 var statTYPEQUESTIONNAIRE = sessionStorage.getItem("selectedCategory");
 var statNBQ = parseInt(sessionStorage.getItem('numberOfQuestions'));
 var statNBJUSTE;
@@ -30,9 +31,14 @@ var statREPALEA = (JSON.parse(sessionStorage.getItem("RandomAnswers")) === "true
 var statQUALEA = (JSON.parse(sessionStorage.getItem("RandomQuestions")) === "true");
 var statBASEID = parseInt(sessionStorage.getItem("startID"));
 
+console.log(statDATE);
+//console.log(statTime);
 var day = statDATE.getDate();
 var month = statDATE.getMonth() + 1;
 var year = statDATE.getFullYear();
+var timeHours = statDATE.getHours();
+var timeMinutes = statDATE.getMinutes();
+var timeSeconds = statDATE.getSeconds();
 
 if(day == "1" || day == "2"|| day == "3"|| day == "4"|| day == "5"|| day == "6"|| day == "7"|| day == "8"|| day == "9"){
     day = "0" + day;
@@ -41,7 +47,18 @@ if(month == "1" || month == "2"|| month == "3"|| month == "4"|| month == "5"|| m
     month = "0" + month;
 }
 
+if(timeHours == "0" || timeHours == "1" || timeHours == "2"|| timeHours == "3"|| timeHours == "4"|| timeHours == "5"|| timeHours == "6"|| timeHours == "7"|| timeHours == "8"|| timeHours == "9"){
+    timeHours = "0" + timeHours;
+}
+if(timeMinutes == "0" || timeMinutes == "1" || timeMinutes == "2"|| timeMinutes == "3"|| timeMinutes == "4"|| timeMinutes == "5"|| timeMinutes == "6"|| timeMinutes == "7"|| timeMinutes == "8"|| timeMinutes == "9"){
+    timeMinutes = "0" + timeMinutes;
+}
+if(timeSeconds == "0" || timeSeconds == "1" || timeSeconds == "2"|| timeSeconds == "3"|| timeSeconds == "4"|| timeSeconds == "5"|| timeSeconds == "6"|| timeSeconds == "7"|| timeSeconds == "8"|| timeSeconds == "9"){
+    timeSeconds = "0" + timeSeconds;
+}
 statDATE = `${year}-${month}-${day}`;
+statTIME = `${timeHours}:${timeMinutes}:${timeSeconds}`
+console.log(statTIME);
 
 initvImg();
 initxImg();
