@@ -25,6 +25,7 @@ function handleClick() {
     return strNumberOfQuestions;
 }
 function getQuestions(numberOfQuestions){
+    console.log("ENTER --> getQuestions (step4)");
     fetch(URLQuestions)
     .then(response => response.json())
     .then((data) =>{
@@ -192,11 +193,20 @@ function getQuestions(numberOfQuestions){
             questions.push(question);
         }
         sessionStorage.setItem("questions", JSON.stringify(questions));
-        setTimeout(() => { console.log("waiting for questions loading"); }, 3000);
+        for(let i = 0; i < 81; i++){
+            sessionStorage.removeItem("selectedAnswers"+(i+1));
+        }
+    
+        console.log("nb questions choisies" + parseInt(numberOfQuestions));
+        console.log("nb questions dans base" + tailleTabQuestions);
+        console.log("EXIT --> getQuestions (step 5)");
+        setTimeout(() => { delayCheck(numberOfQuestions); }, 1000);
     })
+
 }
 
 function startQuestionnaire(){
+    console.log("ENTER --> startQuestionnaire (step 1)");
     var learningMode = document.getElementById("learnMode");
     var randomAnswers = document.getElementById("randomAnswers");
     var randomQuestions = document.getElementById("randomQuestions");
@@ -231,14 +241,17 @@ function startQuestionnaire(){
 
     sessionStorage.setItem("startID", startID.value);
 
-    getQuestions(parseInt(strNumberOfQuestions));
-    for(let i = 0; i < 81; i++){
-        sessionStorage.removeItem("selectedAnswers"+(i+1));
-    }
+    //getQuestions(parseInt(strNumberOfQuestions));
+    console.log("EXIT --> startQuestionnaire (step2)");
+    asyncGetQuestions(parseInt(strNumberOfQuestions));
+
+    // for(let i = 0; i < 81; i++){
+    //     sessionStorage.removeItem("selectedAnswers"+(i+1));
+    // }
     //setTimeout(3000);
-    console.log("nb questions choisies" + parseInt(strNumberOfQuestions));
-    console.log("nb questions dans base" + tailleTabQuestions);
-    setTimeout(() => { delayCheck(strNumberOfQuestions); }, 3000);
+    // console.log("nb questions choisies" + parseInt(strNumberOfQuestions));
+    // console.log("nb questions dans base" + tailleTabQuestions);
+    // setTimeout(() => { delayCheck(strNumberOfQuestions); }, 3000);
     // if(parseInt(strNumberOfQuestions) < tailleTabQuestions){
     //     sessionStorage.setItem("currentQuestion", "1");
     //     alert("Vous allez lancer un questionnaire de " + strNumberOfQuestions + " questions.");
@@ -248,7 +261,15 @@ function startQuestionnaire(){
     // }
 }
 
+async function asyncGetQuestions(strNumberOfQuestions){
+    console.log("ENTER --> asyncGetQuestions (step3)");
+    await getQuestions(strNumberOfQuestions);
+    console.log("after");
+    console.log("EXIT --> asyncGetQuestions (step8)");
+}
+
 function delayCheck(strNumberOfQuestions){
+    console.log("ENTER --> delayCheck (step6)");
     if(parseInt(strNumberOfQuestions) < tailleTabQuestions){
         sessionStorage.setItem("currentQuestion", "1");
         alert("Vous allez lancer un questionnaire de " + strNumberOfQuestions + " questions.");
@@ -256,6 +277,7 @@ function delayCheck(strNumberOfQuestions){
     }else{
         alert("Nombre de questions dans la base insuffisant, veuillez sélectionner un autre mode");
     }
+    console.log("EXIT --> delayCheck (step7)");
 }
 
 function startTimer(){
