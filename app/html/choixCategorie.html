@@ -6,27 +6,27 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="stylesheet" href="../css/categorie.css">
         <script src="../js/choixCategorie.js"></script>
-        <title>La liste des domaines</title>
+        <title>Main Page</title>
     </head>
 
     <body onload="fillHTML()">
         <div id='everyone'>
 
             <div id="quizz" class="quizz">
-                <p>Choisissez le quizz que vous voulez dans la liste ci-dessous : </p>
+                <p>Choose the quiz you want in the list down below :</p>
                 <select class="select_category" id="categorySelection">
                 </select>
-                <button onclick="chooseCategory()" name="button-validation-category" class="category_validate_button" type="submit">Valider</button>
+                <button onclick="chooseCategory()" name="button-validation-category" class="category_validate_button" type="submit">Confirm</button>
             </div>
 
             <div id="userSpace" class="userSpace">
-                <p>Pour accéder à votre espace utilisateur, cliquez sur le bouton ci-dessous : </p>
-                <button onclick="userPage()" name="button-validation-category" class="category_validate_button" type="submit">Espace Utilisateur</button>
+                <p>To access your space, click the button down below : </p>
+                <button onclick="userPage()" name="button-validation-category" class="category_validate_button" type="submit">Personal Space</button>
             </div>
 
             <div id='admins' style="display: none" class="admins">
-                <p>Vous êtes un admin, cliquez sur le bouton "ADMIN" si vous voulez avoir accès aux fonctions d'admin</p>
-                <button onclick="accessAdminFunc()" name="button-validation-category" class="category_validate_button" type="submit">ADMIN</button>
+                <p>Click the button down below to access the admin features :</p>
+                <button onclick="accessAdminFunc()" name="button-validation-category" class="category_validate_button" type="submit">Admin Space</button>
             </div>
 
         </div>

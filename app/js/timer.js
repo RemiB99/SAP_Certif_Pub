@@ -23,7 +23,7 @@ setInterval( function(){
 
 setInterval( function(){
     if(document.getElementById("counter").innerHTML == "00:00"){
-        alert("Le temps imparti est terminé, vous allez être redirigé vers la page des résultats...");
+        alert("The given time elapsed, you will be redirected to the results page");
         window.location.href= 'resultatsQuestionnaire.html';
     }
 },(5000))

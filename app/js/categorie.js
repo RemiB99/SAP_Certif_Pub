@@ -1,5 +1,3 @@
-//import { exists } from "fs";
-
 // A changer - identifiant différent pour chaque devSpace
 var URLQuestions = 'https://port4004-workspaces-ws-gd2dm.us10.trial.applicationstudio.cloud.sap/sap/Questions';
 var tailleTabQuestions;
@@ -25,11 +23,9 @@ function handleClick() {
     return strNumberOfQuestions;
 }
 function getQuestions(numberOfQuestions){
-    console.log("ENTER --> getQuestions (step4)");
     fetch(URLQuestions)
     .then(response => response.json())
     .then((data) =>{
-        console.log(data.value);
         var questions = [];
         var needShuffle = JSON.parse(sessionStorage.getItem("RandomQuestions"));
         var questionsCategorie = [];
@@ -42,29 +38,17 @@ function getQuestions(numberOfQuestions){
         }else{
             shuffled = data.value;
             noRandomStartID = parseInt(sessionStorage.getItem("startID"));
-            console.log("noRandomStartID : " + noRandomStartID);
         }
-        console.log('category : ' + category);
-        console.log('length' + shuffled.length);
         for (var i = 0; i < shuffled.length; i++){
             var questionCategorie = shuffled[i];
             if(shuffled[i].type != category){
-//                console.log(shuffled[i].type);
-//                shuffled.splice(i, 1);
             }else{
-//                console.log("Bonne catégorie : " + shuffled[i]);
                 questionsCategorie.push(questionCategorie);
             }
         }
-//        console.log(shuffled);
         tailleTabQuestions = questionsCategorie.length;
-        console.log(questionsCategorie);
-        //noRandomStartID--;
-        //for (var i = 0; i < numberOfQuestions; i++) {
         for (var i = noRandomStartID-1; i < (numberOfQuestions + noRandomStartID-1); i++) {
-//            var question = shuffled[i];
             var question = questionsCategorie[i];
-            console.log(question);
             var nbProp = 11;
 
             if(question.Answer1 == "NULL"){
@@ -111,7 +95,6 @@ function getQuestions(numberOfQuestions){
                 question.Valid11 = false;
                 nbProp--;
             }
-            //ADDED ON 30/09/2022
             var contents=new Array();
             contents[0]= question.Answer1;
             contents[1]= question.Answer2;
@@ -139,7 +122,6 @@ function getQuestions(numberOfQuestions){
             contents2[10]= question.Valid11;
 
             var randomOrder = JSON.parse(sessionStorage.getItem("RandomAnswers")); 
-            //console.log(randomOrder);
             if(randomOrder == "true"){
                 var j=0;
                 //variable used to contain controlled random number 
@@ -196,80 +178,47 @@ function getQuestions(numberOfQuestions){
         for(let i = 0; i < 81; i++){
             sessionStorage.removeItem("selectedAnswers"+(i+1));
         }
-    
-        console.log("nb questions choisies" + parseInt(numberOfQuestions));
-        console.log("nb questions dans base" + tailleTabQuestions);
-        console.log("EXIT --> getQuestions (step 5)");
         setTimeout(() => { delayCheck(numberOfQuestions); }, 1000);
     })
 
 }
 
 function startQuestionnaire(){
-    console.log("ENTER --> startQuestionnaire (step 1)");
     var learningMode = document.getElementById("learnMode");
     var randomAnswers = document.getElementById("randomAnswers");
     var randomQuestions = document.getElementById("randomQuestions");
     var startID = document.getElementById("startID");
     var strNumberOfQuestions = handleClick();
 
-    //setTimeout(() => { console.log("test"); }, 3000);
 
     if(learningMode.checked == true){
         sessionStorage.setItem("LearningMode", JSON.stringify("true"));
-        console.log(learningMode.checked);
     }else{
         sessionStorage.setItem("LearningMode", JSON.stringify("false"));
-        console.log(learningMode.checked);
     }
 
     if(randomAnswers.checked == true){
         sessionStorage.setItem("RandomAnswers", JSON.stringify("true"));
-        console.log(randomAnswers.checked);
     }else{
         sessionStorage.setItem("RandomAnswers", JSON.stringify("false"));
-        console.log(randomAnswers.checked);
     }
 
     if(randomQuestions.checked == true){
         sessionStorage.setItem("RandomQuestions", JSON.stringify("true"));
-        console.log(randomQuestions.checked);
     }else{
         sessionStorage.setItem("RandomQuestions", JSON.stringify("false"));
-        console.log(randomQuestions.checked);
     }
 
     sessionStorage.setItem("startID", startID.value);
 
-    //getQuestions(parseInt(strNumberOfQuestions));
-    console.log("EXIT --> startQuestionnaire (step2)");
     asyncGetQuestions(parseInt(strNumberOfQuestions));
-
-    // for(let i = 0; i < 81; i++){
-    //     sessionStorage.removeItem("selectedAnswers"+(i+1));
-    // }
-    //setTimeout(3000);
-    // console.log("nb questions choisies" + parseInt(strNumberOfQuestions));
-    // console.log("nb questions dans base" + tailleTabQuestions);
-    // setTimeout(() => { delayCheck(strNumberOfQuestions); }, 3000);
-    // if(parseInt(strNumberOfQuestions) < tailleTabQuestions){
-    //     sessionStorage.setItem("currentQuestion", "1");
-    //     alert("Vous allez lancer un questionnaire de " + strNumberOfQuestions + " questions.");
-    //     window.location.href= 'questionnaire.html';
-    // }else{
-    //     alert("Nombre de questions dans la base insuffisant, veuillez sélectionner un autre mode");
-    // }
 }
 
 async function asyncGetQuestions(strNumberOfQuestions){
-    console.log("ENTER --> asyncGetQuestions (step3)");
     await getQuestions(strNumberOfQuestions);
-    console.log("after");
-    console.log("EXIT --> asyncGetQuestions (step8)");
 }
 
 function delayCheck(strNumberOfQuestions){
-    console.log("ENTER --> delayCheck (step6)");
     if(parseInt(strNumberOfQuestions) < tailleTabQuestions){
         sessionStorage.setItem("currentQuestion", "1");
         alert("Vous allez lancer un questionnaire de " + strNumberOfQuestions + " questions.");
@@ -277,7 +226,6 @@ function delayCheck(strNumberOfQuestions){
     }else{
         alert("Nombre de questions dans la base insuffisant, veuillez sélectionner un autre mode");
     }
-    console.log("EXIT --> delayCheck (step7)");
 }
 
 function startTimer(){
@@ -290,12 +238,10 @@ function testRedirect(){
     fetch(URLQuestions)
     .then(response => response.json())
     .then((data) =>{
-//        console.log(data.value);
         var types = [];
         var allData;
         allData = data.value;
         
-//    window.location.href= 'categorie2.html';
         for (var i = 0; i < allData.length; i++) {
             var current;
             current = allData[i];

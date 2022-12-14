@@ -4,16 +4,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/utilisateur.css">
-        <title>Espace Utilisateur</title>
+        <title>Personal Space</title>
         <script src="../js/utilisateur.js"></script>
     </head>
 
     <body onload="fillHTML()">
 
         <ul>
-            <li><a href="#Profil" onclick="profileDiv()">Profil</a></li>
-            <li><a href="#Statistiques" onclick="statsDiv()">Statistiques</a></li>
-            <li><a href="#Historique" onclick="histoDiv()">Historique</a></li>
+            <li><a href="#Profil" onclick="profileDiv()">Profile</a></li>
+            <li><a href="#Statistiques" onclick="statsDiv()">Statistics</a></li>
+            <li><a href="#Historique" onclick="histoDiv()">History</a></li>
         </ul>
 
         <div id="profileDiv" class="profileDiv" style="display: none">
@@ -50,24 +50,24 @@
         </div>
 
         <div id="statsDiv" style="display: none">
-            <p>Choisissez la catégorie de questionnaire sur laquelle vous souhaitez consulter vos statistiques</p>
+            <p>Choose the quiz type to see your statistics</p>
             <select class="select_category" id="categorySelection">
             </select>
-            <button onclick="chooseCategory()" name="button-validation-category" class="category_validate_button" type="submit">Charger</button>
+            <button onclick="chooseCategory()" name="button-validation-category" class="category_validate_button" type="submit">Load</button>
             <div id="statsContentDiv" style="display: none">
                 <br/>
-                <p id="textGlobal"><b>Statistiques globales de --- sur le thème de --- : </b></p>
+                <p id="textGlobal"><b>Global statistics of --- on --- theme : </b></p>
                 <br/>
-                <p id="textNbTest">Nombre total de tests : </p>
-                <p id="textNbQuestions">Nombre total de questions : </p>
-                <p id="textNbQuestionsJustes">Nombre total de questions justes : </p>
-                <p id="textNbQuestionsFausses">Nombre total de questions fausses : </p>
+                <p id="textNbTest">Total number of tests : </p>
+                <p id="textNbQuestions">Total number of questions : </p>
+                <p id="textNbQuestionsJustes">Total number of right answers : </p>
+                <p id="textNbQuestionsFausses">Total number of wrong answers : </p>
                 <br/>
-                <p id="textPourcentageMoyen">Pourcentage moyen : </p>
-                <p id="textMeilleurRésultat">Meilleur résultat : </p>
-                <p id="textPireRésultat">Pire résultat : </p>
+                <p id="textPourcentageMoyen">Average percentage : </p>
+                <p id="textMeilleurRésultat">Best result : </p>
+                <p id="textPireRésultat">Worst result : </p>
                 <br/>
-                <p id="textModePrefere">Mode préféré : </p>
+                <p id="textModePrefere">Favourite mode : </p>
             </div>
         </div>
 
@@ -76,14 +76,14 @@
             <table id="tableHisto" border="2" style="width:100%">
                 <tr>
                     <td class="entete">Date</td>
-                    <td class="entete">Heure de validation</td>
-                    <td class="entete">Type Questionnaire</td>
-                    <td class="entete">Résultat</td>
-                    <td class="entete">Pourcentage</td>
-                    <td class="entete">Mode Apprentissage</td>
-                    <td class="entete">Réponses Aléatoires</td>
-                    <td class="entete">Questions Aléatoires</td>
-                    <td class="entete">ID de départ</td>
+                    <td class="entete">Validation Time</td>
+                    <td class="entete">Quiz Type</td>
+                    <td class="entete">Result</td>
+                    <td class="entete">Percentage</td>
+                    <td class="entete">Leaning Mode</td>
+                    <td class="entete">Random Answers</td>
+                    <td class="entete">Random Questions</td>
+                    <td class="entete">Start ID</td>
                 </tr>
             </table>
         </div>

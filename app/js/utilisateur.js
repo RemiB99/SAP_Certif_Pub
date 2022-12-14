@@ -20,7 +20,6 @@ function histoDiv(){
 
 function fillHTML(){
     var user = sessionStorage.getItem("utilisateur");
-    console.log("utilisateur courant : " + user);
 
     ///////////////////
     // HISTORIC PAGE //
@@ -30,7 +29,6 @@ function fillHTML(){
     fetch(URLStatistiques)
     .then(response => response.json())
     .then((data) =>{
-        console.log(data);
         for(let element in data.value){
             if(user === data.value[element].user){
                 const row = document.createElement("tr");
@@ -145,7 +143,7 @@ function fillHTML(){
     // Email
     var emailText = document.getElementById("textElementEmail");
     if(user != ""){
-        emailText.innerHTML = ("<b>Email : </b>" + user);
+        emailText.innerHTML = ("<b>E-mail : </b>" + user);
     }
 
     // Job
@@ -159,9 +157,9 @@ function fillHTML(){
     var isAdmin = JSON.parse(sessionStorage.getItem('Admin'));
     var roleText = document.getElementById("textElementRole");
     if(isAdmin == true){
-        roleText.innerHTML = ("<b>Rôle : </b>Administrateur");
+        roleText.innerHTML = ("<b>Role : </b>Admin");
     }else if(isAdmin == false){
-        roleText.innerHTML = ("<b>Rôle : </b>Aucun");
+        roleText.innerHTML = ("<b>Role : </b>None");
     }
 
     ////////////////
@@ -170,7 +168,6 @@ function fillHTML(){
 
     const categories = JSON.parse(sessionStorage.getItem('categories'));
         var select = document.getElementById('categorySelection');
-        console.log(categories);
         for(let i = 0; i <= categories.length - 1; i++){
             var option = document.createElement("option");
             option.setAttribute('id', i);
@@ -195,7 +192,6 @@ function chooseCategory(){
     document.getElementById("statsContentDiv").style.display = "block";
 
     fetch(URLStatistiques)
-    //    fetch(URLQuestionTypes)
         .then(response => response.json())
         .then((data) =>{
             for(let element in data.value){
@@ -229,77 +225,70 @@ function chooseCategory(){
             }
             // text global
             var textGlobal = document.getElementById("textGlobal");
-            textGlobal.innerHTML = ("<b>Statistiques globales de " + username + " sur le thème de " + typeQ + " :</b>");
+            textGlobal.innerHTML = ("<b>Global statistics of " + username + " on " + typeQ + " theme :</b>");
 
             // texte nb tests
             var textNbTests = document.getElementById("textNbTest");
-            textNbTests.innerHTML = ("<b>Nombre total de tests : </b>" + ttalTests);
+            textNbTests.innerHTML = ("<b>Total number of tests : </b>" + ttalTests);
 
             // texte nb questions
             var textNbQuestions = document.getElementById("textNbQuestions");
-            textNbQuestions.innerHTML = ("<b>Nombre total de questions : </b>" + ttalQuestions);
+            textNbQuestions.innerHTML = ("<b>Total number of questions : </b>" + ttalQuestions);
 
             // texte nb questions justes
             var textNbJuste = document.getElementById("textNbQuestionsJustes");
-            textNbJuste.innerHTML = ("<b>Nombre total de questions justes : </b>" + ttalJuste);
+            textNbJuste.innerHTML = ("<b>Total number of right answers : </b>" + ttalJuste);
 
             // texte nb questions fausses
             var textNbFausse = document.getElementById("textNbQuestionsFausses");
-            textNbFausse.innerHTML = ("<b>Nombre total de questions fausses : </b>" + ttalFausse);
+            textNbFausse.innerHTML = ("<b>Total number of wrong answers : </b>" + ttalFausse);
 
             // texte pourcentage moyen
             var textPourcentage = document.getElementById("textPourcentageMoyen");
             var calculPourcentage = ttalJuste * 100 / ttalQuestions;
             calculPourcentage = Math.round(calculPourcentage * 10) / 10;
             if(ttalTests != 0){
-                textPourcentage.innerHTML = ("<b>Pourcentage moyen : </b>" + calculPourcentage + "%");
+                textPourcentage.innerHTML = ("<b>Average percentage : </b>" + calculPourcentage + "%");
             }else{
-                textPourcentage.innerHTML = ("<b>Pourcentage moyen : </b> Aucun test réalisé dans cette catégorie");
+                textPourcentage.innerHTML = ("<b>Average percentage : </b> No tests were made in this category");
             }
 
             // texte meilleur résultat
             var textMeilleurResultat = document.getElementById("textMeilleurRésultat");
             if(ttalTests != 0){
-                textMeilleurResultat.innerHTML = ("<b>Meilleur résultat : </b>" + meilleurResultat + "%");
+                textMeilleurResultat.innerHTML = ("<b>Best result : </b>" + meilleurResultat + "%");
             }else{
-                textMeilleurResultat.innerHTML = ("<b>Meilleur résultat : </b> Aucun meilleur résultat");
+                textMeilleurResultat.innerHTML = ("<b>Best result : </b> No best result yet");
             }
 
             // texte pire résultat
             var textPireResultat = document.getElementById("textPireRésultat");
             if(ttalTests != 0){
-                textPireResultat.innerHTML = ("<b>Pire résultat : </b>" + pireResultat + "%");
+                textPireResultat.innerHTML = ("<b>Worst result : </b>" + pireResultat + "%");
             }else{
-                textPireResultat.innerHTML = ("<b>Pire résultat : </b> Aucun pire résultat");
+                textPireResultat.innerHTML = ("<b>Worst result : </b> No worst result yet");
             }
 
             // texte mode préféré
             var textModePrefere = document.getElementById("textModePrefere");
-            console.log(arrPref["3"]);
-            console.log(arrPref["40"]);
-            console.log(arrPref["80"]);
             modePrefere = 0;
             valeurPrefere = 0;
-            console.log("AVANT arrPref de 3 : " + arrPref["3"] + ", modePrefere = " + modePrefere + ", valeurPrefere = " + valeurPrefere);
             if(arrPref["3"] >= valeurPrefere){
                 modePrefere = "3";
                 valeurPrefere = arrPref["3"];
             }
-            console.log("AVANT arrPref de 40 : " + arrPref["40"] + ", modePrefere = " + modePrefere + ", valeurPrefere = " + valeurPrefere);
             if(arrPref["40"] >= valeurPrefere){
                 modePrefere = "40";
                 valeurPrefere = arrPref["40"]
             }
-            console.log("AVANT arrPref de 80 : " + arrPref["80"] + ", modePrefere = " + modePrefere + ", valeurPrefere = " + valeurPrefere);
             if(arrPref["80"] >= valeurPrefere){
                 modePrefere = "80";
                 valeurPrefere = arrPref["80"]
             }
-            console.log("APRES arrPref de 80 : " + arrPref["80"] + ", modePrefere = " + modePrefere + ", valeurPrefere = " + valeurPrefere);
             if(ttalTests != 0){
-                textModePrefere.innerHTML = ("<b>Mode préféré : </b>" + modePrefere + " questions");
+                textModePrefere.innerHTML = ("<b>Favourite mode : </b>" + modePrefere + " questions");
             }else{
-                textModePrefere.innerHTML = ("<b>Mode préféré : </b> Aucun");
+                textModePrefere.innerHTML = ("<b>Favourite mode : </b> None");
             }
         })
 }

@@ -3,10 +3,8 @@ var numberOfQuestions = parseInt(sessionStorage.getItem('numberOfQuestions'));
 var currentQuestion = parseInt(sessionStorage.getItem('currentQuestion'));
 var questions = JSON.parse(sessionStorage.getItem('questions'));
 
-//console.log(questions[currentQuestion]);
 
 function fillHTML() {
-    console.log(questions);
     //SideNav Infos
     var sidenav= document.getElementById('mySidenav');
     var arr = [];
@@ -27,7 +25,6 @@ function fillHTML() {
                 li.setAttribute('class', 'currentQuestion');
                 li.setAttribute('id', i);
                 li.setAttribute('onClick', 'switchQuestion(this.id)');
-//                li.addEventListener("click", switchQuestion);
                 var p = document.createElement('p');
                 p.innerHTML = arr[i];
                 li.appendChild(p);
@@ -36,7 +33,6 @@ function fillHTML() {
             else {
                 li.setAttribute('id', i);
                 li.setAttribute('onClick', 'switchQuestion(this.id)');
-//                li.addEventListener("click", switchQuestion);
                 var p = document.createElement('p');
                 p.innerHTML = arr[i];
                 li.appendChild(p);
@@ -45,16 +41,6 @@ function fillHTML() {
         }
         sidenav.appendChild(ul);
     // end added
-
-    // boucle a décommenter si marche pas
-    // for (let i = 1; i <= numberOfQuestions; i++) {
-    //     if (i==currentQuestion) {
-    //         sidenav.innerHTML += "<a href='' class='currentQuestion' id=side" + i + ">Question " + i + "</a>";
-    //     }
-    //     else {
-    //         sidenav.innerHTML += "<a href='' id=side" + i + " onClick='switchQuestion()'>Question " + i + " </a>";
-    //     }
-    //     }
 
     //numberOfQuestion
     var numberOfQuestionDiv= document.getElementById('numberOfQuestion');
@@ -70,46 +56,8 @@ function fillHTML() {
 
 
     var selectedAnswers = sessionStorage.getItem('selectedAnswers'+currentQuestion);
-    //answerPart
-    // //ADDED ON 30/09/2022
-    // var contents=new Array()
-    // contents[0]= "TEST 1"
-    // contents[1]= "TEST 2"
-    // contents[2]= "TEST 3"
-    // contents[3]= "TEST 4"
-    // contents[4]= "TEST 5"
-    // contents[5]= "TEST 6"
-    // contents[6]= "TEST 7"
-    // contents[7]= "TEST 8"
-    // contents[8]= "TEST 9"
-    // contents[9]= "TEST 10"
-    // contents[10]= "TEST 11"
 
-    // var i=0
-    // //variable used to contain controlled random number 
-    // var random
-    // var random2
-    // var temp
-    // var spacing="<br>"
-    // //while all of array elements haven't been cycled thru
-    // while (i<contents.length){
-    //     //generate random num between 0 and arraylength-1
-    //     random=Math.floor(Math.random()*contents.length)
-    //     random2=Math.floor(Math.random()*contents.length)
-    //     //if element hasn't been marked as "selected"
-    //     temp = contents[random]
-    //     contents[random] = contents[random2]
-    //     contents[random2] = temp
-    //     i++
-    //     // if (contents[random]!="selected"){
-    //     //     //document.write(contents[random]+spacing)
-    //     //     //mark element as selected
-    //     //     contents[random]=random
-    //     //     i++
-    //     // }
-    // }
-    // console.log(contents);
-    // //END ADDED ON 30/09/2022
+
 
     for (let i = 1; i <= 11; i++) {
         var answerDiv = document.getElementById('answer'+i);
@@ -127,16 +75,10 @@ function fillHTML() {
         }
     }
 
-    // var cards = $(".random");
-    // //var cards = document.getElementsByClassName("random");
-    // for(var i = 0; i < cards.length; i++){
-    //     var target = Math.floor(Math.random() * cards.length -1) + 1;
-    //     var target2 = Math.floor(Math.random() * cards.length -1) +1;
-    //     cards.eq(target).before(cards.eq(target2));
-//}
+
     var nextQuestion = document.getElementById('nextQuestion');
     if (currentQuestion === numberOfQuestions) {
-        nextQuestion.textContent = 'Terminer le test';
+        nextQuestion.textContent = 'Finish test';
     }
 }
 
@@ -157,11 +99,9 @@ function submitAnswers() {
     for(var i=0; i<validatedDivs.length; i++) {
         selectedAnswers[i] = validatedDivs[i].id;
     }
-//console.log("selectedAnswers"+currentQuestion);
     sessionStorage.setItem("selectedAnswers"+currentQuestion, JSON.stringify(selectedAnswers));
 
 
-//    alert("Selected answers : " + selec);
     var reponseTab = [false, false, false, false, false, false, false, false, false, false, false];
     var answerTab = [false, false, false, false, false, false, false, false, false, false, false];
     
@@ -175,7 +115,7 @@ function submitAnswers() {
     }
     else {
         // Affichage des résultats
-        if (confirm("Voulez-vous vraiment terminer le test avant la fin du temps imparti ?")){
+        if (confirm("Do you really want to finish the test before the given time ends ?")){
 
             window.location.href= 'resultatsQuestionnaire.html';
         }
@@ -247,9 +187,6 @@ function checkQuestion() {
        
         if(learnMode == "true"){
 
-            console.log("Réponses Données: " + reponseTab);
-            console.log("Bonnes réponses : " + answerTab);
-
             setColor();
                 if(reponseTab[0] == answerTab[0] && 
                     reponseTab[1] == answerTab[1] && 
@@ -262,20 +199,13 @@ function checkQuestion() {
                     reponseTab[8] == answerTab[8] && 
                     reponseTab[9] == answerTab[9] && 
                     reponseTab[10] == answerTab[10]){
-                    //alert("Bonne réponse !");
-                    setTimeout(function(){ alert("Bonne réponse !"); }, 100);
-                    // setTimeout(3000);
+                    setTimeout(function(){ alert("Congratulations ! You answered well !"); }, 100);
                 }else{
-                    console.log(reponseTab);
-                    console.log(answerTab);
-                    let alrt = "Mauvaise Réponse...\nVous avez sélectionné : ";
-                    let alrt2 = "Les réponses étaient : ";
-                    // var sel = ["A","B","C","D","E","F","G","H","I","J","K"];
-                    // var ans = ["A","B","C","D","E","F","G","H","I","J","K"];
+                    let alrt = "Almost...\nYou selected : ";
+                    let alrt2 = "The answers were : ";
                     var sel = [];
                     var ans = [];
                     for(var y=0; y<11; y++){
-                        console.log(y);
                         if(reponseTab[y] == true){
                             sel.push(y+1);
                         }
@@ -285,25 +215,17 @@ function checkQuestion() {
                             ans.push(z+1);
                         }
                     }
-                    console.log("sel : " + sel);
-                    console.log("ans : " + ans);
                     setTimeout(function(){ alert(alrt + sel + "\n" + alrt2 + ans); }, 100);
-                    // alert(alrt + sel + "\n" + alrt2 + ans);
-                    //setTimeout(3000);
                 }
         }
 }
 
 async function setColor(){
 
-    console.log("Réponses Données: " + reponseTab);
-    console.log("Bonnes réponses : " + answerTab);
 
     if(answerTab[0] == true){
-        // document.getElementById("answer1").className = "isTrue";
         document.getElementById("answer1").style.background="green";
     }else{
-        // document.getElementById("answer1").className = "isFalse";
         document.getElementById("answer1").style.background="red";
     }
 
@@ -380,18 +302,13 @@ function annonce(){
         reponseTab[8] == answerTab[8] && 
         reponseTab[9] == answerTab[9] && 
         reponseTab[10] == answerTab[10]){
-        alert("Bonne réponse !");
+        alert("Congratulations ! You answered well !");
     }else{
-        console.log(reponseTab);
-        console.log(answerTab);
-        let alrt = "Mauvaise Réponse...\nVous avez sélectionné : ";
-        let alrt2 = "Les réponses étaient : ";
-        // var sel = ["A","B","C","D","E","F","G","H","I","J","K"];
-        // var ans = ["A","B","C","D","E","F","G","H","I","J","K"];
+        let alrt = "Almost...\nYou selected : ";
+        let alrt2 = "The answers were : ";
         var sel = [];
         var ans = [];
         for(var y=0; y<11; y++){
-            console.log(y);
             if(reponseTab[y] == true){
                 sel.push(y+1);
             }
@@ -401,8 +318,6 @@ function annonce(){
                 ans.push(z+1);
             }
         }
-        console.log("sel : " + sel);
-        console.log("ans : " + ans);
         alert(alrt + sel + "\n" + alrt2 + ans);
     }
 }

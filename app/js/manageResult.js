@@ -31,8 +31,6 @@ var statREPALEA = (JSON.parse(sessionStorage.getItem("RandomAnswers")) === "true
 var statQUALEA = (JSON.parse(sessionStorage.getItem("RandomQuestions")) === "true");
 var statBASEID = parseInt(sessionStorage.getItem("startID"));
 
-console.log(statDATE);
-//console.log(statTime);
 var day = statDATE.getDate();
 var month = statDATE.getMonth() + 1;
 var year = statDATE.getFullYear();
@@ -58,7 +56,6 @@ if(timeSeconds == "0" || timeSeconds == "1" || timeSeconds == "2"|| timeSeconds 
 }
 statDATE = `${year}-${month}-${day}`;
 statTIME = `${timeHours}:${timeMinutes}:${timeSeconds}`
-console.log(statTIME);
 
 initvImg();
 initxImg();
@@ -147,12 +144,11 @@ function getCorrection(){
 }
 
 function getStats(){
-    console.log(nbRepTotal)
     statNBJUSTE = nbRepTotal;
-    txtNbrTotalRep.textContent= "Nombre de réponses correctes : " + nbRepTotal + "/" + numberOfQuestions;
+    txtNbrTotalRep.textContent= "Correct Answers : " + nbRepTotal + "/" + numberOfQuestions;
     var percentage = nbRepTotal * 100 / numberOfQuestions ;
     percentage = Math.round(percentage * 10) / 10
-    txtPercentageTrue.textContent = "Pourcentage de bonne réponses : " + percentage + "%";
+    txtPercentageTrue.textContent = "Rate of success : " + percentage + "%";
     statPOURCENTAGE = percentage;
 }
 
@@ -161,17 +157,6 @@ function returnMenu() {
 }
 
 function postStat(){
-    console.log("Utilisateur : "            + statUSER);
-    console.log("Date : "                   + statDATE);
-    console.log("Heure : "                  + statTIME);
-    console.log("Type Questionnaire : "     + statTYPEQUESTIONNAIRE);
-    console.log("Nombre Questions : "       + statNBQ);
-    console.log("Bonnes Réponses : "        + statNBJUSTE);
-    console.log("Pourcentage : "            + statPOURCENTAGE);
-    console.log("Learning Mode : "          + statLEARNINGMODE);
-    console.log("Réponses Aléatoires : "    + statREPALEA);
-    console.log("Questions Aléatoires : "   + statQUALEA);
-    console.log("Base ID : "                + statBASEID);
 
     const data = {
         user : statUSER,

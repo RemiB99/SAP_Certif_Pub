@@ -16,17 +16,14 @@ loginButton.addEventListener("click", (e) => {
     fetch(URLUsers)
     .then(response => response.json())
     .then((data) =>{
-        console.log(data);
     for(let user in data.value){
         if (mail === data.value[user].mail || password === data.value[user].password || username=== data.value[user].username ) {
-            console.log("erreur, existe déjà");
         } 
         else{
             location.reload();
         }
     }
     if(password == password2){
-            console.log("Inscription réussi");
             var newData = [
                 {
                     "ID": '1',
@@ -43,18 +40,6 @@ loginButton.addEventListener("click", (e) => {
         }
     else{
             loginErrorMsg.style.opacity = 1;
-            console.log("Erreur, mots de passes différents");
         }
     }
 )})
-
-// TO FINISH !!!
-// function redirect(){
-//     console.log("AH !");
-//     if (confirm("Voulez-vous vraiment créer un compte avec ces données ?")){
-//         console.log("AH 1 !");
-//         window.location.href= './html/connexion.html';
-//         //window.location.href= 'mdp.html';
-//         console.log("AH 2 !");
-//     }
-// }

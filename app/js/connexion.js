@@ -12,10 +12,8 @@ loginButton.addEventListener("click", (e) => {
     const mail = loginForm.mail.value;
     const password = loginForm.password.value;
     fetch(URLUsers)
-//    fetch(URLQuestionTypes)
     .then(response => response.json())
     .then((data) =>{
-        console.log(data);
     for(let user in data.value){
         if (mail === data.value[user].mail && password === data.value[user].password) {
             sessionStorage.setItem('Admin', data.value[user].role);
@@ -23,23 +21,18 @@ loginButton.addEventListener("click", (e) => {
             sessionStorage.setItem('LastName', data.value[user].lastName);
             sessionStorage.setItem('UserName', data.value[user].username);
             sessionStorage.setItem('Job', data.value[user].job);
-            console.log('ROLE : ' + data.value[user].role);
             let p = document.getElementById('hidden_message_email');
             let q = document.getElementById('hidden_message_mdp');
             p.hidden = true;
             q.hidden = true;
-//            fetch(URLQuestions)
             fetch(URLQuestionTypes)
             .then(response => response.json())
             .then((data) =>{
-        //        console.log(data.value);
                 var types = [];
                 var typesID = [];
                 var allData;
                 allData = data.value;
-                console.log(allData);
                 
-        //    window.location.href= 'categorie2.html';
                 for (var i = 0; i < allData.length; i++) {
                     var current;
                     current = allData[i];
@@ -51,22 +44,16 @@ loginButton.addEventListener("click", (e) => {
                 }
                 sessionStorage.setItem("categories", JSON.stringify(types));
                 sessionStorage.setItem("utilisateur", mail);
-                //location.reload();
            })
 
-            alert("Vous allez être redirigé vers l'accueil de l'application... Attendez une dixaine de secondes après avoir cliqué sur 'OK', chargement en cours...");
+            alert("You will be redirected to the application's main page. This might take a few seconds after you clicked 'ok', data loading, please wait.");
             window.location.href = "./html/choixCategorie.html";
         } else {
 
-            console.log("Connexion échoué");
             let p = document.getElementById('hidden_message_email');
             let q = document.getElementById('hidden_message_mdp');
             p.removeAttribute("hidden");
             q.removeAttribute("hidden");
         }
     }
-    // let p = document.getElementById('hidden_message_email');
-    // let q = document.getElementById('hidden_message_mdp');
-    // p.removeAttribute("hidden");
-    // q.removeAttribute("hidden");
 })})

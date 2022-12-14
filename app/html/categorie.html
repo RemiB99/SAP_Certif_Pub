@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="stylesheet" href="../css/categorie.css">
         <script  src="../js/categorie.js"></script>
-        <title>La liste des catégories</title>
+        <title>Test parameters</title>
 
     </head>
 
@@ -17,42 +17,43 @@
 
                 <div id="text">
                     <h1 id='title_quizz'></h1>
-                    <p>Choisissez le nombre de questions que vous souhaitez avoir durant la durée du test</p>
+                    <p>Choose the parameters you need for your test</p>
                 </div>
     
                 <div class="container">
         
                     <div id="div-40-questions">
                         <p><b>40 Questions</b></p>
-                        <p>Durée 01:30</p>
+                        <p>Duration 01:30mn</p>
                     </div>
                     
                     <div id="div-80-questions">
                         <p><b>80 Questions</b></p>
-                        <p>Durée 03:00</p>
+                        <p>Duration 03:00mn</p>
                     </div>
 
                 </div>
 
                 <div>
                     <select class="select_time" id="questionsSelection">
+                        <option value="3">3  Questions (5 min)</option>
                         <option value="40">40 Questions (1h30)</option>
                         <option value="80">80 Questions (3h00)</option>
-                        <option value="3">3  Questions (5 min)</option>
+                        
                     </select>
                 </div>
 
                 
-                    <p><b>Mode learning : </b></p>
+                    <p><b>Learning Mode : </b></p>
                     <input type="checkbox" id="learnMode" name="learnMode">
-                    <p><b>Réponses aléatoires : </b></p>
+                    <p><b>Random Answers : </b></p>
                     <input type="checkbox" id="randomAnswers" name="randomAnswers">                
-                    <p><b>Questions aléatoires : </b></p>
+                    <p><b>Random Questions : </b></p>
                     <input type="checkbox" id="randomQuestions" name="randomQuestions" checked>
-                    <p><b>ID de base : (Si questions aléatoires non sélectionné) </b></p>
+                    <p><b>Base ID : (If you haven't selected Random Questions parameter) </b></p>
                     <input type="number" id="startID" name="startID" min="1">
                 <div>
-                    <button onclick="startQuestionnaire()" name="button-validation" class="validate_button" type="submit">Démarrer</button>
+                    <button onclick="startQuestionnaire()" name="button-validation" class="validate_button" type="submit">Start</button>
                     <!-- <button onclick="testRedirect()" name="button-validation" class="validate_button" type="submit">TEST</button> -->
                 </div>
 

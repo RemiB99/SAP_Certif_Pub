@@ -32,7 +32,7 @@ function modifyQuestionDiv(){
     document.getElementById("ajoutFichiercsv").style.display = "none"; 
     document.getElementById("actionDelQuestion").style.display = "none";
     var nbQ = sessionStorage.getItem("NbQuestionsTotal");
-    document.getElementById("text-id-modif").innerText = "Sélectionnez l'ID de la question à modifier : " + "(min : 1, max : " + nbQ  +")";
+    document.getElementById("text-id-modif").innerText = "Select the ID of the quetion you want to modify : " + "(min : 1, max : " + nbQ  +")";
 
     var selectMod = document.getElementById('modType');
     const categories = JSON.parse(sessionStorage.getItem('categories'));
@@ -53,7 +53,7 @@ function delQuestionDiv(){
     document.getElementById("ajoutFichiercsv").style.display = "none"; 
     document.getElementById("actionDelQuestion").style.display = "none";  
     var nbQ = sessionStorage.getItem("NbQuestionsTotal");
-    document.getElementById("text-id-suppr").innerText = "Sélectionnez l'ID de la question à supprimer : " + "(min : 1, max : " + nbQ  +")";
+    document.getElementById("text-id-suppr").innerText = "Select the ID of the quetion you want to delete : " + "(min : 1, max : " + nbQ  +")";
     document.getElementById("supprID").value = "";
 }
 
@@ -97,7 +97,6 @@ function addCSVDiv(){
 }
 
 function addQuestionButton(){
-    console.log("Ajout de question... TODO");
     if(confirm("Voulez-vous vraiment ajouter cette question ?")){
     var addingQType = document.getElementById('addType').value;
     var addingQDesc = document.getElementById('addDesc').value;
@@ -259,39 +258,13 @@ function addQuestionButton(){
         addingQVal11 = null;
     }
 
-    console.log(addingQType);
-    console.log(addingQDesc);
-    console.log(addingQNOA);
-    console.log('rep 1 : ' + addingQRep1);
-    console.log('rep 2 : ' + addingQRep2);
-    console.log('rep 3 : ' + addingQRep3);
-    console.log('rep 4 : ' + addingQRep4);
-    console.log('rep 5 : ' + addingQRep5);
-    console.log('rep 6 : ' + addingQRep6);
-    console.log('rep 7 : ' + addingQRep7);
-    console.log('rep 8 : ' + addingQRep8);
-    console.log('rep 9 : ' + addingQRep9);
-    console.log('rep 10 : ' + addingQRep10);
-    console.log('rep 11 : ' + addingQRep11);
-    console.log('val 1 : ' + addingQVal1);
-    console.log('val 2 : ' + addingQVal2);
-    console.log('val 3 : ' + addingQVal3);
-    console.log('val 4 : ' + addingQVal4);
-    console.log('val 5 : ' + addingQVal5);
-    console.log('val 6 : ' + addingQVal6);
-    console.log('val 7 : ' + addingQVal7);
-    console.log('val 8 : ' + addingQVal8);
-    console.log('val 9 : ' + addingQVal9);
-    console.log('val 10 : ' + addingQVal10);
-    console.log('val 11 : ' + addingQVal11);
-    console.log('checkNbAnswers : ' + checkNbAnswers);
-
+    
     if(addingQDesc == ""){
-        alert("La description est vide, veuillez en insérer une...");
+        alert("Description is empty, please add one...");
     }else if(checkNbAnswers != parseInt(addingQNOA)){
-        alert("Nombre de réponses justes différent du nombre de réponses valides cochées, veuillez re-vérifier...");
+        alert("Right answers number is different than the number you have checked...");
     }else if(nbRep < 2){
-        alert("Veuillez entrer plus qu'une réponse possible...");
+        alert("Please enter more than 1 answer...");
     }else{
         const data = { 
 //            ID: 2492, 
@@ -331,12 +304,10 @@ fetch(URLQuestions, {
 })
   .then((response) => response.json())
   .then((data) => {
-    console.log('Success:', data);
   })
   .catch((error) => {
-    console.error('Error:', error);
   });
-        alert("Question ajoutée...");
+        alert("Question added...");
         var nbQ = sessionStorage.getItem("NbQuestionsTotal");
         nbQ = parseInt(nbQ) +1;
         sessionStorage.setItem("NbQuestionsTotal",nbQ);
@@ -347,9 +318,8 @@ fetch(URLQuestions, {
 }
 
 function modifyQuestionButton(){
-    console.log("Modification de question... TODO");
     idConfirm = sessionStorage.getItem("IDQMODIF");
-    if(confirm("Voulez-vous vraiment modifier la question n°" + idConfirm + " ?")){
+    if(confirm("Do you really want to modify question n°" + idConfirm + " ?")){
         var modifQType = document.getElementById('modType').value;
         var modifQDesc = document.getElementById('modDesc').value;
         var modifQNOA = document.getElementById('modNOA').value;
@@ -379,31 +349,6 @@ function modifyQuestionButton(){
         var nbRep = 0;
         var id;
 
-        console.log(modifQType);
-        console.log(modifQDesc);
-        console.log(modifQNOA);
-        console.log('rep 1 : ' + modifQRep1);
-        console.log('rep 2 : ' + modifQRep2);
-        console.log('rep 3 : ' + modifQRep3);
-        console.log('rep 4 : ' + modifQRep4);
-        console.log('rep 5 : ' + modifQRep5);
-        console.log('rep 6 : ' + modifQRep6);
-        console.log('rep 7 : ' + modifQRep7);
-        console.log('rep 8 : ' + modifQRep8);
-        console.log('rep 9 : ' + modifQRep9);
-        console.log('rep 10 : ' + modifQRep10);
-        console.log('rep 11 : ' + modifQRep11);
-        console.log('val 1 : ' + modifQVal1);
-        console.log('val 2 : ' + modifQVal2);
-        console.log('val 3 : ' + modifQVal3);
-        console.log('val 4 : ' + modifQVal4);
-        console.log('val 5 : ' + modifQVal5);
-        console.log('val 6 : ' + modifQVal6);
-        console.log('val 7 : ' + modifQVal7);
-        console.log('val 8 : ' + modifQVal8);
-        console.log('val 9 : ' + modifQVal9);
-        console.log('val 10 : ' + modifQVal10);
-        console.log('val 11 : ' + modifQVal11);
 
                 if(modifQRep1 != "" && modifQVal1 == true){
                     checkNbAnswers += 1;
@@ -516,11 +461,11 @@ function modifyQuestionButton(){
                 }
 
                 if(modifQDesc == ""){
-                    alert("La description est vide, veuillez en insérer une...");
+                    alert("Description in empty, please add oneLa description est vide, veuillez en insérer une...");
                 }else if(checkNbAnswers != parseInt(modifQNOA)){
-                    alert("Nombre de réponses justes différent du nombre de réponses valides cochées, veuillez re-vérifier...");
+                    alert("Right answers number is different than the number you have checked...");
                 }else if(nbRep < 2){
-                    alert("Veuillez entrer plus qu'une réponse possible...");
+                    alert("Please enter more than 1 anwser...");
                 }else{
                     const data = { 
                         //ID: idQmodif,
@@ -552,9 +497,7 @@ function modifyQuestionButton(){
                     };
 
                     id = sessionStorage.getItem("IDQMODIF");
-                    console.log("idQmodif dans l'url : " + id);
                     var URLID = URLQuestions + "/" + id;
-                    console.log(URLID);
                     fetch(URLID, {
                         method: 'PATCH', // or 'PUT'
                         headers: {
@@ -564,14 +507,13 @@ function modifyQuestionButton(){
                     })
                         .then((response) => response.json())
                         .then((data) => {
-                        console.log('Success:', data);
-                        alert("Question " + id + " modifiée avec succès !");
+                        alert("Question " + id + " sucessfully modified !");
                         sessionStorage.setItem("IDQMODIF", 0);
                         location.reload();
                         })
                         .catch((error) => {
                         console.error('Error:', error);
-                        alert("erreur lors de l'update");
+                        alert("Error found during update");
                         });
                 }
     }
@@ -579,26 +521,21 @@ function modifyQuestionButton(){
 }
 
 function delQuestionButton(){
-    if(confirm("Voulez-vous vraiment supprimer la question n°" + idQDel + " ?")){
+    if(confirm("Are you sure you want to delete the question with ID " + idQDel + " ?")){
             fetch(URLQuestions + '/' + idQDel, {
         method: 'DELETE',
         })
         .then(res => res.text()) // or res.json()
-        .then(res => console.log(res))
-        //    console.log("Suppression de question... TODO");
         idQDel = '';    
-        alert("Question " + idQDel + " supprimée avec succès !");
+        alert("Question " + idQDel + " successfully deleted !");
         location.reload();
     }
 }
 
 function addQuestionTypButton(){
-    console.log("Ajout de type de question... TODO");
     var addingTyType = document.getElementById('typeName').value;
     var addingTyDesc = document.getElementById('typeDesc').value;
-    if(confirm("Voulez-vous vraiment ajouter le type de question suivant : " + addingTyType + " ?")){
-    console.log(addingTyType);
-    console.log(addingTyDesc);
+    if(confirm("Are you sure you want to add the following quiz type : " + addingTyType + " ?")){
     const data = { 
                     name: addingTyType, 
                     description: addingTyDesc
@@ -613,23 +550,19 @@ function addQuestionTypButton(){
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log('Success:', data);
               })
               .catch((error) => {
                 console.error('Error:', error);
               });
-              alert("Type de question ajouté avec succès !");
+              alert("Quiz type successfully added !");
               fetch(URLQuestionTypes)
               .then(response => response.json())
               .then((data) =>{
-          //        console.log(data.value);
                   var types = [];
                   var typesID = [];
                   var allData2;
                   allData2 = data.value;
-                  console.log(allData2);
                   
-          //    window.location.href= 'categorie2.html';
                   for (var i = 0; i < allData2.length; i++) {
                       var current;
                       current = allData2[i];
@@ -645,24 +578,17 @@ function addQuestionTypButton(){
         }else{
             document.getElementById('typeName').value = "";
             document.getElementById('typeDesc').value = "";
-            alert("Erreur rencontrée lors de l'ajout, veuillez recommencer :/"); 
+            alert("Error found during the adding process, please try again"); 
         }
     }
 }
 
 function delQuestionTypButton(){
-    //console.log("Suppression de type de question... TODO");
     var selector = document.getElementById('selectDelSelection');
     var valueSelector = selector.value;
     var textSelector = selector.options[selector.selectedIndex].text;
-//    var selected = selector.selected.id;
-    //console.log("type : " + selector.options[selector.selectedIndex].text);
-    //console.log("id : " + selector.value);
     const dataDelete = { ID: valueSelector, name: textSelector };
     const dataCheckType = { name: textSelector };
-    //var dataToDelete;
-    //console.log(dataDelete);
-    //setTimeout(3000);
     fetch(URLQuestionTypes)
               .then(response => response.json())
               .then((data) =>{
@@ -671,70 +597,19 @@ function delQuestionTypButton(){
                   for(let z=0; z < allData3.length; z++){
                     var current;
                     current = allData3[z];
-                    //console.log("current : " + current.name);
                     if(current.name == textSelector){
                         dataToDelete = current.ID;
-                        //console.log("TO DELETE : " + dataToDelete);
                     }
                   }
               })
-    // fetch(URLQuestionTypes, {
-    //     method: 'DELETE', // or 'PUT'
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(data),
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       console.log('Success:', data);
-    //     })
-    //     .catch((error) => {
-    //       console.error('Error:', error);
-    //     });
-    //setTimeout(() => { console.log("waiting for fetching"); }, 3000);
-    console.log(textSelector);
+
     setTimeout(function () {
         delID(textSelector);
         }, 3000);
-    // fetch(URLQuestionTypes + '/' + dataToDelete, {
-    //     method: 'DELETE',
-    //   })
-    //   .then(res => res.text()) // or res.json()
-    //   .then(res => console.log(res))
-    //   idQDel = '';
-    //   alert("Type de question " + textSelector + " supprimée avec succès !");
-
-    //   fetch(URLQuestionTypes)
-    //           .then(response => response.json())
-    //           .then((data) =>{
-    //       //        console.log(data.value);
-    //               var types = [];
-    //               var typesID = [];
-    //               var allData2;
-    //               allData2 = data.value;
-    //               console.log(allData2);
-                  
-    //       //    window.location.href= 'categorie2.html';
-    //               for (var i = 0; i < allData2.length; i++) {
-    //                   var current;
-    //                   current = allData2[i];
-    //                   if (types.indexOf(current.name) >= 0){
-    //                   }else{
-    //                       types.push(current.name);
-    //                       typesID.push(current.ID);
-    //                   }
-    //               }
-    //               console.log("types : " + types);
-    //               sessionStorage.setItem("categories", JSON.stringify(types));
-    //               alert(dataToDelete);
-    //               location.reload();
-              
-    //           })
 }
 
 function addCSVButton(){
-    if(confirm("Voulez-vous vraiment importer toutes les questions en provenance de ce fichier ?")){
+    if(confirm("Do you really want to add all questions stored in this file ?")){
     var fileSize = 0;
     //get file
     var theFile = document.getElementById("myFile");
@@ -782,7 +657,6 @@ function addCSVButton(){
                 }
                 //append table contents
                     myTable.appendChild(row);
-                    console.log("zrzrzrzer" + rowContent[0]);
                     var rowElements = rowContent[0].split(';')
                     var countAdded = 0;
                     if( rowElements[1] != null && rowElements[2] != null && rowElements[3] != null && rowElements[4] != null && rowElements[5] != null &&
@@ -792,13 +666,10 @@ function addCSVButton(){
                         rowElements[21] != null && rowElements[22] != null && rowElements[23] != null && rowElements[24] != null && rowElements[25] !=  null)
                     {
                         countAdded += 1;
-                        console.log("valid 1 : " + rowElements[15]);
                         if(rowElements[15] == "0"){
                             rowElements[15] = false;
-                            //addingQVal1 == false;
                         }else if(rowElements[15] == "1"){
                             rowElements[15] = true;
-                            //addingQVal1 =
                         }else{
                             rowElements[15] = null;
                         }
@@ -911,7 +782,6 @@ function addCSVButton(){
                                         Valid10: rowElements[24], 
                                         Valid11: rowElements[25]
                                     };
-                        console.log(data);
                         
                         fetch(URLQuestions, {
                             method: 'POST', // or 'PUT'
@@ -922,7 +792,6 @@ function addCSVButton(){
                           })
                             .then((response) => response.json())
                             .then((data) => {
-                              console.log('Success:', data);
                               lignesAjoutees ++;
                             })
                             .catch((error) => {
@@ -938,7 +807,6 @@ function addCSVButton(){
             }
             
         }
-        //setTimeout(alert(lignesAjoutees + "/" + (countTotal-1) + " Données ajoutées avec succès"), 3000);
          //call file reader onload
           myReader.readAsText(theFile.files[0]);
         }
@@ -959,9 +827,8 @@ function addCSVButton(){
 function displayDivSupperssion(){
     idQDel = '';
     var nbQTTAL = sessionStorage.getItem("NbQuestionsTotal");
-    //console.log("valeur sélectionnée : " + document.getElementById("supprID").value);
     if(document.getElementById("supprID").value != "" && document.getElementById("supprID").value > 0 && document.getElementById("supprID").value < parseInt(nbQTTAL)+1){
-        alert("Patientez quelques instants, la question choisie charge...");
+        alert("Please wait a few seconds, the selected question is loading...");
         document.getElementById("actionDelQuestion").style.display = "block";
         fetch(URLQuestions)
         .then(response => response.json())
@@ -970,14 +837,14 @@ function displayDivSupperssion(){
             allDataSup = data.value;            
             for(var i = 0; i < allDataSup.length; i++){
                 if(parseInt(allDataSup[i].ID) == parseInt(document.getElementById("supprID").value)){
-                    document.getElementById("selectedDelet").innerText = "Question Sélectionnée : " + allDataSup[i].ID + " - " + allDataSup[i].description;
+                    document.getElementById("selectedDelet").innerText = "Selected question : " + allDataSup[i].ID + " - " + allDataSup[i].description;
                     idQDel = allDataSup[i].ID;
                 }
             }
        })
        
     }else{
-        alert("Données erronées");
+        alert("Incorrect data");
         document.getElementById("actionDelQuestion").style.display = "none";
     }
 }
@@ -986,7 +853,7 @@ function displayDivModification(){
     idQmodif = 0;
     var nbQTTAL = sessionStorage.getItem("NbQuestionsTotal");
     if(document.getElementById("modifID").value != "" && document.getElementById("modifID").value > 0 && document.getElementById("modifID").value < parseInt(nbQTTAL)+1){
-        alert("Patientez quelques instants, la question choisie charge...");
+        alert("Please wait a few seconds, the selected question is loading...");
         document.getElementById("modifyForm").style.display = "block";
         fetch(URLQuestions)
         .then(response => response.json())
@@ -1113,16 +980,13 @@ function displayDivModification(){
                     }
 
                     idQModif = allDataMod[i].ID;
-                    console.log("IDQMODIF : " + idQModif);
                     sessionStorage.setItem("IDQMODIF", allDataMod[i].ID);
-                    //var test = sessionStorage.getItem("IDQMODIF").
-                    //console.log("session storage : " + test);
                 }
             }
        })
        
     }else{
-        alert("Données erronées");
+        alert("Incorrect data");
         document.getElementById("modifyForm").style.display = "none";
     }
 
@@ -1135,13 +999,10 @@ function fillHTML(){
         var allData;
         var biggestID = 0;
         allData = data.value;
-        //console.log(allData);
         for(var i = 0; i < allData.length; i++){
             if(allData[i].ID > biggestID){
-                //console.log(allData[i].ID);
                 biggestID = allData[i].ID;
             }
-            //console.log(biggestID);
         }
         sessionStorage.setItem("NbQuestionsTotal", biggestID);
    })
@@ -1169,24 +1030,21 @@ function fillHTML(){
 }
 
 function delID(textSelector){
-    if(confirm("Voulez-vous vraiment supprimer le type de question " + textSelector + " ?")){
+    if(confirm("Do you really want to delete the following quiz type :  " + textSelector + " ?")){
         fetch(URLQuestionTypes + '/' + dataToDelete, {
             method: 'DELETE',
         })
         .then(res => res.text()) // or res.json()
-        .then(res => console.log(res))
         idQDel = '';
-        alert("Type de question " + textSelector + " supprimée avec succès !");
+        alert("Quiz type " + textSelector + " successfully deleted !");
 
         fetch(URLQuestionTypes)
                 .then(response => response.json())
                 .then((data) =>{
-            //        console.log(data.value);
                     var types = [];
                     var typesID = [];
                     var allData2;
                     allData2 = data.value;
-                    console.log(allData2);
                     
             //    window.location.href= 'categorie2.html';
                     for (var i = 0; i < allData2.length; i++) {
@@ -1198,7 +1056,6 @@ function delID(textSelector){
                             typesID.push(current.ID);
                         }
                     }
-                    console.log("types : " + types);
                     sessionStorage.setItem("categories", JSON.stringify(types));
                     //alert(dataToDelete);
                     location.reload();
