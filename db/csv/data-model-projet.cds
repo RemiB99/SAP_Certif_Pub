@@ -51,6 +51,7 @@ entity Statistiques{
   user : String;
   typeQuestionnaire : String;
   date : Date;
+  heure : Time;
   nbQ : Integer;
   nbJuste : Integer;
   pourcentage : Decimal;

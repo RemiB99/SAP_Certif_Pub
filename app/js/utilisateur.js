@@ -42,6 +42,13 @@ function fillHTML(){
                 cellDate.appendChild(cellDateText);
                 row.appendChild(cellDate);
 
+                // Récupération de l'heure'
+                const cellHeure = document.createElement("td");  
+                cellHeure.setAttribute("class", "dataCell");   
+                const cellHeureText = document.createTextNode(data.value[element].heure);
+                cellHeure.appendChild(cellHeureText);
+                row.appendChild(cellHeure);
+
                 // Récupération du type de questionnaire
                 const cellType = document.createElement("td"); 
                 cellType.setAttribute("class", "dataCell");   
